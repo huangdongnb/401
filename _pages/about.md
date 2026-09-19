@@ -7,7 +7,7 @@ subtitle: Room 401 Laboratory, School of Architecture and Urban Planning, Guangd
 profile:
   align: left
   image: logo.png
-  image_circular: false
+  image_circular: true
   more_info: >
     <p>📍 No. 729 Dongfeng Road, Yuexiu District, Guangzhou, Guangdong Province</p>
     <p>✉️ Contact Email: lab_email@gdut.edu.cn</p>
@@ -45,7 +45,7 @@ We look forward to forging partnerships toward our shared vision: **a dynamic Gr
 <style>
   .profile {
     max-width: 200px; 
-    margin-right: 4rem; 
+    margin-right: 6rem; 
   }
   /* 让正文部分建立独立的格式化上下文，文字将形成整齐的左边缘，绝对不会绕排到头像和邮箱的下方 */
   .clearfix {
