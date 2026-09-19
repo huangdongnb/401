@@ -44,6 +44,6 @@ We look forward to forging partnerships toward our shared vision: **a dynamic Gr
 
 <style>
   .profile {
-    max-width: 150px;
+    max-width: 200px;
   }
 </style>
