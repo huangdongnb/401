@@ -1,3 +1,4 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
 ---
 layout: page
 title: 数据资源
@@ -26,6 +27,11 @@ dataset_categories:
 ---
 
 <style>
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
   .post-header { display: none; }
   .dataset-page {
     --dataset-blue: #557cf2;
