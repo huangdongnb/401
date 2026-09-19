@@ -44,7 +44,7 @@ We look forward to forging partnerships toward our shared vision: **a dynamic Gr
 
 <style>
   .profile {
-    max-width: 150px; 
+    max-width: 200px; 
     margin-right: 2rem; 
   }
   /* 让正文部分建立独立的格式化上下文，文字将形成整齐的左边缘，绝对不会绕排到头像和邮箱的下方 */
