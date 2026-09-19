@@ -4,4 +4,5 @@ email: lab_email@gdut.edu.cn
 # 团队真实 GitHub
 github_username: huangdongnb
 
-# 其他不想显示的图标，只要在这里不写对应的字段，它们就绝对不会出现在网页上了
+# 学校或实验室官方网站（会自动生成一个代表机构的专属图标）
+work_url: https://arc.gdut.edu.cn/info/1026/2018.htm
