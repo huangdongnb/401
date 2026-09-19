@@ -2,16 +2,16 @@
 layout: about
 title: about
 permalink: /
-subtitle: 广东工业大学建筑与城市规划学院401实验室 | 聚焦建成环境与气候韧性
+subtitle: Room 401 Laboratory, School of Architecture and Urban Planning, Guangdong University of Technology | Focusing on Built Environment and Climate Resilience
 
 profile:
   align: right
   image: logo.png
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>📍 广东省广州市越秀区东风路729号</p>
-    <p>🏫 广东工业大学建筑与城市规划学院</p>
-    <p>✉️ 联系邮箱：lab_email@gdut.edu.cn</p>
+    <p>📍 No. 729 Dongfeng Road, Yuexiu District, Guangzhou, Guangdong Province</p>
+    <p>🏫 School of Architecture and Urban Planning, Guangdong University of Technology</p>
+    <p>✉️ Contact Email: lab_email@gdut.edu.cn</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
@@ -27,8 +27,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-我们是**广东工业大学建筑与城市规划学院徐超教授科研团队**，立足**粤港澳大湾区**，深耕**建成环境、气候韧性与城市空间正义**前沿交叉领域，重点围绕高密度城市**热暴露不平等**问题，探究**绿地降温效应与空间格局优化**，系统开展**城市形态生态气候效应**与**生态服务供需匹配评估**研究。
+We are the **scientific research team led by Professor Chao Xu at the School of Architecture and Urban Planning, Guangdong University of Technology**. Based in the **Guangdong-Hong Kong-Macao Greater Bay Area**, we deeply engage in the cutting-edge interdisciplinary fields of **built environment, climate resilience, and urban spatial justice**. Focusing on the issue of **heat exposure inequality** in high-density cities, we explore the **cooling effect of green spaces and spatial pattern optimization**, and systematically conduct research on the **eco-climatic effects of urban morphology** and the **matching assessment of ecosystem services supply and demand**.
 
-团队依托**多源城市大数据**与 **Python、GEE 空间计算平台**，融合**空间统计与自相关模型**、**城市动态演变模拟**及**精准物理环境建模技术**，构建了从**异质性特征归因**、**多维空间错位分析**到**空间管理分区决策**的全链路量化研究工作流。
+Relying on **multi-source urban big data** and spatial computing platforms like **Python and GEE**, our team integrates **spatial statistics and autocorrelation models**, **urban dynamic evolution simulations**, and **precise physical environment modeling technologies**. We have constructed a full-link quantitative research workflow from **attribution of heterogeneous characteristics** and **multi-dimensional spatial mismatch analysis** to **spatial management zoning decisions**.
 
-热忱欢迎热爱**城市人居环境研究**、致力于将 **AI 工具与空间计算**应用于城市研究的朋友交流探讨，共探城市高质量发展新路径。
+We warmly welcome friends who are passionate about **urban human settlement environment research** and dedicated to applying **AI tools and spatial computing** to urban studies to communicate and collaborate with us, jointly exploring new paths for high-quality urban development.
