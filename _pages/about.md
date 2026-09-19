@@ -2,14 +2,14 @@
 layout: about
 title: about
 permalink: /
-subtitle: Room 401 Laboratory, School of Architecture and Urban Planning, Guangdong University of Technology | Focusing on Built Environment and Climate Resilience
+subtitle: School of Architecture and Urban Planning, Guangdong University of Technology
 
 profile:
   align: left
   image: logo.png
   image_circular: true
   more_info: >
-    <p>📍 No. 729 Dongfeng Road, Yuexiu District, Guangzhou, Guangdong Province</p>
+    <p>📍 No. 729 Dongfeng Road, Yuexiu , Guangzhou, Guangdong Province</p>
     <p>✉️ Contact Email: lab_email@gdut.edu.cn</p>
 
 selected_papers: true
