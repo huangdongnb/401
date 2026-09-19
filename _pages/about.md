@@ -6,7 +6,7 @@ subtitle: Room 401 Laboratory, School of Architecture and Urban Planning, Guangd
 
 profile:
   align: left
-  image: watermarked_img_16035659850117070560.jpg
+  image: logo.png
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>📍 No. 729 Dongfeng Road, Yuexiu District, Guangzhou, Guangdong Province</p>
