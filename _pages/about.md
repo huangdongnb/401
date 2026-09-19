@@ -10,7 +10,6 @@ profile:
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>📍 No. 729 Dongfeng Road, Yuexiu District, Guangzhou, Guangdong Province</p>
-    <p>🏫 School of Architecture and Urban Planning, Guangdong University of Technology</p>
     <p>✉️ Contact Email: lab_email@gdut.edu.cn</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
@@ -31,8 +30,8 @@ We are the **scientific research team led by Professor Chao Xu at the School of 
 
 Relying on cutting-edge computational methods, our team integrates advanced technologies to advance knowledge in key areas:
 
-*   **Urban Big Data & Spatial Computing:** Relying on multi-source urban big data and spatial computing platforms like Python and GEE.
-*   **Spatial Modeling & Simulation:** Integrating spatial statistics and autocorrelation models, urban dynamic evolution simulations, and precise physical environment modeling technologies.
-*   **Quantitative Research Workflow:** Constructing a full-link quantitative research workflow from attribution of heterogeneous characteristics and multi-dimensional spatial mismatch analysis to spatial management zoning decisions.
+* &nbsp;&nbsp;**Urban Big Data & Spatial Computing:** Relying on multi-source urban big data and spatial computing platforms like Python and GEE.
+* &nbsp;&nbsp;**Spatial Modeling & Simulation:** Integrating spatial statistics and autocorrelation models, urban dynamic evolution simulations, and precise physical environment modeling technologies.
+* &nbsp;&nbsp;**Quantitative Research Workflow:** Constructing a full-link quantitative research workflow from attribution of heterogeneous characteristics and multi-dimensional spatial mismatch analysis to spatial management zoning decisions.
 
 We warmly welcome friends who are passionate about **urban human settlement environment research** and dedicated to applying **AI tools and spatial computing** to urban studies to communicate and collaborate with us, jointly exploring new paths for high-quality urban development.
