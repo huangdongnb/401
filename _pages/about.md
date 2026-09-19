@@ -6,7 +6,7 @@ subtitle: Room 401 Laboratory, School of Architecture and Urban Planning, Guangd
 
 profile:
   align: left
-  image: logo.png
+  image: watermarked_img_16035659850117070560.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>📍 No. 729 Dongfeng Road, Yuexiu District, Guangzhou, Guangdong Province</p>
@@ -26,12 +26,24 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-We are the **scientific research team led by Professor Chao Xu at the School of Architecture and Urban Planning, Guangdong University of Technology**. Based in the **Guangdong-Hong Kong-Macao Greater Bay Area**, we deeply engage in the cutting-edge interdisciplinary fields of **built environment, climate resilience, and urban spatial justice**. Focusing on the issue of **heat exposure inequality** in high-density cities, we explore the **cooling effect of green spaces and spatial pattern optimization**, and systematically conduct research on the **eco-climatic effects of urban morphology** and the **matching assessment of ecosystem services supply and demand**.
+We are the **scientific research team led by Professor Chao Xu at the School of Architecture and Urban Planning, Guangdong University of Technology**. Based in the **Guangdong-Hong Kong-Macao Greater Bay Area**, we deeply engage in the cutting-edge interdisciplinary fields of **built environment, climate resilience, and urban spatial justice**. 
 
 Relying on cutting-edge computational methods, our team integrates advanced technologies to advance knowledge in key areas:
 
-* &nbsp;&nbsp;**Urban Big Data & Spatial Computing:** Relying on multi-source urban big data and spatial computing platforms like Python and GEE.
-* &nbsp;&nbsp;**Spatial Modeling & Simulation:** Integrating spatial statistics and autocorrelation models, urban dynamic evolution simulations, and precise physical environment modeling technologies.
-* &nbsp;&nbsp;**Quantitative Research Workflow:** Constructing a full-link quantitative research workflow from attribution of heterogeneous characteristics and multi-dimensional spatial mismatch analysis to spatial management zoning decisions.
+  * &nbsp;&nbsp;**Urban Big Data & Spatial Computing:** Relying on multi-source urban big data and spatial computing platforms like Python and GEE.
+  * &nbsp;&nbsp;**Spatial Modeling & Simulation:** Integrating spatial statistics and autocorrelation models, urban dynamic evolution simulations, and precise physical environment modeling technologies.
+  * &nbsp;&nbsp;**Quantitative Research Workflow:** Constructing a full-link quantitative research workflow from attribution of heterogeneous characteristics and multi-dimensional spatial mismatch analysis to spatial management zoning decisions.
 
-We warmly welcome friends who are passionate about **urban human settlement environment research** and dedicated to applying **AI tools and spatial computing** to urban studies to communicate and collaborate with us, jointly exploring new paths for high-quality urban development.
+We warmly welcome researchers passionate about urban human settlements, who apply AI tools and spatial computing to urban studies, to communicate and collaborate with us. Together, we explore innovative pathways for high-quality urban development.
+
+  **If you are a scholar**, we invite you for academic exchange and joint research.
+  **If you are a student**, we offer shared research platforms and open access to research datasets.
+  **If you are a citizen**, we listen to your concerns about urban environmental challenges and co-design improvement solutions.
+
+We look forward to forging partnerships toward our shared vision: **a dynamic Greater Bay Area and an appealing new Guangzhou**.
+
+<style>
+  .profile {
+    max-width: 150px; 
+  }
+</style>
