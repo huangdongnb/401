@@ -34,7 +34,7 @@ Relying on cutting-edge computational methods, our team integrates advanced tech
 * **Spatial Modeling & Simulation:** Integrating spatial statistics and autocorrelation models, urban dynamic evolution simulations, and precise physical environment modeling technologies.
 * **Quantitative Research Workflow:** Constructing a full-link quantitative research workflow from attribution of heterogeneous characteristics and multi-dimensional spatial mismatch analysis to spatial management zoning decisions.
 
-We warmly welcome researchers passionate about urban human settlements, who apply AI tools and spatial computing to urban studies, to communicate and collaborate with us. Together, we explore innovative pathways for high-quality urban development.
+We warmly welcome researchers passionate about urban human settlements, who apply AI tools and spatial computing to urban studies, to communicate and collaborate with us. 
 
 **If you are a scholar**, we invite you for academic exchange and joint research.
 **If you are a student**, we offer shared research platforms and open access to research datasets.
@@ -44,6 +44,11 @@ We look forward to forging partnerships toward our shared vision: **a dynamic Gr
 
 <style>
   .profile {
-    max-width: 200px;
+    max-width: 150px; 
+    margin-right: 2rem; 
+  }
+  /* 让正文部分建立独立的格式化上下文，文字将形成整齐的左边缘，绝对不会绕排到头像和邮箱的下方 */
+  .clearfix {
+    display: flow-root;
   }
 </style>
