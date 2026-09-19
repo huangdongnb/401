@@ -6,8 +6,13 @@ title: 401 Urban Lab, Guangzhou
 first_name: Guangzhou
 middle_name: City
 last_name: Lab
+# 团队社交与学术链接 (只要填入，底部会自动生成对应图标)
+email: lab_email@gdut.edu.cn
+github_username: huangdongnb
+# CV (简历/团队介绍手册) 设置
+# cv_pdf: team_resume.pdf
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  Feel free to contact us via email for academic collaboration 😊
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >
