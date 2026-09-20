@@ -1598,3 +1598,450 @@
           obj.visible = true;
           obj.scale.setScalar(on ? 1.7 : 1);
           obj.traverse((n) => {
+            if (n.isMesh && n.material?.emissive) {
+              if (on) n.material.emissive.set(0xffbf55);
+              n.material.emissiveIntensity = on ? 1.15 : 0;
+            }
+          });
+        }
+        function restore() {
+          registry.buildings.forEach((b) => {
+            b.material = b.userData.baseMat;
+            b.userData.roof.visible = true;
+          });
+          registry.roads.forEach((r) => r.material.color.set(r.userData.base ?? C.road));
+          registry.parks.forEach((p) => (p.material.opacity = 1));
+          registry.trees.forEach((t) => (t.visible = true));
+          registry.water.forEach((w) => (w.visible = true));
+          registry.cars.forEach((c) => (c.visible = true));
+          registry.pois.forEach((p) => {
+            p.visible = true;
+            p.scale.set(22, 22, 1);
+          });
+          registry.people.forEach((p) => setHumanHighlight(p, false));
+          registry.cyclists.forEach((c) => setHumanHighlight(c, false));
+          groundMat.color.set(state.night > 0.5 ? C.groundNight : C.ground);
+        }
+        function dimCity() {
+          registry.buildings.forEach((b) => {
+            b.material = dimMat;
+            b.userData.roof.visible = false;
+          });
+          registry.parks.forEach((p) => (p.material.opacity = 0.28));
+          registry.trees.forEach((t) => (t.visible = false));
+          registry.water.forEach((w) => (w.visible = false));
+          registry.cars.forEach((c) => (c.visible = false));
+          registry.pois.forEach((p) => (p.visible = false));
+          groundMat.color.set(0x555e59);
+        }
+        const legends = {
+          population: {
+            title: "城市人口活动",
+            badge: registry.people.length + registry.cyclists.length + "位活动者",
+            text: "高亮显示模型中全部行人和骑行者，建筑与环境降为低对比背景，便于直接观察人口活动位置。",
+            items: [
+              ["步行者", "#ffbf55", registry.people.length + "人"],
+              ["骑行者", "#d89545", registry.cyclists.length + "人"],
+              ["环境背景", "#777e79", "弱化显示"],
+            ],
+          },
+          traffic: {
+            title: "道路与交通运行",
+            badge: "7处信号控制",
+            text: "主次路网、斑马线、动态车辆、信号灯和跨河桥梁同步显示。车辆遵循车道方向、信号相位与安全车距。",
+            items: [
+              ["主干路", "#b79562", "28 m"],
+              ["次干路", "#d4c2a2", "18 m"],
+              ["信号路口", "#b45f55", "7处"],
+            ],
+          },
+          water: {
+            title: "蓝绿生态廊道",
+            badge: "2.6 km河段",
+            text: "平面曲线水面、双侧生态岸线与5处跨河节点构成连续滨水空间，开发地块退让至缓冲带之外。",
+            items: [
+              ["常水面", "#789da1", "62 m"],
+              ["生态岸线", "#9aa98e", "2×11 m"],
+              ["跨河节点", "#858783", "5座"],
+            ],
+          },
+          buildings: {
+            title: "建筑形态与强度",
+            badge: registry.buildings.length + "栋",
+            text: "建筑遵循地块边界与道路退线；越接近中心，高度与开发强度整体越高。",
+            items: [
+              ["高层", "#91859a", "> 55 m"],
+              ["多层", "#aab7bd", "30–55 m"],
+              ["低层", "#c7b2aa", "< 30 m"],
+            ],
+          },
+          facilities: {
+            title: "全域公共服务设施",
+            badge: registry.pois.length + "处设施",
+            text: "教育、医疗、文化、应急和生活服务被均衡布置到城市各片区；所有屋顶图标在全域同时显示。",
+            items: [
+              ["教育文化", "#7897a1", "全域覆盖"],
+              ["医疗应急", "#b67f70", "全域覆盖"],
+              ["生活政务", "#89a092", "全域覆盖"],
+            ],
+          },
+          green: {
+            title: "公园绿地系统",
+            badge: "3大＋5小",
+            text: "扩大的综合公园容纳活动场景，口袋公园补足步行可达性，连续行道树连接滨水生态廊道。",
+            items: [
+              ["综合公园", "#667f72", "3座"],
+              ["口袋公园", "#89a092", "5座"],
+              ["行道与园林树木", "#55705d", registry.trees.length + "株"],
+            ],
+          },
+        };
+        function setLegend(layer) {
+          const l = document.getElementById("legend");
+          if (layer === "all") {
+            l.classList.add("hidden");
+            return;
+          }
+          const d = legends[layer];
+          document.getElementById("legendTitle").textContent = d.title;
+          document.getElementById("legendBadge").textContent = d.badge;
+          document.getElementById("legendText").textContent = d.text;
+          document.getElementById("legendItems").innerHTML = d.items
+            .map(
+              (i) =>
+                `<div class="legend-item"><i class="swatch" style="background:${i[1]}"></i><span>${i[0]}</span><span class="legend-value">${i[2]}</span></div>`
+            )
+            .join("");
+          l.classList.remove("hidden");
+        }
+        function applyLayer(layer) {
+          state.layer = layer;
+          restore();
+          if (layer !== "all") dimCity();
+          if (layer === "population") {
+            registry.people.forEach((p) => setHumanHighlight(p, true));
+            registry.cyclists.forEach((c) => setHumanHighlight(c, true));
+          } else if (layer === "traffic") {
+            registry.roads.forEach((r) => r.material.color.set(C.traffic));
+            registry.cars.forEach((c) => (c.visible = true));
+            registry.signals.forEach((s) => (s.visible = true));
+            registry.cyclists.forEach((c) => (c.visible = true));
+          } else if (layer === "water") {
+            registry.water.forEach((w) => (w.visible = true));
+          } else if (layer === "buildings") {
+            registry.buildings.forEach((b) => {
+              b.material = b.userData.baseMat;
+              b.userData.roof.visible = true;
+            });
+          } else if (layer === "facilities") {
+            registry.pois.forEach((p) => {
+              p.visible = true;
+              p.scale.set(34, 34, 1);
+            });
+            registry.buildings
+              .filter((b) => b.userData.facility)
+              .forEach((b) => {
+                b.material = highlightMat;
+                b.userData.roof.visible = true;
+              });
+          } else if (layer === "green") {
+            registry.parks.forEach((p) => (p.material.opacity = 1));
+            registry.trees.forEach((t) => (t.visible = true));
+            registry.water.forEach((w) => (w.visible = true));
+          }
+          setLegend(layer);
+          document.querySelectorAll(".layer").forEach((b) => b.classList.toggle("active", b.dataset.layer === layer));
+        }
+
+        document.querySelectorAll(".layer").forEach((b) => b.addEventListener("click", () => applyLayer(b.dataset.layer)));
+        const externalLayerMap = {
+          all: "all",
+          人口相关数据: "population",
+          交通相关数据: "traffic",
+          行政区划数据: "buildings",
+          地形相关数据: "green",
+          "用地数据/土地覆盖数据": "green",
+          河流水系相关数据: "water",
+          建筑体块及建筑高度数据: "buildings",
+          城市建成区及不透水面数据: "buildings",
+          社会经济相关数据: "facilities",
+          气象相关数据: "all",
+          环境污染及环境治理数据: "all",
+          "NDVI/EVI/FVC/NPP/GPP相关数据": "green",
+          夜间灯光数据: "buildings",
+          土壤相关数据: "green",
+          旅游相关数据: "facilities",
+          生态相关数据: "green",
+          不同设施的点位数据: "facilities",
+          POI设施的数量数据: "facilities",
+        };
+        addEventListener("message", (event) => {
+          if (event.data?.type !== "set-city-layer") return;
+          applyLayer(externalLayerMap[event.data.category] || "all");
+        });
+        const raycaster = new THREE.Raycaster(),
+          mouse = new THREE.Vector2();
+        function pick(e) {
+          mouse.x = (e.clientX / innerWidth) * 2 - 1;
+          mouse.y = -(e.clientY / innerHeight) * 2 + 1;
+          raycaster.setFromCamera(mouse, camera);
+          const hits = raycaster.intersectObjects([...registry.pois, ...registry.buildings], false);
+          if (!hits.length) return closeCard();
+          let o = hits[0].object;
+          if (o.userData.kind === "building" && o.userData.poi) o = o.userData.poi;
+          if (o.userData.kind === "poi") openPOI(o);
+        }
+        function openPOI(sprite) {
+          if (state.selected?.outline) city.remove(state.selected.outline);
+          const b = sprite.userData.building;
+          const edges = new THREE.EdgesGeometry(b.geometry);
+          const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: C.outline, transparent: true, opacity: 0.95 }));
+          line.position.copy(b.position);
+          line.scale.set(1.05, 1.03, 1.05);
+          city.add(line);
+          state.selected = { sprite, building: b, outline: line };
+          const f = sprite.userData.facility;
+          document.getElementById("poiEmoji").textContent = f[2];
+          document.getElementById("poiName").textContent = f[1];
+          document.getElementById("poiType").textContent = f[3] + " · 点击建筑高亮";
+          document.getElementById("poiMessage").textContent = f[4];
+          document.getElementById("poiCard").classList.add("show");
+          applyLayer("facilities");
+          positionCard();
+        }
+        function closeCard() {
+          document.getElementById("poiCard").classList.remove("show");
+          if (state.selected?.outline) city.remove(state.selected.outline);
+          state.selected = null;
+        }
+        document.getElementById("poiCard").querySelector(".close").addEventListener("click", closeCard);
+        renderer.domElement.addEventListener("click", pick);
+        renderer.domElement.addEventListener("pointermove", (e) => {
+          mouse.x = (e.clientX / innerWidth) * 2 - 1;
+          mouse.y = -(e.clientY / innerHeight) * 2 + 1;
+          raycaster.setFromCamera(mouse, camera);
+          renderer.domElement.style.cursor = raycaster.intersectObjects(
+            [...registry.pois, ...registry.buildings.filter((b) => b.userData.poi)],
+            false
+          ).length
+            ? "pointer"
+            : "grab";
+        });
+        function positionCard() {
+          if (!state.selected) return;
+          const p = state.selected.sprite.getWorldPosition(new THREE.Vector3()).project(camera);
+          const card = document.getElementById("poiCard");
+          card.style.left = (p.x * 0.5 + 0.5) * innerWidth + "px";
+          card.style.top = (-p.y * 0.5 + 0.5) * innerHeight + "px";
+        }
+
+        function setWeather(w) {
+          state.weather = w;
+          document.querySelectorAll(".weather-btn").forEach((b) => b.classList.toggle("active", b.dataset.weather === w));
+          cloudMaterial.color.set(w === "rain" ? 0x59646b : 0xf5f5f0);
+          const names = { sun: "晴", cloud: "多云", rain: "雷暴雨", snow: "降雪" };
+          updateStatus(names[w]);
+        }
+        document.querySelectorAll(".weather-btn").forEach((b) => b.addEventListener("click", () => setWeather(b.dataset.weather)));
+        function updateStatus(weatherName) {
+          const t = formatTime(state.time),
+            mode = state.time >= 20 || state.time < 6 ? "夜间灯光模式" : "日间可视模式";
+          document.getElementById("statusLine").textContent =
+            `${weatherName || { sun: "晴", cloud: "多云", rain: "雷暴雨", snow: "降雪" }[state.weather]} · ${t} · ${mode}`;
+        }
+        function formatTime(t) {
+          let h = Math.floor(t) % 24,
+            m = Math.round((t - h) * 60);
+          if (m === 60) {
+            h = (h + 1) % 24;
+            m = 0;
+          }
+          return String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0");
+        }
+        function updateTime() {
+          const t = state.time;
+          const daylight = Math.max(0, Math.sin(((t - 6) / 12) * Math.PI));
+          const twilight = t >= 18 && t < 20 ? (t - 18) / 2 : t >= 5 && t < 7 ? 1 - (t - 5) / 2 : t >= 20 || t < 5 ? 1 : 0;
+          state.night = THREE.MathUtils.clamp(twilight, 0, 1);
+          const sky = new THREE.Color();
+          if (state.night < 0.55) sky.lerpColors(new THREE.Color(C.skyDay), new THREE.Color(C.skyDusk), state.night * 1.8);
+          else sky.lerpColors(new THREE.Color(C.skyDusk), new THREE.Color(C.skyNight), (state.night - 0.55) / 0.45);
+          scene.background.copy(sky);
+          scene.fog.color.copy(sky);
+          sun.position.set(Math.cos(((t - 6) / 12) * Math.PI) * 430, 60 + daylight * 460, Math.sin(((t - 6) / 12) * Math.PI) * 260);
+          sun.userData.baseIntensity = 0.18 + daylight * 2.45;
+          sun.intensity = sun.userData.baseIntensity;
+          moon.intensity = state.night * 0.62;
+          hemi.intensity = 0.38 + (1 - state.night) * 0.9;
+          renderer.toneMappingExposure = 0.7 + (1 - state.night) * 0.38;
+          const lightsOn = t >= 20 || t < 6;
+          registry.buildings.forEach((b) => (b.userData.baseMat.emissiveIntensity = lightsOn ? 0.85 : 0));
+          registry.lamps.forEach((l) => (l.bulb.material.emissiveIntensity = lightsOn ? 3.2 : 0));
+          if (state.layer === "all") groundMat.color.set(state.night > 0.58 ? C.groundNight : C.ground);
+          document.getElementById("timeLabel").textContent = formatTime(t);
+          updateStatus();
+        }
+        document.getElementById("time").addEventListener("input", (e) => {
+          state.time = parseFloat(e.target.value);
+          updateTime();
+        });
+        document.getElementById("resetView").addEventListener("click", () => {
+          camera.position.set(790, 650, 790);
+          controls.target.set(0, 25, 0);
+          controls.update();
+          closeCard();
+          applyLayer("all");
+        });
+
+        const clock = new THREE.Clock();
+        let signalClock = 0,
+          conversationClock = 0;
+        function animate() {
+          requestAnimationFrame(animate);
+          const dt = Math.min(clock.getDelta(), 0.05),
+            elapsed = clock.elapsedTime;
+          controls.update();
+          signalClock = (signalClock + dt) % 12;
+          conversationClock += dt;
+          if (conversationClock > 9) {
+            conversationClock = 0;
+            refreshConversations();
+          }
+          registry.signals.forEach((s) => {
+            const phase = (signalClock + (s.userData.phase ? 6 : 0)) % 12,
+              green = phase < 5,
+              yellow = phase >= 5 && phase < 6;
+            s.userData.lamps[0].material.emissiveIntensity = !green && !yellow ? 2.6 : 0.04;
+            s.userData.lamps[1].material.emissiveIntensity = yellow ? 2.6 : 0.04;
+            s.userData.lamps[2].material.emissiveIntensity = green ? 2.6 : 0.04;
+          });
+          registry.cars.forEach((c, i) => {
+            const u = c.userData,
+              limit = u.axis === "x" ? 525 : 425,
+              pos = u.axis === "x" ? c.position.x : c.position.z;
+            const nearSignal = (u.axis === "x" ? roadX : roadZ).some((v) => Math.abs(pos - v) < 19),
+              stopPhase = (signalClock + (i % 2 ? 0 : 6)) % 12 > 5.1;
+            const following = registry.cars.some((o) => {
+              if (o === c || o.userData.axis !== u.axis || o.userData.lane !== u.lane || o.userData.direction !== u.direction) return false;
+              const other = u.axis === "x" ? o.position.x : o.position.z,
+                gap = (other - pos) * u.direction;
+              return gap > 0 && gap < 14;
+            });
+            const speed = (nearSignal && stopPhase) || following ? 0 : u.speed;
+            if (u.axis === "x") c.position.x += speed * dt * u.direction;
+            else c.position.z += speed * dt * u.direction;
+            if ((u.axis === "x" ? c.position.x : c.position.z) > limit) u.axis === "x" ? (c.position.x -= limit * 2) : (c.position.z -= limit * 2);
+            if ((u.axis === "x" ? c.position.x : c.position.z) < -limit) u.axis === "x" ? (c.position.x += limit * 2) : (c.position.z += limit * 2);
+          });
+          registry.people.forEach((p, i) => {
+            const u = p.userData,
+              a = elapsed * u.speed + u.phase;
+            p.position.x = u.center.x + Math.cos(a) * u.radius;
+            p.position.z = u.center.y + Math.sin(a) * u.radius;
+            p.position.y = 0.13 + Math.abs(Math.sin(elapsed * 4 + i)) * 0.12;
+            p.rotation.y = -a + Math.PI / 2;
+          });
+          registry.dogs.forEach((d, i) => {
+            const o = d.userData.owner;
+            d.position.x += (o.position.x + d.userData.offset - d.position.x) * 0.08;
+            d.position.z += (o.position.z + Math.sin(elapsed + i) * 2 - d.position.z) * 0.08;
+            d.position.y = 0.13;
+            d.rotation.y = Math.atan2(o.position.x - d.position.x, o.position.z - d.position.z);
+          });
+          registry.cyclists.forEach((c) => {
+            const u = c.userData,
+              limit = u.axis === "x" ? 520 : 420;
+            if (u.axis === "x") {
+              c.position.x += u.speed * dt * u.direction;
+              c.position.z = u.lane;
+              c.rotation.y = u.direction > 0 ? 0 : Math.PI;
+              if (c.position.x > limit) c.position.x = -limit;
+              if (c.position.x < -limit) c.position.x = limit;
+            } else {
+              c.position.z += u.speed * dt * u.direction;
+              c.position.x = u.lane;
+              c.rotation.y = u.direction > 0 ? -Math.PI / 2 : Math.PI / 2;
+              if (c.position.z > limit) c.position.z = -limit;
+              if (c.position.z < -limit) c.position.z = limit;
+            }
+            c.position.y = 0.14;
+            u.wheels.forEach((w) => (w.rotation.z -= (u.speed * dt * u.direction) / 1.55));
+          });
+          registry.conversations.forEach((c) => {
+            c.bubble.position.x = (c.a.position.x + c.b.position.x) / 2;
+            c.bubble.position.z = (c.a.position.z + c.b.position.z) / 2;
+            c.bubble.position.y = 18 + Math.sin(elapsed * 1.5) * 0.5;
+          });
+          registry.pois.forEach((s, i) => (s.position.y = s.userData.baseY + Math.sin(elapsed * 1.8 + i) * 1.25));
+          const cloudy = state.weather !== "sun",
+            raining = state.weather === "rain",
+            snowing = state.weather === "snow";
+          cloudMaterial.opacity += ((raining ? 0.96 : cloudy ? 0.84 : 0) - cloudMaterial.opacity) * 0.035;
+          cloudGroup.children.forEach((g, i) => {
+            g.position.x += dt * (5 + i * 0.18);
+            if (g.position.x > 820) g.position.x = -820;
+          });
+          rain.mat.opacity += ((raining ? 0.9 : 0) - rain.mat.opacity) * 0.1;
+          snow.mat.opacity += ((snowing ? 0.88 : 0) - snow.mat.opacity) * 0.08;
+          [
+            [rain, raining ? 235 : 0],
+            [snow, snowing ? 34 : 0],
+          ].forEach(([sys, vel]) => {
+            if (!vel) return;
+            const a = sys.geo.attributes.position.array;
+            for (let i = 0; i < sys.count; i++) {
+              a[i * 3 + 1] -= vel * dt;
+              if (sys === rain) a[i * 3] += 65 * dt;
+              else a[i * 3] += Math.sin(elapsed + i) * dt * 4;
+              if (a[i * 3 + 1] < 0) {
+                a[i * 3 + 1] = 480;
+                a[i * 3] = (Math.random() - 0.5) * 1600;
+              }
+              if (a[i * 3] > 800) a[i * 3] = -800;
+            }
+            sys.geo.attributes.position.needsUpdate = true;
+          });
+          if (raining) {
+            state.nextLightning -= dt;
+            if (state.nextLightning <= 0) {
+              state.lightning = 0.22;
+              state.nextLightning = 2.2 + Math.random() * 4.8;
+              const x = (Math.random() - 0.5) * 950,
+                z = (Math.random() - 0.5) * 720;
+              lightningBolt.position.set(x - 180, 0, z - 40);
+              lightningLight.position.set(x, 260, z);
+            }
+            state.lightning = Math.max(0, state.lightning - dt);
+            const flash = state.lightning / 0.22;
+            lightningLight.intensity = flash * 11;
+            lightningBolt.material.opacity = flash;
+          } else {
+            state.lightning = 0;
+            lightningLight.intensity = 0;
+            lightningBolt.material.opacity = 0;
+          }
+          sun.intensity =
+            (sun.userData.baseIntensity || 1) *
+            (state.weather === "sun" ? 1 : state.weather === "cloud" ? 0.72 : state.weather === "rain" ? 0.34 : 0.55);
+          positionCard();
+          renderer.render(scene, camera);
+        }
+        document.getElementById("time").value = state.time;
+        updateTime();
+        applyLayer("all");
+        animate();
+        addEventListener("resize", () => {
+          camera.aspect = innerWidth / innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(innerWidth, innerHeight);
+          positionCard();
+        });
+        setTimeout(() => document.getElementById("loading").classList.add("done"), 500);
+      } catch (err) {
+        console.error(err);
+        document.getElementById("loading").classList.add("done");
+        document.getElementById("error").classList.add("show");
+      }
+    </script>
+  </body>
+</html>
