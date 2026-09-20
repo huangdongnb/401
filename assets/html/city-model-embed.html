@@ -1,0 +1,1600 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="description" content="401数据学社交互式城市要素模型：探索建筑、人口、交通、水系、公共服务与绿地生态。" />
+    <title>401 数据学社 · 城市要素实验场</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235d7469'/%3E%3Cpath d='M12 47V29l12-8v26m0 0V15l16-7v39m0 0V25l12 6v16' fill='none' stroke='%23f4f0e8' stroke-width='5' stroke-linejoin='round'/%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        --ink: #26332f;
+        --muted: #6e7974;
+        --paper: #f5f2ea;
+        --panel: rgba(247, 244, 237, 0.92);
+        --line: rgba(47, 62, 56, 0.14);
+        --green: #667f72;
+        --green2: #89a092;
+        --clay: #b67f70;
+        --blue: #7897a1;
+        --ochre: #b79562;
+        --purple: #91859a;
+        --shadow: 0 20px 60px rgba(40, 50, 46, 0.18);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: #cfd8d1;
+        color: var(--ink);
+        font-family: Inter, "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      button {
+        color: inherit;
+      }
+      #viewport {
+        position: fixed;
+        inset: 0;
+      }
+      #viewport canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .shell {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        grid-template-columns: 328px 1fr;
+        pointer-events: none;
+      }
+      .sidebar {
+        pointer-events: auto;
+        margin: 18px 0 18px 18px;
+        height: calc(100vh - 36px);
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        border-radius: 24px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--line);
+      }
+      .brand-mark {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: linear-gradient(145deg, #789084, #4f695e);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        letter-spacing: -1px;
+        box-shadow: 0 9px 22px rgba(79, 105, 94, 0.3);
+      }
+      .brand h1 {
+        font-size: 18px;
+        margin: 0 0 3px;
+        letter-spacing: 0.04em;
+      }
+      .brand p {
+        font-size: 12px;
+        margin: 0;
+        color: var(--muted);
+      }
+      .intro {
+        margin: 16px 2px 10px;
+        font-size: 13px;
+        line-height: 1.65;
+        color: var(--muted);
+      }
+      .section-label {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        color: #7a837f;
+        margin: 10px 2px 8px;
+        text-transform: uppercase;
+      }
+      .layers {
+        display: grid;
+        gap: 7px;
+        overflow: auto;
+        padding-right: 3px;
+        scrollbar-width: thin;
+      }
+      .layer {
+        border: 1px solid transparent;
+        background: rgba(255, 255, 255, 0.55);
+        border-radius: 13px;
+        min-height: 46px;
+        padding: 9px 11px;
+        display: grid;
+        grid-template-columns: 34px 1fr auto;
+        gap: 9px;
+        align-items: center;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.22s ease;
+      }
+      .layer:hover {
+        transform: translateX(3px);
+        background: #fff;
+        border-color: var(--line);
+      }
+      .layer.active {
+        background: #5f786c;
+        color: white;
+        border-color: #81988d;
+        box-shadow: 0 8px 20px rgba(70, 95, 84, 0.2);
+      }
+      .layer .ico {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+        display: grid;
+        place-items: center;
+        background: rgba(255, 255, 255, 0.67);
+        font-size: 16px;
+      }
+      .layer.active .ico {
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .layer strong {
+        display: block;
+        font-size: 13px;
+      }
+      .layer small {
+        display: block;
+        font-size: 10px;
+        opacity: 0.67;
+        margin-top: 2px;
+      }
+      .layer .count {
+        font-size: 11px;
+        font-variant-numeric: tabular-nums;
+        opacity: 0.65;
+      }
+      .sidebar-foot {
+        margin-top: auto;
+        padding-top: 13px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--muted);
+        font-size: 11px;
+      }
+      .live {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .live-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #739681;
+        box-shadow: 0 0 0 4px rgba(115, 150, 129, 0.15);
+      }
+      .topbar {
+        position: absolute;
+        left: 362px;
+        right: 18px;
+        top: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 14px;
+        pointer-events: none;
+      }
+      .city-title,
+      .environment,
+      .legend,
+      .hint {
+        pointer-events: auto;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        background: rgba(247, 244, 237, 0.87);
+        box-shadow: 0 12px 35px rgba(47, 57, 53, 0.14);
+        backdrop-filter: blur(16px);
+      }
+      .city-title {
+        padding: 13px 17px;
+        border-radius: 17px;
+        min-width: 240px;
+      }
+      .city-title h2 {
+        margin: 0;
+        font-size: 15px;
+      }
+      .city-title p {
+        margin: 4px 0 0;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .environment {
+        border-radius: 18px;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .weather-btn,
+      .view-btn {
+        width: 40px;
+        height: 40px;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.55);
+        cursor: pointer;
+        font-size: 18px;
+        transition: 0.2s;
+      }
+      .weather-btn:hover,
+      .view-btn:hover {
+        background: #fff;
+      }
+      .weather-btn.active,
+      .view-btn.active {
+        background: #667f72;
+        color: #fff;
+        border-color: #83998e;
+        box-shadow: 0 5px 14px rgba(82, 108, 96, 0.25);
+      }
+      .divider {
+        width: 1px;
+        height: 27px;
+        background: var(--line);
+        margin: 0 2px;
+      }
+      .clock {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 7px;
+      }
+      .clock span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .clock b {
+        min-width: 46px;
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+      }
+      .clock input {
+        width: 120px;
+        accent-color: #667f72;
+        cursor: pointer;
+      }
+      .right-stack {
+        position: absolute;
+        right: 18px;
+        top: 86px;
+        width: 276px;
+        display: grid;
+        gap: 10px;
+        pointer-events: none;
+      }
+      .legend {
+        pointer-events: auto;
+        border-radius: 18px;
+        padding: 15px;
+        transition: 0.25s;
+      }
+      .legend.hidden {
+        opacity: 0;
+        transform: translateY(-7px);
+        pointer-events: none;
+      }
+      .legend-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .legend h3 {
+        font-size: 14px;
+        margin: 0;
+      }
+      .legend p {
+        font-size: 11px;
+        line-height: 1.55;
+        margin: 7px 0 12px;
+        color: var(--muted);
+      }
+      .legend-items {
+        display: grid;
+        gap: 7px;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+      }
+      .swatch {
+        width: 20px;
+        height: 6px;
+        border-radius: 9px;
+      }
+      .legend-value {
+        margin-left: auto;
+        font-variant-numeric: tabular-nums;
+        color: var(--muted);
+      }
+      .hint {
+        position: absolute;
+        left: 50%;
+        bottom: 18px;
+        transform: translateX(-50%);
+        border-radius: 100px;
+        padding: 10px 15px;
+        font-size: 11px;
+        color: var(--muted);
+        pointer-events: none;
+        white-space: nowrap;
+        transition: 0.25s;
+      }
+      .poi-card {
+        position: fixed;
+        z-index: 20;
+        width: 230px;
+        opacity: 0;
+        transform: translate(-50%, -115%) scale(0.94);
+        pointer-events: none;
+        transition:
+          opacity 0.18s,
+          transform 0.18s;
+        background: #fffdf8;
+        border: 1px solid rgba(70, 83, 77, 0.17);
+        box-shadow: 0 16px 42px rgba(38, 50, 45, 0.23);
+        border-radius: 16px;
+        padding: 13px;
+      }
+      .poi-card.show {
+        opacity: 1;
+        transform: translate(-50%, -115%) scale(1);
+        pointer-events: auto;
+      }
+      .poi-card:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -7px;
+        width: 13px;
+        height: 13px;
+        background: #fffdf8;
+        border-right: 1px solid rgba(70, 83, 77, 0.17);
+        border-bottom: 1px solid rgba(70, 83, 77, 0.17);
+        transform: translateX(-50%) rotate(45deg);
+      }
+      .poi-top {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .poi-emoji {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: #edf1ec;
+        display: grid;
+        place-items: center;
+        font-size: 19px;
+      }
+      .poi-card h4 {
+        font-size: 13px;
+        margin: 0;
+      }
+      .poi-card .type {
+        font-size: 10px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+      .poi-card .message {
+        margin: 10px 0 0;
+        padding: 9px 10px;
+        border-radius: 10px;
+        background: #f1eee7;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      .poi-card .close {
+        position: absolute;
+        right: 8px;
+        top: 7px;
+        border: 0;
+        background: transparent;
+        color: #89918d;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .loading {
+        position: fixed;
+        inset: 0;
+        z-index: 40;
+        background: #d5ddd6;
+        display: grid;
+        place-items: center;
+        transition: opacity 0.5s;
+      }
+      .loading.done {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .loading-inner {
+        text-align: center;
+      }
+      .loading-logo {
+        width: 72px;
+        height: 72px;
+        border-radius: 22px;
+        background: #5f786c;
+        color: #fff;
+        display: grid;
+        place-items: center;
+        margin: auto;
+        font-weight: 800;
+        font-size: 23px;
+        box-shadow: 0 14px 38px rgba(70, 90, 81, 0.28);
+      }
+      .loading p {
+        font-size: 12px;
+        color: #617069;
+        letter-spacing: 0.08em;
+      }
+      .error {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        background: #e8e4dc;
+        display: none;
+        place-items: center;
+        padding: 24px;
+        text-align: center;
+      }
+      .error.show {
+        display: grid;
+      }
+      .error h2 {
+        font-size: 20px;
+      }
+      .error p {
+        max-width: 520px;
+        color: #6e7974;
+        line-height: 1.7;
+      }
+      @media (max-width: 900px) {
+        .shell {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          width: 290px;
+          transform: translateX(-268px);
+          transition: 0.25s;
+        }
+        .sidebar:hover,
+        .sidebar:focus-within {
+          transform: translateX(0);
+        }
+        .topbar {
+          left: 66px;
+        }
+        .city-title {
+          display: none;
+        }
+        .right-stack {
+          top: 80px;
+          width: 235px;
+        }
+        .clock input {
+          width: 72px;
+        }
+        .environment {
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          max-width: 280px;
+        }
+        .hint {
+          bottom: 12px;
+        }
+      }
+      @media (max-width: 600px) {
+        .topbar {
+          right: 10px;
+          top: 10px;
+        }
+        .environment {
+          padding: 6px;
+        }
+        .weather-btn,
+        .view-btn {
+          width: 35px;
+          height: 35px;
+        }
+        .clock {
+          width: 100%;
+          justify-content: flex-end;
+        }
+        .right-stack {
+          right: 10px;
+          top: 126px;
+        }
+        .hint {
+          font-size: 10px;
+        }
+        .sidebar {
+          margin: 10px 0 10px 10px;
+          height: calc(100vh - 20px);
+        }
+      }
+      /* Embedded mode: the parent page owns navigation and layer selection. */
+      .shell {
+        display: none;
+      }
+      .topbar {
+        left: 12px;
+        right: 12px;
+        top: 12px;
+        justify-content: flex-end;
+      }
+      .city-title {
+        display: none;
+      }
+      .environment {
+        padding: 6px;
+        transform: scale(0.9);
+        transform-origin: top right;
+      }
+      .right-stack {
+        right: 12px;
+        top: 74px;
+        width: 250px;
+      }
+      .hint {
+        bottom: 10px;
+        font-size: 10px;
+      }
+      @media (max-width: 700px) {
+        .topbar {
+          left: 8px;
+          right: 8px;
+        }
+        .clock input {
+          width: 72px;
+        }
+        .right-stack {
+          display: none;
+        }
+        .hint {
+          display: none;
+        }
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="viewport" aria-label="可旋转缩放的三维城市模型"></div>
+    <div class="shell">
+      <aside class="sidebar" aria-label="城市数据分类">
+        <div class="brand">
+          <div class="brand-mark">401</div>
+          <div>
+            <h1>数据学社</h1>
+            <p>Urban Data Commons</p>
+          </div>
+        </div>
+        <p class="intro">从城市要素出发，观察空间结构与公共服务。选择数据图层，城市会用对应的方式回应。</p>
+        <div class="section-label">城市数据图层</div>
+        <nav class="layers">
+          <button class="layer active" data-layer="all">
+            <span class="ico">◎</span><span><strong>城市全景</strong><small>综合城市运行状态</small></span
+            ><span class="count">LIVE</span>
+          </button>
+          <button class="layer" data-layer="population">
+            <span class="ico">人</span><span><strong>人口分布</strong><small>居住密度与服务需求</small></span
+            ><span class="count" id="populationCount">—</span>
+          </button>
+          <button class="layer" data-layer="traffic">
+            <span class="ico">↗</span><span><strong>交通网络</strong><small>道路、车辆与信号控制</small></span
+            ><span class="count">6×6</span>
+          </button>
+          <button class="layer" data-layer="water">
+            <span class="ico">≈</span><span><strong>河流水系</strong><small>滨水空间与生态缓冲</small></span
+            ><span class="count">1.8 km</span>
+          </button>
+          <button class="layer" data-layer="buildings">
+            <span class="ico">▥</span><span><strong>建筑形态</strong><small>高度、功能与开发强度</small></span
+            ><span class="count" id="buildingCount">—</span>
+          </button>
+          <button class="layer" data-layer="facilities">
+            <span class="ico">＋</span><span><strong>公共设施</strong><small>全域教育、医疗与应急服务</small></span
+            ><span class="count" id="facilityCount">—</span>
+          </button>
+          <button class="layer" data-layer="green">
+            <span class="ico">♧</span><span><strong>绿地生态</strong><small>3座综合公园＋5座口袋公园</small></span
+            ><span class="count">8</span>
+          </button>
+        </nav>
+        <div class="sidebar-foot">
+          <span class="live"><i class="live-dot"></i>城市模型运行中</span><span>拖拽 · 缩放 · 点击</span>
+        </div>
+      </aside>
+    </div>
+    <div class="topbar">
+      <div class="city-title">
+        <h2>401 城市 · 城市要素实验场</h2>
+        <p id="statusLine">晴 · 12:00 · 日间可视模式</p>
+      </div>
+      <div class="environment" aria-label="天气与时间控制">
+        <button class="weather-btn active" data-weather="sun" title="晴天" aria-label="晴天">☀</button>
+        <button class="weather-btn" data-weather="cloud" title="多云" aria-label="多云">☁</button>
+        <button class="weather-btn" data-weather="rain" title="雷暴雨" aria-label="雷暴雨">⚡</button>
+        <button class="weather-btn" data-weather="snow" title="降雪" aria-label="降雪">❄</button>
+        <div class="divider"></div>
+        <div class="clock">
+          <span>时间</span><input id="time" type="range" min="0" max="24" step="0.1" value="12" aria-label="城市时间" /><b id="timeLabel">12:00</b>
+        </div>
+        <div class="divider"></div>
+        <button id="resetView" class="view-btn" title="回到全景" aria-label="回到全景">⌂</button>
+      </div>
+    </div>
+    <div class="right-stack">
+      <section id="legend" class="legend hidden">
+        <div class="legend-head">
+          <h3 id="legendTitle"></h3>
+          <span id="legendBadge"></span>
+        </div>
+        <p id="legendText"></p>
+        <div id="legendItems" class="legend-items"></div>
+      </section>
+    </div>
+    <div id="hint" class="hint">选择数据图层；点击屋顶设施图标，或观察街头随机刷新的市民对话</div>
+    <article id="poiCard" class="poi-card" aria-live="polite">
+      <button class="close" aria-label="关闭">×</button>
+      <div class="poi-top">
+        <div id="poiEmoji" class="poi-emoji"></div>
+        <div>
+          <h4 id="poiName"></h4>
+          <div id="poiType" class="type"></div>
+        </div>
+      </div>
+      <p id="poiMessage" class="message"></p>
+    </article>
+    <div id="loading" class="loading">
+      <div class="loading-inner">
+        <div class="loading-logo">401</div>
+        <p>正在唤醒城市…</p>
+      </div>
+    </div>
+    <div id="error" class="error">
+      <div>
+        <h2>城市模型暂时没有加载成功</h2>
+        <p>请检查网络后刷新页面。模型需要加载三维引擎，其他页面内容仍然安全。</p>
+      </div>
+    </div>
+
+    <script type="module">
+      import * as THREE from "three";
+      import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+      try {
+        const C = {
+          skyDay: 0xd9e0da,
+          skyDusk: 0xb6aaa5,
+          skyNight: 0x17242b,
+          ground: 0xd8d3c7,
+          groundNight: 0x28332f,
+          road: 0x777c7a,
+          roadNight: 0x3f4746,
+          water: 0x789da7,
+          green: 0x789172,
+          tree: 0x55705d,
+          wood: 0x796958,
+          window: 0xffd996,
+          outline: 0xfff2c9,
+          traffic: 0xb58a62,
+          popLow: 0xd9c9b9,
+          popMid: 0xc98f7d,
+          popHigh: 0xa95855,
+        };
+        const now = new Date();
+        const state = {
+          time: now.getHours() + now.getMinutes() / 60,
+          weather: "sun",
+          layer: "all",
+          selected: null,
+          night: 0,
+          lightning: 0,
+          nextLightning: 4,
+        };
+        const registry = {
+          buildings: [],
+          roads: [],
+          cars: [],
+          water: [],
+          parks: [],
+          trees: [],
+          pois: [],
+          signals: [],
+          lamps: [],
+          weather: [],
+          population: [],
+          people: [],
+          dogs: [],
+          cyclists: [],
+          conversations: [],
+          crosswalks: [],
+        };
+        const container = document.getElementById("viewport");
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(C.skyDay);
+        scene.fog = new THREE.FogExp2(C.skyDay, 0.00024);
+        const camera = new THREE.PerspectiveCamera(39, innerWidth / innerHeight, 1, 3400);
+        camera.position.set(790, 650, 790);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+        renderer.setSize(innerWidth, innerHeight);
+        renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.1;
+        container.appendChild(renderer.domElement);
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.target.set(0, 25, 0);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.055;
+        controls.minDistance = 320;
+        controls.maxDistance = 1750;
+        controls.maxPolarAngle = Math.PI * 0.47;
+        controls.minPolarAngle = Math.PI * 0.12;
+        const hemi = new THREE.HemisphereLight(0xf7faf6, 0x6c746c, 1.25);
+        scene.add(hemi);
+        const sun = new THREE.DirectionalLight(0xfff4df, 2.4);
+        sun.position.set(420, 620, 260);
+        sun.castShadow = true;
+        sun.shadow.mapSize.set(2048, 2048);
+        Object.assign(sun.shadow.camera, { left: -760, right: 760, top: 620, bottom: -620, near: 20, far: 1500 });
+        sun.shadow.bias = -0.00015;
+        scene.add(sun);
+        const moon = new THREE.DirectionalLight(0xa9c6d4, 0);
+        moon.position.set(-240, 300, -180);
+        scene.add(moon);
+        const city = new THREE.Group();
+        city.rotation.y = -0.08;
+        scene.add(city);
+
+        const groundMat = new THREE.MeshStandardMaterial({ color: C.ground, roughness: 0.96 });
+        const ground = new THREE.Mesh(new THREE.PlaneGeometry(1500, 1180), groundMat);
+        ground.rotation.x = -Math.PI / 2;
+        ground.position.y = -0.03;
+        ground.receiveShadow = true;
+        city.add(ground);
+        const base = new THREE.Mesh(new THREE.BoxGeometry(1500, 12, 1180), new THREE.MeshStandardMaterial({ color: 0xb9b4a8, roughness: 1 }));
+        base.position.y = -6.2;
+        base.receiveShadow = true;
+        city.add(base);
+
+        function meshBox(w, h, d, color, x, y, z, opts = {}) {
+          const m = new THREE.Mesh(
+            new THREE.BoxGeometry(w, h, d),
+            new THREE.MeshStandardMaterial({ color, roughness: opts.roughness ?? 0.82, metalness: opts.metalness ?? 0 })
+          );
+          m.position.set(x, y, z);
+          m.castShadow = opts.cast !== false;
+          m.receiveShadow = true;
+          city.add(m);
+          return m;
+        }
+        function plane(w, d, color, x, z, y = 0.05, opacity = 1) {
+          const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.9, transparent: opacity < 1, opacity, side: THREE.DoubleSide });
+          const m = new THREE.Mesh(new THREE.PlaneGeometry(w, d), mat);
+          m.rotation.x = -Math.PI / 2;
+          m.position.set(x, y, z);
+          m.receiveShadow = true;
+          city.add(m);
+          return m;
+        }
+        function roundedRoad(w, d, x, z) {
+          const m = plane(w, d, C.road, x, z, 0.08);
+          m.userData = { kind: "road", base: C.road };
+          registry.roads.push(m);
+          return m;
+        }
+
+        const roadX = [-500, -400, -300, -200, -100, 0, 100, 200, 300, 400, 500],
+          roadZ = [-400, -320, -240, -160, -80, 0, 80, 160, 240, 320, 400];
+        roadX.forEach((x) => roundedRoad(x === 0 ? 28 : 18, 850, x, 0));
+        roadZ.forEach((z) => roundedRoad(1040, z === 0 ? 28 : 18, 0, z));
+        // Lane markings make the circulation hierarchy readable in daytime.
+        const markingMat = new THREE.MeshBasicMaterial({ color: 0xded9cf, transparent: true, opacity: 0.75 });
+        roadX.forEach((x) => {
+          for (let z = -415; z < 415; z += 24) {
+            const m = new THREE.Mesh(new THREE.PlaneGeometry(0.9, 10), markingMat);
+            m.rotation.x = -Math.PI / 2;
+            m.position.set(x, 0.105, z);
+            city.add(m);
+          }
+        });
+        roadZ.forEach((z) => {
+          for (let x = -515; x < 515; x += 24) {
+            const m = new THREE.Mesh(new THREE.PlaneGeometry(10, 0.9), markingMat);
+            m.rotation.x = -Math.PI / 2;
+            m.position.set(x, 0.105, z);
+            city.add(m);
+          }
+        });
+        function zebraCrossing(x, z, axis) {
+          const g = new THREE.Group();
+          for (let i = -5; i <= 5; i++) {
+            const stripe = new THREE.Mesh(
+              new THREE.PlaneGeometry(axis === "x" ? 2.2 : 11, axis === "x" ? 11 : 2.2),
+              new THREE.MeshBasicMaterial({ color: 0xf3efe5, transparent: true, opacity: 0.92 })
+            );
+            stripe.rotation.x = -Math.PI / 2;
+            stripe.position.set(axis === "x" ? i * 3 : 0, 0.135, axis === "x" ? 0 : i * 3);
+            g.add(stripe);
+          }
+          g.position.set(x, 0.01, z);
+          city.add(g);
+          registry.crosswalks.push(g);
+        }
+        [
+          [-300, -240],
+          [-100, -80],
+          [0, 0],
+          [100, 80],
+          [300, 240],
+          [-400, 160],
+          [400, -160],
+        ].forEach(([x, z]) => {
+          zebraCrossing(x, z - 15, "x");
+          zebraCrossing(x + 15, z, "z");
+        });
+        // A flat, variable-width river ribbon replaces the old cylindrical water body.
+        const riverCurve = new THREE.CatmullRomCurve3([
+          new THREE.Vector3(618, 0.07, -560),
+          new THREE.Vector3(580, 0.07, -360),
+          new THREE.Vector3(610, 0.07, -170),
+          new THREE.Vector3(575, 0.07, 20),
+          new THREE.Vector3(612, 0.07, 210),
+          new THREE.Vector3(585, 0.07, 420),
+          new THREE.Vector3(615, 0.07, 560),
+        ]);
+        function ribbon(curve, width, color, y = 0.07, opacity = 1, offset = 0) {
+          const pts = curve.getPoints(150),
+            v = [],
+            idx = [];
+          for (let i = 0; i < pts.length; i++) {
+            const prev = pts[Math.max(0, i - 1)],
+              next = pts[Math.min(pts.length - 1, i + 1)],
+              tx = next.x - prev.x,
+              tz = next.z - prev.z,
+              len = Math.hypot(tx, tz) || 1,
+              nx = -tz / len,
+              nz = tx / len;
+            for (const side of [-1, 1]) v.push(pts[i].x + nx * (offset + (side * width) / 2), y, pts[i].z + nz * (offset + (side * width) / 2));
+          }
+          for (let i = 0; i < pts.length - 1; i++) {
+            const a = i * 2;
+            idx.push(a, a + 1, a + 2, a + 1, a + 3, a + 2);
+          }
+          const geo = new THREE.BufferGeometry();
+          geo.setAttribute("position", new THREE.Float32BufferAttribute(v, 3));
+          geo.setIndex(idx);
+          geo.computeVertexNormals();
+          const mat = new THREE.MeshStandardMaterial({
+            color,
+            roughness: color === C.water ? 0.24 : 0.95,
+            metalness: color === C.water ? 0.05 : 0,
+            transparent: opacity < 1,
+            opacity,
+            side: THREE.DoubleSide,
+          });
+          const m = new THREE.Mesh(geo, mat);
+          m.receiveShadow = true;
+          m.userData = { kind: "water" };
+          city.add(m);
+          registry.water.push(m);
+          return m;
+        }
+        const river = ribbon(riverCurve, 62, C.water, 0.075, 0.96);
+        ribbon(riverCurve, 11, 0x95a786, 0.085, 1, -39);
+        ribbon(riverCurve, 11, 0x95a786, 0.085, 1, 39);
+        // Continuous pedestrian promenades sit outside the planted banks on both river edges.
+        [-49, 49].forEach((offset) => {
+          const walk = ribbon(riverCurve, 5.5, 0xd2c7b3, 0.105, 1, offset);
+          registry.water.splice(registry.water.indexOf(walk), 1);
+          walk.userData = { kind: "green", name: "滨水慢行步道" };
+          registry.parks.push(walk);
+        });
+        // Bridge decks span the full flood corridor and sit clearly above the water surface.
+        [-320, -160, 0, 160, 320].forEach((z) => {
+          const deck = meshBox(150, 3.2, 25, 0x858783, 595, 2.1, z, { cast: true });
+          deck.userData = { kind: "road", base: 0x858783 };
+          registry.roads.push(deck);
+        });
+
+        function tree(x, z, s = 1) {
+          const g = new THREE.Group();
+          const trunk = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.9 * s, 1.2 * s, 6 * s, 7),
+            new THREE.MeshStandardMaterial({ color: C.wood, roughness: 1 })
+          );
+          trunk.position.y = 3 * s;
+          const crown = new THREE.Mesh(new THREE.IcosahedronGeometry(4.6 * s, 1), new THREE.MeshStandardMaterial({ color: C.tree, roughness: 1 }));
+          crown.position.y = 8.2 * s;
+          trunk.castShadow = crown.castShadow = true;
+          g.add(trunk, crown);
+          g.position.set(x, 0.08, z);
+          g.userData = { kind: "green" };
+          city.add(g);
+          registry.trees.push(g);
+          return g;
+        }
+        function bench(x, z, r = 0) {
+          const g = new THREE.Group();
+          const seat = meshBox(7, 0.8, 2, 0x82715d, 0, 0, 0, { cast: true });
+          city.remove(seat);
+          seat.position.y = 2.1;
+          g.add(seat);
+          [-2.6, 2.6].forEach((px) => {
+            const leg = new THREE.Mesh(new THREE.BoxGeometry(0.6, 2.2, 0.6), seat.material);
+            leg.position.set(px, 1, 0);
+            g.add(leg);
+          });
+          g.position.set(x, 0.1, z);
+          g.rotation.y = r;
+          city.add(g);
+        }
+        const bridgeLines = [-320, -160, 0, 160, 320];
+        function riverBankPoint(t, offset) {
+          const p = riverCurve.getPointAt(t),
+            tan = riverCurve.getTangentAt(t).normalize(),
+            nx = -tan.z,
+            nz = tan.x;
+          return { x: p.x + nx * offset, z: p.z + nz * offset, angle: Math.atan2(tan.z, tan.x) };
+        }
+        // Riparian trees follow the real bank curve, with clear bridge approaches and varied spacing.
+        for (let i = 1; i <= 21; i++) {
+          const t = i / 22,
+            p = riverCurve.getPointAt(t);
+          if (bridgeLines.some((z) => Math.abs(p.z - z) < 30)) continue;
+          [-1, 1].forEach((side) => {
+            const q = riverBankPoint(t, side * (57 + (i % 3) * 1.5));
+            tree(q.x, q.z, 0.66 + (i % 4) * 0.045);
+            if (i % 5 === 2) {
+              const b = riverBankPoint(t, side * 52.5);
+              bench(b.x, b.z, -b.angle);
+            }
+          });
+        }
+        // Small timber overlooks add places to pause without projecting into the navigation channel.
+        [0.2, 0.48, 0.76].forEach((t, i) => {
+          const side = i % 2 ? 1 : -1,
+            q = riverBankPoint(t, side * 46);
+          const deck = meshBox(13, 0.7, 8, 0x9a846b, q.x, 0.45, q.z, { cast: true, roughness: 0.94 });
+          deck.rotation.y = -q.angle;
+          deck.userData = { kind: "green" };
+          registry.parks.push(deck);
+        });
+        const parkDefs = [
+          { name: "中央文化公园", x: -300, z: -280, w: 176, d: 132, big: true },
+          { name: "滨水生态公园", x: 410, z: 180, w: 168, d: 228, big: true },
+          { name: "城市运动公园", x: 100, z: 280, w: 176, d: 132, big: true },
+          { name: "榆树口袋公园", x: -450, z: 120, w: 68, d: 54 },
+          { name: "花雨口袋公园", x: -150, z: 200, w: 68, d: 54 },
+          { name: "社区花园", x: 50, z: -120, w: 68, d: 54 },
+          { name: "银杏小园", x: 250, z: 120, w: 68, d: 54 },
+          { name: "河湾小园", x: 430, z: -260, w: 68, d: 54 },
+        ];
+        const nearRoad = (x, z, pad = 13) => roadX.some((v) => Math.abs(x - v) < pad) || roadZ.some((v) => Math.abs(z - v) < pad);
+        parkDefs.forEach((p, pi) => {
+          const lawn = plane(p.w, p.d, C.green, p.x, p.z, 0.045);
+          lawn.userData = { kind: "green", name: p.name, big: p.big };
+          registry.parks.push(lawn);
+          const path = plane(p.w * (p.big ? 0.82 : 0.72), p.big ? 7 : 4, 0xd8cdbb, p.x, p.z, 0.145);
+          path.userData = { kind: "green" };
+          registry.parks.push(path);
+          const n = p.big ? 30 : 9;
+          for (let i = 0; i < n; i++) {
+            const a = (i / n) * Math.PI * 2,
+              tx = p.x + Math.cos(a) * (p.w * 0.4),
+              tz = p.z + Math.sin(a) * (p.d * 0.4);
+            if (!nearRoad(tx, tz, 11)) tree(tx, tz, p.big ? 1.05 : 0.82);
+          }
+          if (p.big) {
+            bench(p.x - 25, p.z + 14, 0);
+            bench(p.x + 26, p.z - 16, Math.PI);
+            bench(p.x, p.z + 28, Math.PI / 2);
+          }
+        });
+        // Small lakes are set inside the three district parks, with a soft planted bank.
+        parkDefs
+          .filter((p) => p.big)
+          .forEach((p, i) => {
+            const ox = i === 1 ? -24 : 28,
+              oz = i === 2 ? -14 : 10;
+            const bank = new THREE.Mesh(
+              new THREE.RingGeometry(1, 1.18, 42),
+              new THREE.MeshStandardMaterial({ color: 0x91a187, roughness: 0.94, side: THREE.DoubleSide })
+            );
+            bank.rotation.x = -Math.PI / 2;
+            bank.scale.set(p.w * 0.2, p.d * 0.24, 1);
+            bank.position.set(p.x + ox, 0.152, p.z + oz);
+            bank.userData = { kind: "green" };
+            city.add(bank);
+            registry.parks.push(bank);
+            const lake = new THREE.Mesh(
+              new THREE.CircleGeometry(1, 42),
+              new THREE.MeshStandardMaterial({
+                color: 0x7fabb3,
+                roughness: 0.22,
+                metalness: 0.04,
+                transparent: true,
+                opacity: 0.94,
+                side: THREE.DoubleSide,
+              })
+            );
+            lake.rotation.x = -Math.PI / 2;
+            lake.scale.set(p.w * 0.18, p.d * 0.215, 1);
+            lake.position.set(p.x + ox, 0.158, p.z + oz);
+            lake.userData = { kind: "water", name: p.name + "湖面" };
+            city.add(lake);
+            registry.water.push(lake);
+          });
+        // Street trees line both sides of nearly every road and leave clear sight triangles at junctions.
+        roadX.slice(1, -1).forEach((x) => {
+          for (let z = -370; z <= 370; z += 55)
+            if (!roadZ.some((v) => Math.abs(z - v) < 24)) {
+              tree(x - 18, z, 0.54);
+              tree(x + 18, z, 0.54);
+            }
+        });
+        roadZ.slice(1, -1).forEach((z) => {
+          for (let x = -470; x <= 470; x += 55)
+            if (!roadX.some((v) => Math.abs(x - v) < 24) && x < 480) {
+              tree(x, z - 18, 0.54);
+              tree(x, z + 18, 0.54);
+            }
+        });
+
+        const reserved = parkDefs.map((p) => ({ x: p.x, z: p.z, w: p.w + 20, d: p.d + 20 }));
+        const intersectsPark = (x, z, w, d) => reserved.some((p) => Math.abs(x - p.x) < (w + p.w) / 2 && Math.abs(z - p.z) < (d + p.d) / 2);
+        const facadeCanvas = document.createElement("canvas");
+        facadeCanvas.width = 128;
+        facadeCanvas.height = 256;
+        const fctx = facadeCanvas.getContext("2d");
+        fctx.fillStyle = "#4e5652";
+        fctx.fillRect(0, 0, 128, 256);
+        for (let y = 12; y < 245; y += 28)
+          for (let x = 10; x < 120; x += 22) {
+            fctx.fillStyle = ((x + y) / 10) % 3 < 1 ? "#c8d3cc" : "#93a19a";
+            fctx.fillRect(x, y, 13, 17);
+          }
+        const facadeTex = new THREE.CanvasTexture(facadeCanvas);
+        facadeTex.wrapS = facadeTex.wrapT = THREE.RepeatWrapping;
+        facadeTex.repeat.set(1.4, 3.2);
+        facadeTex.colorSpace = THREE.SRGBColorSpace;
+        const buildingPalette = [0xc7b2aa, 0xb8c0ae, 0xaab7bd, 0xd0c6b2, 0xbcaea5, 0xaab8af];
+        const blocks = [];
+        for (let xi = 0; xi < roadX.length - 1; xi++)
+          for (let zi = 0; zi < roadZ.length - 1; zi++)
+            blocks.push({
+              x: (roadX[xi] + roadX[xi + 1]) / 2,
+              z: (roadZ[zi] + roadZ[zi + 1]) / 2,
+              w: roadX[xi + 1] - roadX[xi] - 23,
+              d: roadZ[zi + 1] - roadZ[zi] - 23,
+              xi,
+              zi,
+            });
+        function seeded(a, b, c = 0) {
+          const v = Math.sin(a * 127.1 + b * 311.7 + c * 91.3) * 43758.5453;
+          return v - Math.floor(v);
+        }
+        function addBuilding(x, z, w, d, h, use = "mixed", seed = 0) {
+          const color = buildingPalette[Math.floor(seeded(x, z, seed) * buildingPalette.length)];
+          const mat = new THREE.MeshStandardMaterial({
+            color,
+            roughness: 0.72,
+            metalness: 0.02,
+            emissive: C.window,
+            emissiveMap: facadeTex,
+            emissiveIntensity: 0,
+          });
+          const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+          b.position.set(x, h / 2 + 0.13, z);
+          b.castShadow = true;
+          b.receiveShadow = true;
+          b.userData = { kind: "building", use, height: h, density: Math.min(1, 0.22 + h / 78), baseColor: color, baseMat: mat };
+          city.add(b);
+          registry.buildings.push(b);
+          registry.population.push(b);
+          const roof = new THREE.Mesh(
+            new THREE.BoxGeometry(w * 0.34, 2.2, d * 0.3),
+            new THREE.MeshStandardMaterial({ color: 0x8f9690, roughness: 0.9 })
+          );
+          roof.position.set(x, h + 1.2, z);
+          roof.castShadow = true;
+          city.add(roof);
+          b.userData.roof = roof;
+          return b;
+        }
+        blocks.forEach((b, bi) => {
+          if (b.x > 480 || intersectsPark(b.x, b.z, b.w, b.d)) return;
+          const core = Math.max(0, 1 - Math.hypot(b.x, b.z) / 640);
+          const cols = b.w > 65 ? 2 : 1,
+            rows = b.d > 55 ? 2 : 1;
+          for (let ix = 0; ix < cols; ix++)
+            for (let iz = 0; iz < rows; iz++) {
+              const bw = b.w / cols - 9,
+                bd = b.d / rows - 9;
+              const x = b.x + (ix - (cols - 1) / 2) * (b.w / cols),
+                z = b.z + (iz - (rows - 1) / 2) * (b.d / rows);
+              if (intersectsPark(x, z, bw, bd)) continue;
+              const h = 14 + seeded(bi, ix, iz) * 30 + core * 48 + (Math.abs(b.x) < 90 && Math.abs(b.z) < 90 ? 34 : 0);
+              addBuilding(x, z, bw, bd, h, h < 34 ? "residential" : seeded(bi, iz) > 0.5 ? "office" : "mixed", bi + ix + iz);
+            }
+        });
+        document.getElementById("buildingCount").textContent = registry.buildings.length;
+        document.getElementById("populationCount").textContent = "—";
+
+        function canvasSprite(emoji, color = "#667f72") {
+          const c = document.createElement("canvas");
+          c.width = 192;
+          c.height = 192;
+          const x = c.getContext("2d");
+          x.shadowColor = "rgba(35,50,43,.22)";
+          x.shadowBlur = 16;
+          x.fillStyle = "#fffdf7";
+          x.beginPath();
+          x.roundRect(18, 18, 156, 132, 34);
+          x.fill();
+          x.shadowBlur = 0;
+          x.fillStyle = color;
+          x.beginPath();
+          x.moveTo(86, 150);
+          x.lineTo(106, 150);
+          x.lineTo(96, 177);
+          x.closePath();
+          x.fill();
+          x.font = '82px "Segoe UI Emoji"';
+          x.textAlign = "center";
+          x.textBaseline = "middle";
+          x.fillText(emoji, 96, 88);
+          const tex = new THREE.CanvasTexture(c);
+          tex.colorSpace = THREE.SRGBColorSpace;
+          const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false });
+          const s = new THREE.Sprite(mat);
+          s.scale.set(26, 26, 1);
+          return s;
+        }
+        const facilities = [
+          ["school", "青禾实验学校", "🏫", "教育设施", "还有15分钟就迟到啦，书包检查了吗？(｡•́︿•̀｡)"],
+          ["hospital", "市民健康中心", "🏥", "医疗设施", "今日门诊运行平稳，记得按时喝水呀 ᵔᴗᵔ"],
+          ["fire", "中央消防站", "🚒", "应急设施", "消防通道畅通，城市安全值 +1！ᕙ( •̀ ᗜ •́ )ᕗ"],
+          ["library", "城市图书馆", "📚", "文化设施", "靠窗的位置刚刚空出来，今天读哪一本？"],
+          ["market", "邻里生活市集", "🛒", "商业服务", "晚市的烤面包刚出炉，香味已经飘到街角啦"],
+          ["transit", "综合换乘站", "🚉", "交通设施", "下一班接驳车3分钟后到站，请慢慢来"],
+          ["police", "社区警务室", "👮", "公共安全", "今天街区一切正常，放心散步吧 ʕ•ᴥ•ʔ"],
+          ["sports", "全民健身中心", "🏀", "体育设施", "操场还有空位，要不要来一场？"],
+          ["museum", "城市记忆馆", "🏛️", "文化设施", "新展正在讲述这座城市的旧街巷故事"],
+          ["clinic", "滨水社区诊所", "🩺", "基层医疗", "步行8分钟可达，家庭医生今天在线"],
+          ["kindergarten", "蒲公英幼儿园", "🧸", "教育设施", "小朋友们正在午睡，请把脚步放轻一点"],
+          ["service", "市民服务中心", "🏢", "政务服务", "预约取号只需2分钟，今天也高效办事！"],
+        ];
+        const facilityTargets = [
+          [-430, -350],
+          [-250, -350],
+          [-50, -350],
+          [150, -350],
+          [350, -350],
+          [-430, -190],
+          [-230, -190],
+          [-30, -190],
+          [170, -190],
+          [370, -190],
+          [-430, 30],
+          [-230, 30],
+          [-30, 30],
+          [170, 30],
+          [370, 30],
+          [-430, 210],
+          [-230, 210],
+          [-30, 210],
+          [170, 210],
+          [370, 210],
+          [-430, 360],
+          [-230, 360],
+          [170, 360],
+          [370, 360],
+        ];
+        const districtNames = ["西北片区", "北部片区", "中心片区", "东部片区", "南部片区"];
+        const usedBuildings = new Set();
+        facilityTargets.forEach(([tx, tz], i) => {
+          const candidates = registry.buildings.filter((b) => b.userData.height > 22 && !usedBuildings.has(b));
+          candidates.sort((a, b) => Math.hypot(a.position.x - tx, a.position.z - tz) - Math.hypot(b.position.x - tx, b.position.z - tz));
+          const b = candidates[0];
+          if (!b) return;
+          usedBuildings.add(b);
+          const f = [...facilities[i % facilities.length]];
+          f[1] = districtNames[i % districtNames.length] + " · " + f[1];
+          const s = canvasSprite(f[2]);
+          s.scale.set(22, 22, 1);
+          s.position.set(b.position.x, b.userData.height + 15, b.position.z);
+          s.userData = { kind: "poi", facility: f, building: b, baseY: b.userData.height + 15 };
+          city.add(s);
+          registry.pois.push(s);
+          b.userData.facility = f;
+          b.userData.poi = s;
+        });
+        document.getElementById("facilityCount").textContent = registry.pois.length;
+
+        function signal(x, z, axis) {
+          const g = new THREE.Group();
+          const pole = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.55, 0.65, 10, 8),
+            new THREE.MeshStandardMaterial({ color: 0x4b5350, roughness: 0.7 })
+          );
+          pole.position.y = 5;
+          g.add(pole);
+          const box = new THREE.Mesh(new THREE.BoxGeometry(3.2, 7, 2.3), new THREE.MeshStandardMaterial({ color: 0x303633, roughness: 0.75 }));
+          box.position.y = 10.2;
+          g.add(box);
+          const colors = [0xd95f55, 0xd6aa4d, 0x6fa16f];
+          const lamps = colors.map((col, i) => {
+            const l = new THREE.Mesh(
+              new THREE.SphereGeometry(0.72, 10, 8),
+              new THREE.MeshStandardMaterial({ color: 0x303330, emissive: col, emissiveIntensity: i === 2 ? 2 : 0.04 })
+            );
+            l.position.set(0, 12.1 - i * 2, 1.15);
+            g.add(l);
+            return l;
+          });
+          g.position.set(x, 0.1, z);
+          g.rotation.y = axis === "x" ? Math.PI / 2 : 0;
+          g.userData = { axis, lamps, phase: seeded(x, z) > 0.5 ? 0 : 1 };
+          city.add(g);
+          registry.signals.push(g);
+        }
+        // Coordinated signal control at representative high-volume intersections.
+        [
+          [-300, -240],
+          [-100, -80],
+          [0, 0],
+          [100, 80],
+          [300, 240],
+          [-400, 160],
+          [400, -160],
+        ].forEach(([x, z]) => {
+          signal(x - 13, z - 13, "x");
+          signal(x + 13, z + 13, "z");
+        });
+        function streetLamp(x, z) {
+          const g = new THREE.Group();
+          const p = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.45, 8, 8), new THREE.MeshStandardMaterial({ color: 0x59615d, roughness: 0.8 }));
+          p.position.y = 4;
+          const bulb = new THREE.Mesh(
+            new THREE.SphereGeometry(0.9, 10, 8),
+            new THREE.MeshStandardMaterial({ color: 0xf0e7c9, emissive: 0xffd891, emissiveIntensity: 0 })
+          );
+          bulb.position.y = 8.4;
+          g.add(p, bulb);
+          g.position.set(x, 0.1, z);
+          city.add(g);
+          registry.lamps.push({ group: g, bulb });
+        }
+        for (let x = -490; x <= 490; x += 38) {
+          streetLamp(x, -16);
+          streetLamp(x, 16);
+        }
+        for (let z = -390; z <= 390; z += 38) {
+          streetLamp(-16, z);
+          streetLamp(16, z);
+        }
+        // Low-frequency riverfront lighting keeps the night promenade readable without over-lighting the water.
+        for (let i = 1; i <= 9; i++) {
+          const t = i / 10,
+            p = riverCurve.getPointAt(t);
+          if (bridgeLines.some((z) => Math.abs(p.z - z) < 32)) continue;
+          [-1, 1].forEach((side) => {
+            const q = riverBankPoint(t, side * 51.5);
+            streetLamp(q.x, q.z);
+          });
+        }
+
+        const carPalette = [0xb26f68, 0x708d9a, 0xc09d66, 0xd3d3cd, 0x6e8c78];
+        function makeCar(axis, lane, start, speed, index) {
+          const g = new THREE.Group();
+          const body = new THREE.Mesh(
+            new THREE.BoxGeometry(axis === "x" ? 7 : 4, 2.5, axis === "x" ? 4 : 7),
+            new THREE.MeshStandardMaterial({ color: carPalette[index % carPalette.length], roughness: 0.55, metalness: 0.08 })
+          );
+          body.position.y = 1.8;
+          body.castShadow = true;
+          const roof = new THREE.Mesh(
+            new THREE.BoxGeometry(axis === "x" ? 3.8 : 3, 1.5, axis === "x" ? 3 : 3.8),
+            new THREE.MeshStandardMaterial({ color: 0x728080, roughness: 0.38, metalness: 0.12 })
+          );
+          roof.position.y = 3.5;
+          roof.castShadow = true;
+          g.add(body, roof);
+          if (axis === "x") g.position.set(start, 0.15, lane);
+          else g.position.set(lane, 0.15, start);
+          g.userData = { kind: "traffic", axis, lane, speed, direction: index % 2 ? 1 : -1 };
+          city.add(g);
+          registry.cars.push(g);
+        }
+        [-320, -160, 0, 160, 320].forEach((z, zi) => {
+          for (let i = 0; i < 5; i++) makeCar("x", z + (i % 2 ? 4 : -4), -470 + i * 195, 15 + zi * 1.2, zi * 5 + i);
+        });
+        [-400, -200, 0, 200, 400].forEach((x, xi) => {
+          for (let i = 0; i < 4; i++) makeCar("z", x + (i % 2 ? 4 : -4), -370 + i * 225, 14 + xi * 1.3, 30 + xi * 4 + i);
+        });
+
+        const peopleColors = [0xb66f68, 0x6f8795, 0xd0a66e, 0x748d78, 0x8c7794, 0xd0d0c8];
+        function person(x, z, index, role = "walker") {
+          const g = new THREE.Group();
+          const skin = new THREE.MeshStandardMaterial({ color: 0xd5aa8b, roughness: 0.9 });
+          const cloth = new THREE.MeshStandardMaterial({ color: peopleColors[index % peopleColors.length], roughness: 0.88 });
+          const head = new THREE.Mesh(new THREE.SphereGeometry(1.15, 10, 8), skin);
+          head.position.y = 6.7;
+          const body = new THREE.Mesh(new THREE.CylinderGeometry(1.25, 1.55, 3.7, 8), cloth);
+          body.position.y = 4.25;
+          const legMat = new THREE.MeshStandardMaterial({ color: 0x4f5654, roughness: 0.9 });
+          [-0.62, 0.62].forEach((lx) => {
+            const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.4, 2.5, 7), legMat);
+            leg.position.set(lx, 1.35, 0);
+            g.add(leg);
+          });
+          head.castShadow = body.castShadow = true;
+          g.add(head, body);
+          g.position.set(x, 0.13, z);
+          g.userData = {
+            kind: "person",
+            role,
+            center: new THREE.Vector2(x, z),
+            radius: role === "jogger" ? 7 : 3 + (index % 4),
+            speed: (role === "jogger" ? 0.5 : 0.22) + (index % 3) * 0.05,
+            phase: index * 0.73,
+          };
+          city.add(g);
+          registry.people.push(g);
+          return g;
+        }
+        function dog(owner, index) {
+          const g = new THREE.Group();
+          const mat = new THREE.MeshStandardMaterial({ color: [0xa77d59, 0xddd1bf, 0x595957][index % 3], roughness: 1 });
+          const body = new THREE.Mesh(new THREE.BoxGeometry(3.2, 1.6, 1.5), mat);
+          body.position.y = 1.25;
+          const head = new THREE.Mesh(new THREE.SphereGeometry(0.9, 8, 7), mat);
+          head.position.set(1.75, 1.65, 0);
+          const tail = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.23, 1.8, 6), mat);
+          tail.position.set(-2, 1.7, 0);
+          tail.rotation.z = -0.8;
+          g.add(body, head, tail);
+          g.position.copy(owner.position);
+          g.position.x -= 3;
+          g.userData = { kind: "dog", owner, offset: index % 2 ? 3.2 : -3.2 };
+          city.add(g);
+          registry.dogs.push(g);
+          return g;
+        }
+        function cyclist(axis, lane, start, index, direction = 1) {
+          const g = new THREE.Group(),
+            dark = new THREE.MeshStandardMaterial({ color: 0x394541, roughness: 0.55, metalness: 0.18 }),
+            accent = new THREE.MeshStandardMaterial({ color: peopleColors[index % peopleColors.length], roughness: 0.75 }),
+            wheels = [];
+          [-2.25, 2.25].forEach((wx) => {
+            const wheel = new THREE.Mesh(new THREE.TorusGeometry(1.55, 0.18, 8, 18), dark);
+            wheel.position.set(wx, 1.75, 0);
+            wheel.castShadow = true;
+            wheels.push(wheel);
+            g.add(wheel);
+          });
+          const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 4.5, 7), accent);
+          bar.rotation.z = Math.PI / 2;
+          bar.position.y = 2.2;
+          const rider = new THREE.Mesh(new THREE.CylinderGeometry(0.75, 1, 2.6, 8), accent);
+          rider.position.set(0, 5.1, 0);
+          const head = new THREE.Mesh(new THREE.SphereGeometry(0.78, 9, 7), new THREE.MeshStandardMaterial({ color: 0xd5aa8b, roughness: 0.9 }));
+          head.position.set(0.25, 7, 0);
+          g.add(bar, rider, head);
+          if (axis === "x") g.position.set(start, 0.12, lane);
+          else {
+            g.position.set(lane, 0.12, start);
+            g.rotation.y = Math.PI / 2;
+          }
+          g.userData = { kind: "cyclist", axis, lane, speed: 10 + index * 0.55, direction, wheels };
+          city.add(g);
+          registry.cyclists.push(g);
+          return g;
+        }
+        function speechSprite(text) {
+          const c = document.createElement("canvas");
+          c.width = 512;
+          c.height = 190;
+          const x = c.getContext("2d");
+          x.fillStyle = "rgba(255,253,247,.96)";
+          x.strokeStyle = "rgba(71,86,79,.22)";
+          x.lineWidth = 5;
+          x.beginPath();
+          x.roundRect(12, 12, 488, 138, 30);
+          x.fill();
+          x.stroke();
+          x.fillStyle = "#34413c";
+          x.font = '600 28px "Microsoft YaHei",sans-serif';
+          x.textAlign = "center";
+          x.textBaseline = "middle";
+          const chars = [...text],
+            lines = [];
+          for (let i = 0; i < chars.length; i += 15) lines.push(chars.slice(i, i + 15).join(""));
+          lines.slice(0, 2).forEach((line, i) => x.fillText(line, 256, 60 + i * 42));
+          x.fillStyle = "rgba(255,253,247,.96)";
+          x.beginPath();
+          x.moveTo(238, 149);
+          x.lineTo(274, 149);
+          x.lineTo(256, 182);
+          x.fill();
+          const tex = new THREE.CanvasTexture(c);
+          tex.colorSpace = THREE.SRGBColorSpace;
+          const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false }));
+          s.scale.set(72, 27, 1);
+          return s;
+        }
+        const dialogueQueue = [
+          "今晚去公园散步吗？",
+          "这条林荫道凉快多了。",
+          "快看，小狗认识新朋友啦！",
+          "下一班公交还有三分钟。",
+          "周末一起去城市记忆馆吧。",
+          "今天的晚霞真好看。",
+          "这座口袋公园就在家门口。",
+          "先过斑马线，绿灯亮了！",
+          "跑完这一圈去喝杯咖啡。",
+          "滨水步道的风很舒服。",
+          "别忘了带伞，雷雨快来了。",
+          "孩子们在草地上玩得真开心。",
+          "新开的书店就在前面。",
+          "今天骑行的人真多呀。",
+          "这棵树下特别凉快。",
+          "我们去河边看看水鸟吧。",
+          "先去买菜，晚点公园见。",
+          "听说运动公园有新球场。",
+          "这条路的斑马线更醒目了。",
+          "回家前再遛一圈小狗吧。",
+        ].sort(() => Math.random() - 0.5);
+        const lifeSpots = [
+          [-320, -280],
+          [-280, -250],
+          [70, 280],
+          [130, 300],
+          [395, 150],
+          [430, 220],
+          [-450, 120],
+          [-150, 200],
+          [50, -120],
+          [250, 120],
+          [430, -260],
+          [-370, 15],
+          [-170, 15],
+          [30, 15],
+          [230, 15],
+          [15, -210],
+          [15, 210],
+        ];
+        const talkerScenes = new Set([1, 7, 12, 16]);
+        lifeSpots.forEach((s, i) => {
+          const a = person(s[0] - 4, s[1], i * 2, i % 4 === 0 ? "jogger" : "walker"),
+            b = person(s[0] + 4, s[1] + 2, i * 2 + 1, i % 5 === 0 ? "child" : "walker");
+          if (talkerScenes.has(i)) {
+            const bubble = speechSprite("");
+            bubble.position.set(s[0], 18, s[1]);
+            bubble.visible = false;
+            city.add(bubble);
+            registry.conversations.push({ a, b, bubble });
+          }
+          if (i % 3 === 0) dog(a, i);
+        });
+        for (let i = 0; i < 28; i++) {
+          const x = -460 + (i % 7) * 145,
+            z = -360 + Math.floor(i / 7) * 230;
+          person(x, z, 100 + i, i % 6 === 0 ? "jogger" : "walker");
+        }
+        parkDefs.forEach((p, i) => {
+          if (i % 2 === 0) {
+            const rz = roadZ.reduce((a, b) => (Math.abs(b - p.z) < Math.abs(a - p.z) ? b : a));
+            cyclist("x", rz + (i % 4 === 0 ? 12 : -12), p.x, i, i % 3 === 0 ? -1 : 1);
+          } else {
+            const rx = roadX.reduce((a, b) => (Math.abs(b - p.x) < Math.abs(a - p.x) ? b : a));
+            cyclist("z", rx + (i % 4 === 1 ? 12 : -12), p.z, i, i % 3 === 0 ? -1 : 1);
+          }
+        });
+        document.getElementById("populationCount").textContent = registry.people.length + registry.cyclists.length;
+        let lastConversation = -1;
+        function refreshConversations() {
+          registry.conversations.forEach((c) => (c.bubble.visible = false));
+          if (!dialogueQueue.length) return;
+          let next = Math.floor(Math.random() * registry.conversations.length);
+          if (registry.conversations.length > 1 && next === lastConversation) next = (next + 1) % registry.conversations.length;
+          lastConversation = next;
+          const c = registry.conversations[next],
+            old = c.bubble;
+          c.bubble = speechSprite(dialogueQueue.shift());
+          c.bubble.position.copy(old.position);
+          c.bubble.visible = true;
+          city.remove(old);
+          old.material.map.dispose();
+          old.material.dispose();
+          city.add(c.bubble);
+        }
+        refreshConversations();
+
+        // Weather still changes light, rain, snow and lightning, but no cloud geometry blocks the city view.
+        const cloudGroup = new THREE.Group();
+        const cloudMaterial = new THREE.MeshStandardMaterial({ color: 0xf5f5f0, transparent: true, opacity: 0, roughness: 1 });
+        function particles(count, color, size) {
+          const geo = new THREE.BufferGeometry();
+          const arr = new Float32Array(count * 3);
+          for (let i = 0; i < count; i++) {
+            arr[i * 3] = (Math.random() - 0.5) * 1600;
+            arr[i * 3 + 1] = Math.random() * 480;
+            arr[i * 3 + 2] = (Math.random() - 0.5) * 1200;
+          }
+          geo.setAttribute("position", new THREE.BufferAttribute(arr, 3));
+          const mat = new THREE.PointsMaterial({ color, size, transparent: true, opacity: 0, depthWrite: false });
+          const pts = new THREE.Points(geo, mat);
+          scene.add(pts);
+          return { geo, mat, pts, count };
+        }
+        const rain = particles(5600, 0xa7bdc6, 1.75),
+          snow = particles(2200, 0xffffff, 2.6);
+        const lightningLight = new THREE.PointLight(0xe8f5ff, 0, 1100, 1.4);
+        lightningLight.position.set(180, 300, 40);
+        scene.add(lightningLight);
+        const boltPoints = [];
+        for (let i = 0; i < 12; i++)
+          boltPoints.push(new THREE.Vector3(180 + (Math.random() - 0.5) * 22, 330 - i * 29, 40 + (Math.random() - 0.5) * 20));
+        const lightningBolt = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints(boltPoints),
+          new THREE.LineBasicMaterial({ color: 0xeaf8ff, transparent: true, opacity: 0 })
+        );
+        scene.add(lightningBolt);
+
+        const highlightMat = new THREE.MeshStandardMaterial({ color: 0xf7e7ba, roughness: 0.5, emissive: 0xe2b95e, emissiveIntensity: 0.28 });
+        const dimMat = new THREE.MeshStandardMaterial({ color: 0x777e79, roughness: 0.9, transparent: true, opacity: 0.38 });
+        function setHumanHighlight(obj, on) {
+          obj.visible = true;
+          obj.scale.setScalar(on ? 1.7 : 1);
+          obj.traverse((n) => {

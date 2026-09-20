@@ -402,6 +402,105 @@ dataset_categories:
       flex-direction: column;
     }
   }
+
+  /* 本轮布局修正：城市肌理主视觉、紧凑搜索、上传的三维模型 */
+  .dataset-hero {
+    min-height: 250px;
+    justify-content: center;
+    padding: 48px 24px;
+    text-align: center;
+    background:
+      linear-gradient(rgba(245, 242, 234, 0.56), rgba(245, 242, 234, 0.68)),
+      url("{{ '/assets/img/city-texture-illustration.webp' | relative_url }}") center / cover no-repeat;
+  }
+
+  .dataset-hero::before,
+  .dataset-hero::after { display: none; }
+
+  .dataset-hero__inner {
+    width: min(720px, 100%);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .dataset-hero h1 {
+    color: #344147;
+    text-shadow: 0 1px 16px rgba(255, 255, 255, 0.84);
+  }
+
+  .dataset-hero p {
+    margin-bottom: 0;
+    color: #526164;
+    font-weight: 600;
+    text-shadow: 0 1px 12px rgba(255, 255, 255, 0.9);
+  }
+
+  .dataset-toolbar__top { align-items: center; }
+  .dataset-toolbar__actions {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .dataset-search--compact {
+    width: min(390px, 46vw);
+    padding: 3px;
+    border-color: #d8d7d1;
+    box-shadow: none;
+  }
+
+  .dataset-search--compact input { padding: 9px 12px; }
+  .dataset-search--compact button { min-width: 72px; padding: 0 14px; }
+
+  .city-panel--three { min-height: 680px; background: #e5e9e4; }
+  .city-frame-wrap { height: 580px; background: #cfd8d1; }
+  .city-model-frame {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #cfd8d1;
+  }
+
+  .city-live {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 9px;
+    border: 1px solid #d4d3cd;
+    border-radius: 999px;
+    color: #5f6e70;
+    background: rgba(255, 255, 255, 0.58);
+    font-size: 12px;
+  }
+
+  .city-live i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #739681;
+    box-shadow: 0 0 0 4px rgba(115, 150, 129, 0.15);
+  }
+
+  @media (max-width: 1180px) {
+    .city-panel--three { min-height: 0; }
+    .city-frame-wrap { height: 540px; }
+  }
+
+  @media (max-width: 920px) {
+    .dataset-toolbar__top { align-items: flex-start; flex-direction: column; }
+    .dataset-toolbar__actions { width: 100%; justify-content: stretch; }
+    .dataset-search--compact { width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .dataset-toolbar__actions { align-items: stretch; flex-direction: column; }
+    .dataset-reset { align-self: flex-end; }
+    .city-frame-wrap { height: 470px; }
+  }
 </style>
 
 <div class="dataset-page" id="datasetPage">
@@ -409,10 +508,6 @@ dataset_categories:
     <div class="dataset-hero__inner">
       <h1 id="datasetTitle">401 数据学社</h1>
       <p>几千种城市数据等你来获取！</p>
-      <form class="dataset-search" id="datasetSearchForm" role="search">
-        <input id="datasetSearchInput" type="search" placeholder="⌕  搜索数据名称" aria-label="搜索数据名称">
-        <button type="submit">⌕&nbsp; 搜索</button>
-      </form>
     </div>
   </section>
 
@@ -431,17 +526,18 @@ dataset_categories:
       <div class="dataset-toolbar">
         <div class="dataset-toolbar__top">
           <h2><span id="activeCategoryTitle">全部数据</span><span class="dataset-result-count">共找到 <strong id="datasetCount">{{ site.projects | size }}</strong> 条数据</span></h2>
-          <button class="dataset-reset" id="datasetReset" type="button">↻&nbsp; 重置筛选</button>
+          <div class="dataset-toolbar__actions">
+            <form class="dataset-search dataset-search--compact" id="datasetSearchForm" role="search">
+              <input id="datasetSearchInput" type="search" placeholder="⌕  搜索数据名称" aria-label="搜索数据名称">
+              <button type="submit">搜索</button>
+            </form>
+            <button class="dataset-reset" id="datasetReset" type="button">↻&nbsp; 重置筛选</button>
+          </div>
         </div>
         <div class="dataset-filters">
           <label>数据格式：
             <select id="formatFilter" aria-label="按数据格式筛选">
               <option value="all">全部</option><option value="tif栅格数据">tif栅格数据</option><option value="shp矢量数据">shp矢量数据</option><option value="表格数据">表格数据</option><option value="其他格式">其他格式</option>
-            </select>
-          </label>
-          <label>数据获取方式：
-            <select id="accessFilter" aria-label="按获取方式筛选">
-              <option value="all">全部</option><option value="免费获取">免费获取</option><option value="转发集赞获取">转发集赞获取</option><option value="办理会员获取">办理会员获取</option><option value="联系获取">联系获取</option>
             </select>
           </label>
         </div>
@@ -468,148 +564,28 @@ dataset_categories:
       </section>
     </main>
 
-    <aside class="city-panel" aria-labelledby="cityModelTitle">
+    <aside class="city-panel city-panel--three" aria-labelledby="cityModelTitle">
       <div class="city-panel__header">
         <div>
           <h3 id="cityModelTitle">城市要素模型</h3>
-          <p>选择左侧分类，模型同步显示对应空间要素</p>
+          <p>拖拽旋转、滚轮缩放；选择分类时模型同步显示</p>
         </div>
-        <button class="weather-button" id="weatherButton" type="button" title="天气彩蛋：点击切换天气">
-          <span id="weatherIcon" aria-hidden="true">☀</span>
-          <span id="weatherLabel">晴朗</span>
-        </button>
+        <span class="city-live"><i aria-hidden="true"></i>实时交互</span>
       </div>
-
-      <svg class="city-model" id="cityModel" viewBox="0 0 620 520" role="img" aria-labelledby="citySvgTitle citySvgDesc" data-weather="sunny">
-        <title id="citySvgTitle">可交互的城市空间要素模型</title>
-        <desc id="citySvgDesc">模型包含建筑、交通、水系、绿地、人口、设施等图层，并根据本地时间切换昼夜。</desc>
-        <defs>
-          <linearGradient id="citySkyGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#d8e0dc" />
-            <stop offset="1" stop-color="#edf0ea" />
-          </linearGradient>
-          <linearGradient id="riverGradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#8fa8ad" />
-            <stop offset="1" stop-color="#718f98" />
-          </linearGradient>
-          <pattern id="imperviousPattern" width="16" height="16" patternUnits="userSpaceOnUse">
-            <path d="M0 16L16 0M-4 4L4-4M12 20L20 12" stroke="#a9a49b" stroke-width="2" opacity="0.38" />
-          </pattern>
-          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
-        </defs>
-
-        <rect class="city-sky" width="620" height="520" fill="url(#citySkyGradient)" />
-        <circle class="city-sun" cx="525" cy="74" r="31" fill="#cdbb8f" opacity="0.8" />
-        <g class="city-moon"><circle cx="526" cy="72" r="24" fill="#e1d5b5" /><circle cx="536" cy="63" r="23" fill="#59656b" /></g>
-        <g class="city-stars" fill="#ddd2b7">
-          <circle cx="455" cy="50" r="2" /><circle cx="485" cy="105" r="1.8" /><circle cx="564" cy="126" r="2" /><circle cx="590" cy="54" r="1.5" /><circle cx="410" cy="88" r="1.4" />
-        </g>
-
-        <g class="weather-cloud" fill="#aeb8b7">
-          <ellipse cx="102" cy="73" rx="43" ry="18" /><circle cx="78" cy="65" r="20" /><circle cx="111" cy="57" r="26" /><circle cx="139" cy="70" r="18" />
-        </g>
-        <g class="weather-rain" stroke="#78929a" stroke-width="3" stroke-linecap="round">
-          <path d="M74 92l-9 17M99 94l-9 17M126 93l-9 17M149 91l-9 17" />
-        </g>
-        <g class="weather-fog" stroke="#a6aeaa" stroke-width="8" stroke-linecap="round" opacity="0.75">
-          <path d="M38 83h135M22 106h112M64 129h130" />
-        </g>
-
-        <g class="city-layer" data-category-layer="人口相关数据">
-          <g fill="#aa7f75" opacity="0.85">
-            <circle cx="145" cy="252" r="5" /><circle cx="169" cy="239" r="4" /><circle cx="197" cy="266" r="5" /><circle cx="348" cy="224" r="5" /><circle cx="376" cy="246" r="4" /><circle cx="437" cy="208" r="5" /><circle cx="474" cy="237" r="4" />
-          </g>
-        </g>
-
-        <g class="city-layer" data-category-layer="行政区划数据" fill="none" stroke="#927f91" stroke-width="2.5" stroke-dasharray="8 7" opacity="0.75">
-          <path d="M36 286L185 192L315 244L463 168L585 246L546 416L386 478L226 438L64 394Z" />
-          <path d="M185 192L226 438M315 244L386 478M463 168L546 416" />
-        </g>
-
-        <g class="city-layer" data-category-layer="地形相关数据" fill="none" stroke="#9a9a83" stroke-width="2" opacity="0.5">
-          <path d="M18 214C88 169 147 177 212 201S342 234 416 193s134-48 191-19" />
-          <path d="M5 238C73 195 145 199 205 222s141 45 218 4 130-51 192-31" />
-          <path d="M18 262C89 226 147 224 206 245s137 44 214 9 130-42 188-22" />
-        </g>
-
-        <path class="city-ground" d="M25 286L293 132L600 302L330 494Z" fill="#aab3a9" />
-
-        <g class="city-layer" data-category-layer="用地数据/土地覆盖数据|土壤相关数据">
-          <path d="M70 290L183 225L251 264L139 329Z" fill="#c0aa8f" />
-          <path d="M377 222L477 166L544 202L443 260Z" fill="#a9b8a3" />
-          <path d="M397 371L506 310L563 344L454 406Z" fill="#b89d8f" />
-        </g>
-
-        <g class="city-layer" data-category-layer="城市建成区及不透水面数据">
-          <path d="M169 338L317 253L479 343L332 430Z" fill="url(#imperviousPattern)" stroke="#99958d" stroke-width="2" />
-        </g>
-
-        <g class="city-layer" data-category-layer="河流水系相关数据">
-          <path d="M27 355C112 323 151 350 222 371S351 407 419 378s108-33 173-4L571 423c-61-30-104-25-165 4s-130 3-199-20-109-38-165-7Z" fill="url(#riverGradient)" opacity="0.95" />
-          <path d="M36 374C110 346 158 373 224 393S347 423 414 397s109-32 166-7" fill="none" stroke="#c8d6d4" stroke-width="3" opacity="0.65" />
-        </g>
-
-        <g class="city-layer" data-category-layer="生态相关数据|NDVI/EVI/FVC/NPP/GPP相关数据">
-          <path d="M77 294L181 235L244 270L140 331Z" fill="#7f9a87" />
-          <g fill="#647f6c" stroke="#e0e4da" stroke-width="2">
-            <circle cx="116" cy="279" r="13" /><circle cx="144" cy="270" r="11" /><circle cx="168" cy="284" r="14" /><circle cx="126" cy="306" r="10" /><circle cx="194" cy="265" r="9" />
-          </g>
-          <g stroke="#5f7365" stroke-width="3"><path d="M116 290v17M144 280v18M168 295v17M126 315v13M194 274v14" /></g>
-        </g>
-
-        <g class="city-layer" data-category-layer="交通相关数据" fill="none" stroke-linecap="round">
-          <path d="M69 335L303 199L553 337" stroke="#e6dfd2" stroke-width="22" />
-          <path d="M69 335L303 199L553 337" stroke="#877f78" stroke-width="2.5" stroke-dasharray="12 10" />
-          <path d="M160 424L367 305L517 388" stroke="#e6dfd2" stroke-width="15" />
-          <path d="M160 424L367 305L517 388" stroke="#8d8780" stroke-width="2" stroke-dasharray="10 9" />
-          <path d="M119 348C230 310 336 291 487 300" stroke="#9b7f79" stroke-width="5" />
-          <g fill="#9b7f79" stroke="#f0ece3" stroke-width="3">
-            <circle cx="183" cy="328" r="8" /><circle cx="302" cy="302" r="8" /><circle cx="424" cy="297" r="8" />
-          </g>
-        </g>
-
-        <g class="city-layer" data-category-layer="建筑体块及建筑高度数据">
-          <g class="city-building" fill="#859395" stroke="#edf0ea" stroke-width="2">
-            <path d="M235 215l40-23 38 21-40 24z" /><path d="M235 215v80l38 22v-80z" fill="#718487" /><path d="M273 237l40-24v80l-40 24z" fill="#647a7e" />
-            <path d="M342 205l50-29 42 23-51 30z" /><path d="M342 205v121l41 24V229z" fill="#718487" /><path d="M383 229l51-30v121l-51 30z" fill="#65787c" />
-            <path d="M449 262l40-23 35 20-40 23z" /><path d="M449 262v73l35 20v-73z" fill="#718487" /><path d="M484 282l40-23v73l-40 23z" fill="#647a7e" />
-            <path d="M203 337l37-21 33 18-37 22z" /><path d="M203 337v54l33 19v-54z" fill="#718487" /><path d="M236 356l37-22v54l-37 22z" fill="#647a7e" />
-          </g>
-          <g class="city-window" fill="#b8c0b9" opacity="0.5">
-            <path d="M249 235l8 5v12l-8-5zM263 244l7 4v12l-7-4zM287 241l9-5v12l-9 5zM296 258l8-5v12l-8 5z" />
-            <path d="M355 230l9 5v14l-9-5zM371 240l8 4v14l-8-4zM398 231l10-6v14l-10 6zM413 222l9-5v14l-9 5zM398 255l10-6v14l-10 6zM413 246l9-5v14l-9 5z" />
-            <path d="M462 283l8 5v12l-8-5zM476 291l7 4v12l-7-4zM495 286l9-5v12l-9 5z" />
-          </g>
-        </g>
-
-        <g class="city-layer" data-category-layer="社会经济相关数据|POI设施的数量数据|不同设施的点位数据|旅游相关数据">
-          <g fill="#b07f70" stroke="#f1ece3" stroke-width="3">
-            <circle cx="324" cy="252" r="9" /><circle cx="421" cy="351" r="9" /><circle cx="512" cy="279" r="9" /><circle cx="275" cy="394" r="9" />
-          </g>
-          <g fill="#f1ece3" font-size="12" font-weight="700" text-anchor="middle">
-            <text x="324" y="256">+</text><text x="421" y="355">●</text><text x="512" y="283">★</text><text x="275" y="398">i</text>
-          </g>
-        </g>
-
-        <g class="city-layer" data-category-layer="环境污染及环境治理数据" fill="#8d8b84" opacity="0.24">
-          <ellipse cx="406" cy="183" rx="114" ry="24" /><ellipse cx="450" cy="213" rx="96" ry="20" />
-        </g>
-
-        <g class="city-layer" data-category-layer="气象相关数据" fill="none" stroke="#728c92" stroke-width="3">
-          <path d="M66 160c28-18 55-18 83 0M94 181c24-14 47-14 71 0M481 142c24-15 48-15 73 0" />
-        </g>
-
-        <g class="city-layer" data-category-layer="夜间灯光数据" filter="url(#softGlow)">
-          <circle cx="273" cy="292" r="6" fill="#d8b77b" /><circle cx="383" cy="322" r="7" fill="#d8b77b" /><circle cx="484" cy="330" r="6" fill="#d8b77b" /><circle cx="236" cy="386" r="5" fill="#d8b77b" />
-        </g>
-      </svg>
-
+      <div class="city-frame-wrap">
+        <iframe
+          id="cityModelFrame"
+          class="city-model-frame"
+          src="{{ '/assets/html/city-model-embed.html' | relative_url }}"
+          title="401城市要素交互模型"
+          loading="eager"
+          allow="fullscreen"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+      </div>
       <div class="city-panel__footer">
         <span>当前图层：<span class="city-layer-label" id="cityLayerLabel">全部城市要素</span></span>
-        <span id="cityTimeLabel">日景 · 随时间变化</span>
+        <span>天气与时间可在模型右上角调整</span>
       </div>
     </aside>
 
@@ -623,56 +599,23 @@ dataset_categories:
     const searchInput = document.getElementById("datasetSearchInput");
     const searchForm = document.getElementById("datasetSearchForm");
     const formatFilter = document.getElementById("formatFilter");
-    const accessFilter = document.getElementById("accessFilter");
     const resetButton = document.getElementById("datasetReset");
     const count = document.getElementById("datasetCount");
     const groupCount = document.getElementById("groupCount");
     const emptyState = document.getElementById("datasetEmpty");
     const activeCategoryTitle = document.getElementById("activeCategoryTitle");
-    const cityModel = document.getElementById("cityModel");
+    const cityModelFrame = document.getElementById("cityModelFrame");
     const cityLayerLabel = document.getElementById("cityLayerLabel");
-    const cityTimeLabel = document.getElementById("cityTimeLabel");
-    const cityLayers = Array.from(cityModel.querySelectorAll(".city-layer"));
-    const weatherButton = document.getElementById("weatherButton");
-    const weatherIcon = document.getElementById("weatherIcon");
-    const weatherLabel = document.getElementById("weatherLabel");
-    const weatherModes = [
-      { key: "sunny", icon: "☀", label: "晴朗" },
-      { key: "cloudy", icon: "☁", label: "多云" },
-      { key: "rainy", icon: "☂", label: "小雨" },
-      { key: "foggy", icon: "≋", label: "薄雾" }
-    ];
-    let weatherIndex = 0;
     let activeCategory = "all";
 
     function updateCityModel(category) {
-      const showAll = category === "all";
-      cityModel.classList.toggle("is-focused", !showAll);
-      cityLayers.forEach(function (layer) {
-        const categories = layer.dataset.categoryLayer.split("|");
-        layer.classList.toggle("is-highlighted", showAll || categories.includes(category));
-      });
-      cityLayerLabel.textContent = showAll ? "全部城市要素" : category;
-
-      if (category === "气象相关数据" && weatherModes[weatherIndex].key === "sunny") {
-        weatherIndex = 1;
-        updateWeather();
+      cityLayerLabel.textContent = category === "all" ? "全部城市要素" : category;
+      if (cityModelFrame.contentWindow) {
+        cityModelFrame.contentWindow.postMessage(
+          { type: "set-city-layer", category: category },
+          window.location.origin
+        );
       }
-    }
-
-    function updateDayNight() {
-      const hour = new Date().getHours();
-      const isNight = hour >= 20 || hour < 6;
-      cityModel.classList.toggle("is-night", isNight);
-      cityTimeLabel.textContent = isNight ? "夜景 · 城市灯光已开启" : "日景 · 20:00 自动亮灯";
-    }
-
-    function updateWeather() {
-      const weather = weatherModes[weatherIndex];
-      cityModel.dataset.weather = weather.key;
-      weatherIcon.textContent = weather.icon;
-      weatherLabel.textContent = weather.label;
-      weatherButton.setAttribute("aria-label", "当前天气：" + weather.label + "。点击切换天气彩蛋");
     }
 
     function applyFilters() {
@@ -681,9 +624,8 @@ dataset_categories:
       cards.forEach(function (card) {
         const categoryMatches = activeCategory === "all" || card.dataset.category === activeCategory;
         const formatMatches = formatFilter.value === "all" || card.dataset.format === formatFilter.value;
-        const accessMatches = accessFilter.value === "all" || card.dataset.access === accessFilter.value;
         const keywordMatches = !keyword || card.dataset.search.includes(keyword);
-        const isVisible = categoryMatches && formatMatches && accessMatches && keywordMatches;
+        const isVisible = categoryMatches && formatMatches && keywordMatches;
         card.hidden = !isVisible;
         if (isVisible) visibleCount += 1;
       });
@@ -705,25 +647,19 @@ dataset_categories:
     searchForm.addEventListener("submit", function (event) { event.preventDefault(); applyFilters(); });
     searchInput.addEventListener("input", applyFilters);
     formatFilter.addEventListener("change", applyFilters);
-    accessFilter.addEventListener("change", applyFilters);
     resetButton.addEventListener("click", function () {
       activeCategory = "all";
       searchInput.value = "";
       formatFilter.value = "all";
-      accessFilter.value = "all";
       activeCategoryTitle.textContent = "全部数据";
       categoryButtons.forEach(function (item) { item.classList.toggle("is-active", item.dataset.category === "all"); });
       applyFilters();
       updateCityModel("all");
     });
-    weatherButton.addEventListener("click", function () {
-      weatherIndex = (weatherIndex + 1) % weatherModes.length;
-      updateWeather();
+    cityModelFrame.addEventListener("load", function () {
+      updateCityModel(activeCategory);
     });
     applyFilters();
     updateCityModel("all");
-    updateWeather();
-    updateDayNight();
-    window.setInterval(updateDayNight, 60000);
   });
 </script>
