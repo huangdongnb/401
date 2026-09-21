@@ -163,7 +163,7 @@ permalink: /population-grid-2020/
       <div class="wrap">
         <div class="section-head"><div class="kicker">06 · Quality & limitations</div><div><h2>精度不错，不等于每个像元都是真值</h2><p class="intro">论文的精度指标是在乡镇统计尺度对网格结果进行聚合后验证得到，不能直接解释为单个 100 米像元的准确率。</p></div></div>
         <div class="uncertainty"><div class="limit-list"><div class="limit"><b>尺度不变性假设</b><span>模型在县/乡镇尺度学习到的关系被应用于 100 米网格，跨尺度推断会引入不确定性。</span></div><div class="limit"><b>协变量时相差异</b><span>部分辅助数据并非严格采集于普查时点，快速变化地区可能存在时间错配。</span></div><div class="limit"><b>有人居住区识别</b><span>活动数据、建筑与夜光共同决定人口是否被分配；边缘居住地可能被漏判或弱化。</span></div><div class="limit"><b>模型结构有限</b><span>PopSE 融合三类常用算法，但并不穷尽所有可能模型，结果仍依赖训练样本和参数。</span></div></div>
-          <article class="research-note"><h3>建议在论文中这样报告不确定性</h3><p>不要只写“分辨率为 100 m”。更完整的表述应同时说明来源、建模属性、验证尺度与处理方法。</p><ol><li>数据为基于第七次人口普查统计量和多源空间协变量生成的模型估算产品。</li><li>引用乡镇级独立测试集指标，但明确其不是像元级误差。</li><li>报告研究区内人口汇总值与对应普查统计量的差异。</li><li>对阈值、重采样、边界像元和空间尺度开展敏感性分析。</li><li>避免对单个像元或局部极端值作过度解释。</li></ol></article>
+          <article class="research-note"><h3>建议在论文中这样表述不确定性</h3><p>不要只写“分辨率为 100 m”。更完整的表述应同时说明来源、建模属性、验证尺度与处理方法。</p><ol><li>数据为基于第七次人口普查统计量和多源空间协变量生成的模型估算产品。</li><li>引用乡镇级独立测试集指标，但明确其不是像元级误差。</li><li>报告研究区内人口汇总值与对应普查统计量的差异。</li><li>对阈值、重采样、边界像元和空间尺度开展敏感性分析。</li><li>避免对单个像元或局部极端值作过度解释。</li></ol></article>
         </div>
       </div>
     </section>
@@ -207,7 +207,7 @@ Dataset: https://doi.org/10.6084/m9.figshare.24916140.v1</div><button class="cop
     </section>
   </main>
 
-  <footer class="footer"><div class="wrap"><div class="source-note">内容依据：用户提供的数据分享 PDF；陈跃红等公开数据集与 2024 年 ESSD 论文。页面中的适用性判断与处理建议属于科研使用说明，不替代原作者元数据。</div><div><a href="#top">返回顶部 ↑</a></div></div></footer>
+  <footer class="footer"><div class="wrap"><div class="source-note">声明：数据来源于陈跃红等教授公开数据集与 2024 年 ESSD 论文。页面中的适用性判断与处理建议属于科研使用说明，不替代原作者元数据。</div><div><a href="#top">返回顶部 ↑</a></div></div></footer>
   <script>
     document.querySelectorAll('[data-copy]').forEach(function(btn){btn.addEventListener('click',async function(){var text=document.getElementById(btn.dataset.copy).innerText;try{await navigator.clipboard.writeText(text);var old=btn.textContent;btn.textContent='已复制 ✓';btn.classList.add('done');setTimeout(function(){btn.textContent=old;btn.classList.remove('done')},1800)}catch(e){window.getSelection().selectAllChildren(document.getElementById(btn.dataset.copy));btn.textContent='已选中，请手动复制'}})});
   </script>
