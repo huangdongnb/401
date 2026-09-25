@@ -335,3 +335,18 @@ let updateCalendarUrl = () => {
     iframe.src = getCalendarUrl(iframe.dataset.calendarId, iframe.dataset.timezone || "UTC");
   }
 };
+
+
+// Site-wide visible brand migration: preserve /401/ URLs while displaying 402.
+document.addEventListener("DOMContentLoaded", () => {
+  const oldBrand = "401 Urban Lab, Guangzhou";
+  const newBrand = "402 Urban Lab, Guangzhou";
+  document.title = document.title.replaceAll(oldBrand, newBrand);
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let node;
+  while ((node = walker.nextNode())) {
+    if (node.nodeValue.includes(oldBrand)) {
+      node.nodeValue = node.nodeValue.replaceAll(oldBrand, newBrand);
+    }
+  }
+});
