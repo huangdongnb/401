@@ -146,38 +146,41 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 0.45rem;
-    min-height: 2.4rem;
+    gap: 0.85rem;
     margin-top: -0.5rem;
   }
 
+  #academic-exchange .activity-pagination[hidden] {
+    display: none !important;
+  }
+
   #academic-exchange .activity-page-button {
-    display: inline-grid;
-    place-items: center;
-    min-width: 2rem;
-    height: 2rem;
-    padding: 0 0.55rem;
-    border: 1px solid var(--activity-line);
-    border-radius: 999px;
+    padding: 0.15rem 0;
+    border: 0;
     background: transparent;
     color: var(--activity-muted);
     font: inherit;
-    font-size: 0.86rem;
+    font-size: 0.9rem;
     cursor: pointer;
-    transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+    transition: color 160ms ease;
   }
 
   #academic-exchange .activity-page-button:hover,
   #academic-exchange .activity-page-button:focus-visible {
-    border-color: var(--activity-accent);
     color: var(--activity-accent);
     outline: none;
   }
 
   #academic-exchange .activity-page-button[aria-current="page"] {
-    border-color: var(--activity-accent);
-    background: var(--activity-accent);
-    color: #fff;
+    color: var(--activity-accent);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.28rem;
+    cursor: default;
+  }
+
+  #academic-exchange .activity-page-button:disabled:not([aria-current="page"]) {
+    color: var(--activity-line);
     cursor: default;
   }
 
@@ -205,7 +208,7 @@
       gap: 1.6rem;
     }
   }
-</style> <section id="academic-exchange" aria-labelledby="academic-exchange-title"> <h2 class="activity-section-heading" id="academic-exchange-title"> <svg class="activity-calendar-icon" viewbox="0 0 32 32" aria-hidden="true"> <rect x="4" y="6" width="24" height="22" rx="3" fill="currentColor"></rect> <rect x="7" y="11" width="18" height="14" rx="1.5" fill="#fff"></rect> <rect x="9" y="14" width="4" height="4" rx=".5" fill="currentColor"></rect> <rect x="14" y="14" width="4" height="4" rx=".5" fill="currentColor"></rect> <rect x="19" y="14" width="4" height="4" rx=".5" fill="currentColor"></rect> <rect x="9" y="19" width="4" height="4" rx=".5" fill="currentColor"></rect> <rect x="14" y="19" width="4" height="4" rx=".5" fill="currentColor"></rect> <rect x="19" y="19" width="4" height="4" rx=".5" fill="currentColor"></rect> <rect x="9" y="3" width="3" height="7" rx="1.5" fill="currentColor"></rect> <rect x="20" y="3" width="3" height="7" rx="1.5" fill="currentColor"></rect> </svg> Academic Exchange </h2> <span class="activity-label">Activity Timeline</span> <div class="activity-list"> <article class="activity-item" data-date="2025-10-23"> <div class="activity-heading"> <span class="activity-year">2025</span> <span class="activity-title">Academic Lecture: The Impact of Urban Green Spaces on Public Health and Well-Being</span> <time class="activity-date" datetime="2025-10-23">10-23</time> </div> <div class="activity-content"> <figure class="activity-media"> <img src="/401/assets/img/teaching/lecture-2025-10-23.webp" alt="Professor Yan Chen speaking at an academic lecture on urban green space and public health"> </figure> <div class="activity-copy"> <p class="activity-eyebrow">Lecture Overview</p> <p class="activity-description">Using the hyper-dense city of Hong Kong as a case study, Professor Yan Chen moved beyond the limitations of conventional research. Through a serial mediation model, she directly and indirectly examined the potential pathways linking the objective configuration of green space, subjective evaluations, use behavior, and self-reported health and well-being.</p> </div> </div> </article> <article class="activity-item" data-date="2025-10-08"> <div class="activity-heading"> <span class="activity-year">2025</span> <span class="activity-title">Guangdong Graduate Academic Forum on Landscape Architecture</span> <time class="activity-date" datetime="2025-10-08">10-8</time> </div> <div class="activity-content"> <figure class="activity-media"> <img class="activity-poster" src="/401/assets/img/teaching/forum-2025-10-08.webp" alt="Poster for the 2025 Guangdong Graduate Academic Forum on Landscape Architecture"> </figure> <div class="activity-copy"> <p class="activity-eyebrow">Forum Overview</p> <p class="activity-description">This forum focuses on frontier theories, innovative practices, and emerging trends in urban environmental renewal and rural revitalization. It aims to explore the important role of landscape architecture in advancing integrated urban–rural development and the sustainable improvement of human settlements.</p> </div> </div> </article> </div> <nav class="activity-pagination" aria-label="Academic exchange pages"></nav> </section> <script>
+</style> <section id="academic-exchange" aria-labelledby="academic-exchange-title"> <h2 class="activity-section-heading" id="academic-exchange-title"> <svg class="activity-calendar-icon" viewbox="0 0 32 32" aria-hidden="true"> <rect x="4" y="6" width="24" height="22" rx="3" fill="currentColor"></rect> <rect x="7" y="11" width="18" height="14" rx="1.5" fill="#fff"></rect> <rect x="9" y="14" width="4" height="4" rx=".5" fill="currentColor"></rect> <rect x="14" y="14" width="4" height="4" rx=".5" fill="currentColor"></rect> <rect x="19" y="14" width="4" height="4" rx=".5" fill="currentColor"></rect> <rect x="9" y="19" width="4" height="4" rx=".5" fill="currentColor"></rect> <rect x="14" y="19" width="4" height="4" rx=".5" fill="currentColor"></rect> <rect x="19" y="19" width="4" height="4" rx=".5" fill="currentColor"></rect> <rect x="9" y="3" width="3" height="7" rx="1.5" fill="currentColor"></rect> <rect x="20" y="3" width="3" height="7" rx="1.5" fill="currentColor"></rect> </svg> Academic Exchange </h2> <span class="activity-label">Activity Timeline</span> <div class="activity-list"> <article class="activity-item" data-date="2025-10-23"> <div class="activity-heading"> <span class="activity-year">2025</span> <span class="activity-title">Academic Lecture: The Impact of Urban Green Spaces on Public Health and Well-Being</span> <time class="activity-date" datetime="2025-10-23">10-23</time> </div> <div class="activity-content"> <figure class="activity-media"> <img src="/401/assets/img/teaching/lecture-2025-10-23.webp" alt="Professor Yan Chen speaking at an academic lecture on urban green space and public health"> </figure> <div class="activity-copy"> <p class="activity-eyebrow">Lecture Overview</p> <p class="activity-description">Using the hyper-dense city of Hong Kong as a case study, Professor Yan Chen moved beyond the limitations of conventional research. Through a serial mediation model, she directly and indirectly examined the potential pathways linking the objective configuration of green space, subjective evaluations, use behavior, and self-reported health and well-being.</p> </div> </div> </article> <article class="activity-item" data-date="2025-10-08"> <div class="activity-heading"> <span class="activity-year">2025</span> <span class="activity-title">Guangdong Graduate Academic Forum on Landscape Architecture</span> <time class="activity-date" datetime="2025-10-08">10-8</time> </div> <div class="activity-content"> <figure class="activity-media"> <img class="activity-poster" src="/401/assets/img/teaching/forum-2025-10-08.webp" alt="Poster for the 2025 Guangdong Graduate Academic Forum on Landscape Architecture"> </figure> <div class="activity-copy"> <p class="activity-eyebrow">Forum Overview</p> <p class="activity-description">This forum focuses on frontier theories, innovative practices, and emerging trends in urban environmental renewal and rural revitalization. It aims to explore the important role of landscape architecture in advancing integrated urban–rural development and the sustainable improvement of human settlements.</p> </div> </div> </article> </div> <nav class="activity-pagination" aria-label="Academic exchange pages" hidden=""></nav> </section> <script>
   (() => {
     const root = document.getElementById('academic-exchange');
     if (!root) return;
@@ -235,6 +238,12 @@
       });
 
       pagination.replaceChildren();
+      if (totalPages <= 1) {
+        pagination.hidden = true;
+        return;
+      }
+
+      pagination.hidden = false;
       for (let pageNumber = 1; pageNumber <= totalPages; pageNumber += 1) {
         const button = document.createElement('button');
         button.type = 'button';
@@ -253,6 +262,22 @@
 
         pagination.appendChild(button);
       }
+
+      const nextButton = document.createElement('button');
+      nextButton.type = 'button';
+      nextButton.className = 'activity-page-button activity-next-button';
+      nextButton.textContent = 'Next';
+      nextButton.setAttribute('aria-label', 'Go to the next academic exchange page');
+
+      if (page >= totalPages) {
+        nextButton.disabled = true;
+      } else {
+        nextButton.addEventListener('click', () => {
+          window.location.hash = `activity-page-${page + 1}`;
+        });
+      }
+
+      pagination.appendChild(nextButton);
     };
 
     render(pageFromHash());
