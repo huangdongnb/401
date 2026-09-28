@@ -149,38 +149,41 @@ nav_order: 6
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 0.45rem;
-    min-height: 2.4rem;
+    gap: 0.85rem;
     margin-top: -0.5rem;
   }
 
+  #academic-exchange .activity-pagination[hidden] {
+    display: none !important;
+  }
+
   #academic-exchange .activity-page-button {
-    display: inline-grid;
-    place-items: center;
-    min-width: 2rem;
-    height: 2rem;
-    padding: 0 0.55rem;
-    border: 1px solid var(--activity-line);
-    border-radius: 999px;
+    padding: 0.15rem 0;
+    border: 0;
     background: transparent;
     color: var(--activity-muted);
     font: inherit;
-    font-size: 0.86rem;
+    font-size: 0.9rem;
     cursor: pointer;
-    transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+    transition: color 160ms ease;
   }
 
   #academic-exchange .activity-page-button:hover,
   #academic-exchange .activity-page-button:focus-visible {
-    border-color: var(--activity-accent);
     color: var(--activity-accent);
     outline: none;
   }
 
   #academic-exchange .activity-page-button[aria-current="page"] {
-    border-color: var(--activity-accent);
-    background: var(--activity-accent);
-    color: #fff;
+    color: var(--activity-accent);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.28rem;
+    cursor: default;
+  }
+
+  #academic-exchange .activity-page-button:disabled:not([aria-current="page"]) {
+    color: var(--activity-line);
     cursor: default;
   }
 
@@ -268,7 +271,7 @@ nav_order: 6
     </article>
   </div>
 
-  <nav class="activity-pagination" aria-label="Academic exchange pages"></nav>
+  <nav class="activity-pagination" aria-label="Academic exchange pages" hidden></nav>
 </section>
 
 <script>
@@ -301,6 +304,12 @@ nav_order: 6
       });
 
       pagination.replaceChildren();
+      if (totalPages <= 1) {
+        pagination.hidden = true;
+        return;
+      }
+
+      pagination.hidden = false;
       for (let pageNumber = 1; pageNumber <= totalPages; pageNumber += 1) {
         const button = document.createElement('button');
         button.type = 'button';
@@ -319,6 +328,22 @@ nav_order: 6
 
         pagination.appendChild(button);
       }
+
+      const nextButton = document.createElement('button');
+      nextButton.type = 'button';
+      nextButton.className = 'activity-page-button activity-next-button';
+      nextButton.textContent = 'Next';
+      nextButton.setAttribute('aria-label', 'Go to the next academic exchange page');
+
+      if (page >= totalPages) {
+        nextButton.disabled = true;
+      } else {
+        nextButton.addEventListener('click', () => {
+          window.location.hash = `activity-page-${page + 1}`;
+        });
+      }
+
+      pagination.appendChild(nextButton);
     };
 
     render(pageFromHash());
