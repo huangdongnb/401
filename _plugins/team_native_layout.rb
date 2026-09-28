@@ -17,11 +17,7 @@ Jekyll::Hooks.register :site, :post_read do |site|
 
     shell_css = <<~CSS
       body > .container.mt-5[role="main"] {
-        width: 100%;
-        max-width: none;
         margin-top: 0 !important;
-        padding-right: 0;
-        padding-left: 0;
       }
     CSS
 
