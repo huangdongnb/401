@@ -2,7 +2,7 @@
 layout: page
 permalink: /teaching/
 title: Teaching
-description: Academic exchange, research engagement, and faculty–student mentoring.
+description: Document academic exchange and encourage participation in research; value the cultivation of academic literacy and advocate mutually supportive faculty–student mentoring.
 nav: true
 nav_order: 6
 ---
@@ -17,16 +17,8 @@ nav_order: 6
     width: 100%;
     max-width: 1170px;
     margin: 0 auto;
+    padding-top: 1.3rem;
     color: var(--activity-ink);
-  }
-
-  #academic-exchange .activity-intro {
-    max-width: 920px;
-    margin: 0 0 2.1rem;
-    color: var(--activity-muted);
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.08rem;
-    line-height: 1.75;
   }
 
   #academic-exchange .activity-section-heading {
@@ -219,8 +211,6 @@ nav_order: 6
 </style>
 
 <section id="academic-exchange" aria-labelledby="academic-exchange-title">
-  <p class="activity-intro">Document academic exchange and encourage participation in research; value the cultivation of academic literacy and advocate mutually supportive faculty–student mentoring.</p>
-
   <h2 class="activity-section-heading" id="academic-exchange-title">
     <svg class="activity-calendar-icon" viewBox="0 0 32 32" aria-hidden="true">
       <rect x="4" y="6" width="24" height="22" rx="3" fill="currentColor"></rect>
