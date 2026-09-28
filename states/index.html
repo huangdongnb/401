@@ -1,0 +1,1169 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> 数据资源 | 402 Urban Lab, Guangzhou </title> <meta name="author" content="Guangzhou City Lab"> <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. "> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 1200px;
+  }
+
+  .category-index { display:inline-flex; width:27px; height:24px; align-items:center; justify-content:center; flex:0 0 27px; border-radius:6px; background:#e8ecec; color:#60737a; font-size:11px; font-weight:800; }
+  .dataset-category.is-active .category-index { background:#708998; color:#fff; }
+  .dataset-category::before { display:none; }
+  .dataset-search--compact { width:min(520px,55vw); padding:4px; border:1px solid #d8dcd9; border-radius:12px; background:#fff; box-shadow:0 5px 16px rgba(48,64,70,.07); }
+  .dataset-search__box { display:flex; min-width:0; flex:1; align-items:center; }
+  .dataset-search__icon { padding-left:13px; color:#708998; font-size:19px; }
+  .dataset-search--compact input { padding:11px 10px; }
+  .dataset-search__clear { min-width:32px!important; height:32px; padding:0!important; border-radius:50%!important; background:#edf0ef!important; color:#65757b!important; font-size:18px; }
+  .dataset-search__submit { min-width:92px!important; border-radius:9px!important; }
+  .dataset-search__hint { min-width:70px; color:#708084; font-size:12px; white-space:nowrap; }
+  @media(max-width:760px){.dataset-search--compact{width:100%}.dataset-search__hint{display:none}.dataset-toolbar__actions{width:100%;flex-wrap:wrap}}
+</style> <link rel="stylesheet" href="/401/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/401/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/401/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://huangdongnb.github.io/401/states/"> <script src="/401/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/401/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/401/"> 402 Urban Lab, Guangzhou </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/401/">about </a> </li> <li class="nav-item "> <a class="nav-link" href="/401/blog/">blog </a> </li> <li class="nav-item active"> <a class="nav-link" href="/401/states/">数据资源 <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/401/publications/">publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/401/cv/">CV </a> </li> <li class="nav-item "> <a class="nav-link" href="/401/teaching/">teaching </a> </li> <li class="nav-item "> <a class="nav-link" href="/401/team/">team </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">submenus </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/401/books/">bookshelf</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/401/blog/">blog</a> </div> </li> <li class="nav-item data-login-nav"> <button id="loginEntry" type="button" aria-label="登录后访问数据"><span class="data-login-avatar" aria-hidden="true">♙</span><span id="loginText">登录</span></button> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">数据资源</h1> <p class="post-description"></p> </header> <article> <style>
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .post-header { display: none; }
+  .dataset-page {
+    --dataset-blue: #557cf2;
+    --dataset-blue-dark: #315ad8;
+    --dataset-ink: #1c2940;
+    --dataset-muted: #788397;
+    --dataset-line: #e8ebf2;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-top: -2rem;
+    background: #fff;
+    color: var(--dataset-ink);
+  }
+  .dataset-hero {
+    position: relative;
+    min-height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 54px 24px 62px;
+    background: radial-gradient(circle at 83% 44%, rgba(25, 120, 255, 0.32), transparent 16%), radial-gradient(circle at 72% 20%, rgba(29, 92, 190, 0.18), transparent 22%), linear-gradient(110deg, #020b1a 0%, #07162b 52%, #061c3c 100%);
+  }
+  .dataset-hero::before, .dataset-hero::after { position: absolute; content: ""; pointer-events: none; }
+  .dataset-hero::before {
+    inset: -35% -10% -45% 48%;
+    opacity: 0.2;
+    transform: perspective(600px) rotateX(60deg) rotateZ(-13deg);
+    background-image: linear-gradient(rgba(70, 153, 255, 0.42) 1px, transparent 1px), linear-gradient(90deg, rgba(70, 153, 255, 0.42) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .dataset-hero::after {
+    width: 118px;
+    height: 118px;
+    right: 10%;
+    top: 60px;
+    border: 2px solid rgba(77, 166, 255, 0.6);
+    box-shadow: 0 0 24px rgba(45, 144, 255, 0.55), inset 0 0 30px rgba(39, 135, 255, 0.24);
+    transform: rotate(28deg);
+  }
+  .dataset-hero__inner { position: relative; z-index: 1; width: min(720px, 100%); text-align: center; }
+  .dataset-hero h1 { margin: 0; color: #fff; font-size: clamp(30px, 4vw, 44px); font-weight: 800; letter-spacing: 0.08em; }
+  .dataset-hero p { margin: 12px 0 28px; color: #aebbd0; font-size: 16px; }
+  .dataset-search { display: flex; width: 100%; padding: 5px; border-radius: 6px; background: #fff; box-shadow: 0 12px 32px rgba(0, 7, 20, 0.28); }
+  .dataset-search input { min-width: 0; flex: 1; padding: 15px 18px; border: 0; outline: 0; color: var(--dataset-ink); font-size: 15px; background: transparent; }
+  .dataset-search button { min-width: 112px; padding: 0 22px; border: 0; border-radius: 6px; background: var(--dataset-blue); color: #fff; font-weight: 700; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; }
+  .dataset-search button:hover { background: var(--dataset-blue-dark); transform: translateY(-1px); }
+  .dataset-shell { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 30px; width: min(1480px, calc(100% - 48px)); margin: 0 auto; padding: 34px 0 72px; }
+  .dataset-sidebar { align-self: start; overflow: hidden; border: 1px solid #e3e9fa; border-radius: 12px; background: #f7f9ff; box-shadow: 0 10px 25px rgba(70, 97, 155, 0.08); }
+  .dataset-sidebar__title { display: flex; align-items: center; gap: 9px; padding: 20px 18px 15px; color: #3c4659; font-size: 18px; font-weight: 800; }
+  .dataset-sidebar__title span { color: var(--dataset-blue); }
+  .dataset-category { display: flex; width: calc(100% - 16px); align-items: center; gap: 8px; margin: 3px 8px; padding: 12px 13px; border: 0; border-radius: 8px; color: #525b6c; background: transparent; font-size: 14px; font-weight: 600; text-align: left; cursor: pointer; transition: color 0.2s ease, background 0.2s ease; }
+  .dataset-category::before { content: "›"; color: #8a94a6; font-size: 20px; line-height: 1; }
+  .dataset-category:hover, .dataset-category.is-active { color: var(--dataset-blue); background: #e2e8ff; }
+  .dataset-category.is-active::before { color: var(--dataset-blue); }
+  .dataset-main { min-width: 0; }
+  .dataset-toolbar__top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 2px 0 16px; }
+  .dataset-toolbar__top h2 { margin: 0; font-size: 20px; font-weight: 800; }
+  .dataset-result-count { margin-left: 8px; color: var(--dataset-muted); font-size: 14px; font-weight: 400; }
+  .dataset-result-count strong { color: var(--dataset-blue); }
+  .dataset-reset { border: 0; color: var(--dataset-blue); background: transparent; cursor: pointer; }
+  .dataset-filters { display: flex; flex-wrap: wrap; gap: 18px; padding-bottom: 20px; border-bottom: 1px solid var(--dataset-line); color: #596376; font-size: 14px; }
+  .dataset-filters label { display: flex; align-items: center; gap: 7px; }
+  .dataset-filters select { border: 0; outline: 0; color: var(--dataset-blue); background: transparent; cursor: pointer; }
+  .dataset-group { margin-top: 28px; }
+  .dataset-group__heading { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; padding-left: 10px; border-left: 2px solid var(--dataset-blue); font-size: 16px; font-weight: 800; }
+  .dataset-group__heading span { color: #929bad; font-size: 13px; font-weight: 400; }
+  .dataset-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: center; min-height: 82px; margin-bottom: 12px; padding: 15px 18px; border: 1px solid transparent; border-radius: 9px; background: #f6f7f9; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+  .dataset-card[hidden] { display: none !important; }
+  .dataset-card:hover { border-color: #dbe3fb; box-shadow: 0 8px 22px rgba(66, 93, 151, 0.1); transform: translateY(-1px); }
+  .dataset-card__title { display: inline-block; margin-bottom: 9px; color: #27364c; font-size: 16px; font-weight: 700; text-decoration: none; }
+  .dataset-card__title:hover { color: var(--dataset-blue); }
+  .dataset-badges { display: flex; flex-wrap: wrap; gap: 7px; }
+  .dataset-badge { padding: 3px 8px; border-radius: 3px; color: #667084; background: #e9ebef; font-size: 12px; }
+  .dataset-card__more { display: flex; align-items: center; gap: 25px; color: #7d8798; font-size: 12px; white-space: nowrap; }
+  .dataset-card__arrow { color: #8791a3; font-size: 30px; font-weight: 300; line-height: 1; }
+  .dataset-empty { display: none; margin-top: 28px; padding: 46px 20px; border: 1px dashed #d6ddeb; border-radius: 10px; color: var(--dataset-muted); text-align: center; }
+  @media (max-width: 920px) {
+    .dataset-shell { grid-template-columns: 1fr; }
+    .dataset-sidebar { position: static; }
+    .dataset-category-list { display: flex; overflow-x: auto; padding: 0 8px 10px; }
+    .dataset-category { flex: 0 0 auto; width: auto; white-space: nowrap; }
+  }
+  @media (max-width: 600px) {
+    .dataset-page { margin-top: -1rem; }
+    .dataset-hero { min-height: 260px; padding: 42px 18px; }
+    .dataset-hero::after { right: -45px; }
+    .dataset-hero p { font-size: 14px; }
+    .dataset-search input { padding: 12px 10px; font-size: 14px; }
+    .dataset-search button { min-width: 78px; padding: 0 12px; }
+    .dataset-shell { width: min(100% - 28px, 1480px); padding-top: 22px; }
+    .dataset-toolbar__top { align-items: flex-start; }
+    .dataset-card { grid-template-columns: 1fr; }
+    .dataset-card__more { justify-content: space-between; }
+  }
+
+  /* 独立的全宽莫兰迪数据工作台 */
+  .dataset-page {
+    --dataset-blue: #708998;
+    --dataset-blue-dark: #526c7a;
+    --dataset-ink: #39454b;
+    --dataset-muted: #7a8588;
+    --dataset-line: #dddcd6;
+    background: #f5f3ee;
+  }
+
+  .dataset-hero {
+    min-height: 224px;
+    justify-content: flex-start;
+    padding: 42px 28px 46px;
+    background:
+      radial-gradient(circle at 88% 18%, rgba(169, 153, 139, 0.28) 0 90px, transparent 92px),
+      radial-gradient(circle at 79% 78%, rgba(126, 151, 145, 0.22) 0 150px, transparent 152px),
+      linear-gradient(110deg, #ded8ce 0%, #ece8df 58%, #d7dfda 100%);
+  }
+
+  .dataset-hero::before {
+    inset: 0 0 0 55%;
+    opacity: 0.34;
+    transform: none;
+    background-image:
+      linear-gradient(rgba(95, 111, 114, 0.13) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(95, 111, 114, 0.13) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: linear-gradient(90deg, transparent, #000);
+  }
+
+  .dataset-hero::after {
+    width: 112px;
+    height: 112px;
+    right: 8%;
+    top: 52px;
+    border: 1px solid rgba(84, 105, 109, 0.28);
+    border-radius: 50%;
+    box-shadow: 54px 30px 0 -25px rgba(174, 139, 120, 0.24), -52px 55px 0 -36px rgba(112, 137, 152, 0.28);
+    transform: none;
+  }
+
+  .dataset-hero__inner {
+    width: min(700px, 100%);
+    text-align: left;
+  }
+
+  .dataset-hero h1 {
+    color: #344147;
+    font-size: clamp(32px, 4vw, 46px);
+    letter-spacing: 0.04em;
+  }
+
+  .dataset-hero p {
+    margin: 9px 0 24px;
+    color: #6f7b7e;
+  }
+
+  .dataset-search {
+    border: 1px solid rgba(83, 103, 109, 0.15);
+    box-shadow: 0 12px 28px rgba(69, 79, 78, 0.1);
+  }
+
+  .dataset-search button {
+    background: #708998;
+  }
+
+  .dataset-shell {
+    grid-template-columns: 248px minmax(390px, 1fr) minmax(360px, 32vw);
+    gap: 18px;
+    width: 100%;
+    margin: 0;
+    padding: 24px 18px 72px;
+  }
+
+  .dataset-sidebar,
+  .city-panel {
+    border-color: #deddd7;
+    background: #eeece6;
+    box-shadow: none;
+  }
+
+  .dataset-category:hover,
+  .dataset-category.is-active {
+    color: #526c72;
+    background: #d9dfda;
+  }
+
+  .dataset-card {
+    background: #ebeae5;
+  }
+
+  .dataset-card:hover {
+    border-color: #cdd4d0;
+    box-shadow: 0 8px 22px rgba(75, 88, 84, 0.08);
+  }
+
+  .city-panel {
+    position: sticky;
+    top: 82px;
+    align-self: start;
+    overflow: hidden;
+    min-height: 610px;
+    border: 1px solid #deddd7;
+    border-radius: 12px;
+  }
+
+  .city-panel__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 18px 18px 12px;
+  }
+
+  .city-panel__header h3 {
+    margin: 0 0 5px;
+    color: #3d494c;
+    font-size: 17px;
+    font-weight: 800;
+  }
+
+  .city-panel__header p {
+    margin: 0;
+    color: #7d8787;
+    font-size: 12px;
+  }
+
+  .weather-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    flex: 0 0 auto;
+    padding: 7px 10px;
+    border: 1px solid #d4d3cd;
+    border-radius: 999px;
+    color: #5f6e70;
+    background: rgba(255, 255, 255, 0.56);
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .weather-button:hover {
+    background: #fff;
+  }
+
+  .city-model {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 470px;
+    background: #dfe5e1;
+  }
+
+  .city-layer {
+    opacity: 0.76;
+    transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease;
+    transform-origin: center;
+  }
+
+  .city-model.is-focused .city-layer {
+    opacity: 0.13;
+  }
+
+  .city-model.is-focused .city-layer.is-highlighted {
+    opacity: 1;
+    filter: saturate(1.12) drop-shadow(0 3px 4px rgba(57, 68, 67, 0.15));
+  }
+
+  .city-model .city-sky,
+  .city-model .city-ground,
+  .city-model .city-building,
+  .city-model .city-window {
+    transition: fill 0.8s ease, opacity 0.8s ease;
+  }
+
+  .city-model .city-moon,
+  .city-model .city-stars {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+
+  .city-model.is-night .city-sky { fill: #59656b; }
+  .city-model.is-night .city-ground { fill: #747d78; }
+  .city-model.is-night .city-building { fill: #687176; }
+  .city-model.is-night .city-window { fill: #d8b77b; opacity: 0.95; }
+  .city-model.is-night .city-sun { opacity: 0; }
+  .city-model.is-night .city-moon,
+  .city-model.is-night .city-stars { opacity: 1; }
+
+  .weather-cloud,
+  .weather-rain,
+  .weather-fog {
+    opacity: 0;
+    transition: opacity 0.45s ease;
+  }
+
+  .city-model[data-weather="cloudy"] .weather-cloud,
+  .city-model[data-weather="rainy"] .weather-cloud,
+  .city-model[data-weather="rainy"] .weather-rain,
+  .city-model[data-weather="foggy"] .weather-fog {
+    opacity: 1;
+  }
+
+  .city-model[data-weather="rainy"] .weather-rain {
+    animation: city-rain 0.9s linear infinite;
+  }
+
+  @keyframes city-rain {
+    from { transform: translateY(-3px); }
+    to { transform: translateY(8px); }
+  }
+
+  .city-panel__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 16px 15px;
+    border-top: 1px solid #d8d8d2;
+    color: #737e7f;
+    font-size: 12px;
+  }
+
+  .city-layer-label {
+    color: #526c72;
+    font-weight: 700;
+  }
+
+  @media (max-width: 1180px) {
+    .dataset-shell {
+      grid-template-columns: 230px minmax(0, 1fr);
+    }
+
+    .city-panel {
+      position: static;
+      grid-column: 1 / -1;
+      min-height: auto;
+    }
+
+    .city-model {
+      min-height: 0;
+      max-height: 520px;
+    }
+  }
+
+  @media (max-width: 920px) {
+    .dataset-shell {
+      grid-template-columns: 1fr;
+      padding-inline: 12px;
+    }
+
+    .city-panel {
+      grid-column: auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .dataset-hero {
+      padding-inline: 18px;
+    }
+
+    .dataset-hero::before,
+    .dataset-hero::after {
+      display: none;
+    }
+
+    .city-panel__header {
+      flex-direction: column;
+    }
+
+    .city-panel__footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  /* 本轮布局修正：城市肌理主视觉、紧凑搜索、上传的三维模型 */
+  .dataset-hero {
+    min-height: 250px;
+    justify-content: center;
+    padding: 48px 24px;
+    text-align: center;
+    background:
+      linear-gradient(rgba(245, 242, 234, 0.56), rgba(245, 242, 234, 0.68)),
+      url("/401/assets/img/city-texture-illustration.webp") center / cover no-repeat;
+  }
+
+  .dataset-hero::before,
+  .dataset-hero::after { display: none; }
+
+  .dataset-hero__inner {
+    width: min(720px, 100%);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .dataset-hero h1 {
+    color: #344147;
+    text-shadow: 0 1px 16px rgba(255, 255, 255, 0.84);
+  }
+
+  .dataset-hero p {
+    margin-bottom: 0;
+    color: #526164;
+    font-weight: 600;
+    text-shadow: 0 1px 12px rgba(255, 255, 255, 0.9);
+  }
+
+  .dataset-toolbar__top { align-items: center; }
+  .dataset-toolbar__actions {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .dataset-search--compact {
+    width: min(390px, 46vw);
+    padding: 3px;
+    border-color: #d8d7d1;
+    box-shadow: none;
+  }
+
+  .dataset-search--compact input { padding: 9px 12px; }
+  .dataset-search--compact button { min-width: 72px; padding: 0 14px; }
+
+  .city-panel--three { min-height: 680px; background: #e5e9e4; }
+  .city-frame-wrap { height: 580px; background: #cfd8d1; }
+  .city-model-frame {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #cfd8d1;
+  }
+
+  .city-live {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 9px;
+    border: 1px solid #d4d3cd;
+    border-radius: 999px;
+    color: #5f6e70;
+    background: rgba(255, 255, 255, 0.58);
+    font-size: 12px;
+  }
+
+  .city-live i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #739681;
+    box-shadow: 0 0 0 4px rgba(115, 150, 129, 0.15);
+  }
+
+  @media (max-width: 1180px) {
+    .city-panel--three { min-height: 0; }
+    .city-frame-wrap { height: 540px; }
+  }
+
+  @media (max-width: 920px) {
+    .dataset-toolbar__top { align-items: flex-start; flex-direction: column; }
+    .dataset-toolbar__actions { width: 100%; justify-content: stretch; }
+    .dataset-search--compact { width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .dataset-toolbar__actions { align-items: stretch; flex-direction: column; }
+    .dataset-reset { align-self: flex-end; }
+    .city-frame-wrap { height: 470px; }
+  }
+
+  .login-overlay{--blue:#708998;--blue-dark:#526c7a;--line:#dddcd6;--muted:#7a8588;--danger:#bd5555;}
+  .login-overlay{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:22px;background:rgba(49,56,58,.3);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:.25s}.login-overlay.open{opacity:1;visibility:visible}.login-dialog{position:relative;display:grid;grid-template-columns:1.08fr .92fr;width:min(980px,100%);height:min(600px,calc(100vh - 44px));overflow:hidden;border:1px solid rgba(255,255,255,.8);border-radius:25px;background:#fff;box-shadow:0 26px 90px rgba(28,40,45,.2);transform:translateY(18px) scale(.985);transition:.3s}.login-overlay.open .login-dialog{transform:none}.modal-close{position:absolute;right:17px;top:17px;z-index:8;width:36px;height:36px;border:0;border-radius:50%;background:#eff1f0;color:#6b777b;font-size:22px}.character-panel{position:relative;overflow:hidden;background:#dfe5e3;border-right:1px solid #d5d9d7}.character-copy{position:absolute;left:30px;top:29px;z-index:7}.character-copy small{color:#526c7a;font-weight:850;letter-spacing:.13em}.character-copy h2{margin:8px 0 0;font-size:25px;line-height:1.25}.characters-wrapper{position:absolute;left:50%;bottom:0;width:480px;height:430px;transform:translateX(-50%)}
+    /* Animated characters: interaction model adapted from guohaolian/animatedlogin (MIT). */
+    .characters-scene{position:relative;width:480px;height:430px}.character{position:absolute;bottom:0;transition:all .7s ease-in-out;transform-origin:bottom center}.char-purple{left:60px;width:170px;height:370px;background:#6c3ff5;border-radius:10px 10px 0 0;z-index:1}.char-black{left:220px;width:115px;height:290px;background:#2d2d2d;border-radius:8px 8px 0 0;z-index:2}.char-orange{left:0;width:230px;height:190px;background:#ff9b6b;border-radius:115px 115px 0 0;z-index:3}.char-yellow{left:290px;width:135px;height:215px;background:#e8d754;border-radius:68px 68px 0 0;z-index:4}.eyes{position:absolute;display:flex;transition:all .7s ease-in-out}.eyeball{display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;background:#fff;transition:height .15s}.pupil{border-radius:50%;background:#2d2d2d;transition:transform .1s ease-out}.bare-pupil{width:12px;height:12px;border-radius:50%;background:#2d2d2d;transition:transform .7s ease-in-out}.yellow-mouth{position:absolute;width:50px;height:4px;border-radius:2px;background:#2d2d2d;transition:all .7s}.orange-mouth{position:absolute;width:28px;height:14px;border:3px solid #2d2d2d;border-top:0;border-radius:0 0 14px 14px;opacity:0;transition:all .7s}.orange-mouth.visible{opacity:1}@keyframes shakeHead{0%,100%{translate:0 0}10%{translate:-9px 0}20%{translate:7px 0}30%{translate:-6px 0}40%{translate:5px 0}50%{translate:-4px 0}60%{translate:3px 0}70%{translate:-2px 0}80%{translate:1px 0}}.shake-head{animation:shakeHead .8s cubic-bezier(.36,.07,.19,.97) both}
+    .login-panel{display:flex;align-items:center;padding:55px 44px 36px}.login-form{width:100%}.form-kicker{color:var(--blue);font-size:11px;font-weight:850;letter-spacing:.13em}.login-form h2{margin:9px 0 7px;font-size:29px}.login-form>p{margin:0 0 27px;color:var(--muted);font-size:13px}.field{margin-top:18px}.field label{display:block;margin-bottom:7px;color:#58676d;font-size:12px;font-weight:780}.input-shell{display:flex;align-items:center;border:1px solid #d6dcda;border-radius:10px;background:#fafafa;transition:.2s}.input-shell:focus-within{border-color:#94a9b0;background:#fff;box-shadow:0 0 0 4px rgba(112,137,152,.11)}.input-shell input{width:100%;padding:13px;border:0;outline:0;background:transparent}.toggle-password{padding:8px 12px;border:0;background:transparent;color:var(--blue-dark);font-size:12px;font-weight:750}.login-submit{position:relative;width:100%;height:47px;margin-top:23px;overflow:hidden;border:0;border-radius:10px;background:var(--blue);color:#fff;font-weight:850}.login-submit:after{content:"→";position:absolute;right:20px;transition:.25s}.login-submit:hover:after{right:16px}.login-submit.success{background:#668577}.error-msg{display:none;margin-top:13px;padding:10px 12px;border:1px solid rgba(189,85,85,.22);border-radius:9px;background:rgba(189,85,85,.07);color:var(--danger);font-size:12px}.demo-note{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);color:#8a9295;font-size:10px;line-height:1.65}.demo-note a{color:var(--blue-dark)}.toast{position:fixed;left:50%;bottom:24px;z-index:160;transform:translate(-50%,20px);padding:11px 17px;border-radius:9px;background:#34454c;color:#fff;font-size:12px;opacity:0;pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+    
+  #loginEntry{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid #d4d9d8;border-radius:9px;background:transparent;color:inherit;font-size:13px;font-weight:700;white-space:nowrap}
+  #loginEntry:hover{background:rgba(112,137,152,.1)}#loginEntry.logged{border-color:#708998;background:#708998;color:#fff}.data-login-avatar{display:grid;place-items:center;width:21px;height:21px;border-radius:50%;background:rgba(112,137,152,.15)}#loginEntry.logged .data-login-avatar{background:rgba(255,255,255,.18)}
+  .dataset-shell{grid-template-columns:248px minmax(0,1fr)!important;gap:22px!important}.dataset-main{min-width:0}.city-panel{display:none!important}
+  @media(max-width:920px){.dataset-shell{grid-template-columns:1fr!important}.login-dialog{grid-template-columns:1fr}.character-panel{display:none}}
+  @media(max-width:620px){.login-panel{padding:40px 25px}.login-dialog{height:min(540px,calc(100vh - 30px))}}
+</style> <div class="dataset-page" id="datasetPage"> <section class="dataset-hero" aria-labelledby="datasetTitle"> <div class="dataset-hero__inner"> <h1 id="datasetTitle">402 数据学社</h1> <p>上百种城市数据等你来获取！</p> </div> </section> <div class="dataset-shell"> <aside class="dataset-sidebar" aria-label="数据分类"> <div class="dataset-sidebar__title"> <span>▥</span> 数据分类</div> <div class="dataset-category-list"> <button class="dataset-category is-active" type="button" data-category="all"><span class="category-index">ALL</span>全部数据</button> <button class="dataset-category" type="button" data-category="人口相关数据"><span class="category-index">1</span>人口相关数据</button> <button class="dataset-category" type="button" data-category="交通相关数据"><span class="category-index">2</span>交通相关数据</button> <button class="dataset-category" type="button" data-category="生态相关数据"><span class="category-index">3</span>生态相关数据</button> <button class="dataset-category" type="button" data-category="行政区划数据"><span class="category-index">4</span>行政区划数据</button> <button class="dataset-category" type="button" data-category="地形相关数据"><span class="category-index">5</span>地形相关数据</button> <button class="dataset-category" type="button" data-category="土地利用相关数据"><span class="category-index">6</span>土地利用相关数据</button> <button class="dataset-category" type="button" data-category="河流水系数据"><span class="category-index">7</span>河流水系数据</button> <button class="dataset-category" type="button" data-category="建筑相关数据"><span class="category-index">8</span>建筑相关数据</button> <button class="dataset-category" type="button" data-category="建成区相关数据"><span class="category-index">9</span>建成区相关数据</button> <button class="dataset-category" type="button" data-category="社会经济相关数据"><span class="category-index">10</span>社会经济相关数据</button> <button class="dataset-category" type="button" data-category="气象相关数据"><span class="category-index">11</span>气象相关数据</button> <button class="dataset-category" type="button" data-category="环境污染数据"><span class="category-index">12</span>环境污染数据</button> <button class="dataset-category" type="button" data-category="夜间灯光数据"><span class="category-index">13</span>夜间灯光数据</button> <button class="dataset-category" type="button" data-category="土壤相关数据"><span class="category-index">14</span>土壤相关数据</button> <button class="dataset-category" type="button" data-category="poi相关数据"><span class="category-index">15</span>poi相关数据</button> <button class="dataset-category" type="button" data-category="其他数据"><span class="category-index">16</span>其他数据</button> </div> </aside> <main class="dataset-main"> <div class="dataset-toolbar"> <div class="dataset-toolbar__top"> <h2> <span id="activeCategoryTitle">全部数据</span><span class="dataset-result-count">共找到 <strong id="datasetCount">21</strong> 条数据</span> </h2> <div class="dataset-toolbar__actions"> <form class="dataset-search dataset-search--compact" id="datasetSearchForm" role="search"> <div class="dataset-search__box"><span class="dataset-search__icon" aria-hidden="true">⌕</span><input id="datasetSearchInput" type="search" placeholder="搜索名称、年份、分辨率或格式" aria-label="搜索数据关键词" autocomplete="off"><button class="dataset-search__clear" id="datasetSearchClear" type="button" aria-label="清空搜索" hidden>×</button></div><button class="dataset-search__submit" type="submit">搜索数据</button> </form><span class="dataset-search__hint" id="datasetSearchHint" aria-live="polite"></span> <button class="dataset-reset" id="datasetReset" type="button">↻  重置筛选</button> </div> </div> <div class="dataset-filters"> <label>数据格式： <select id="formatFilter" aria-label="按数据格式筛选"> <option value="all">全部</option> <option value="tif栅格数据">tif栅格数据</option> <option value="shp矢量数据">shp矢量数据</option> <option value="表格数据">表格数据</option> <option value="其他格式">其他格式</option> </select> </label> </div> </div> <section class="dataset-group" aria-label="数据列表"> <h3 class="dataset-group__heading">数据资源 <span id="groupCount">21 条</span> </h3> <div id="datasetList"> <article class="dataset-card" data-category="人口相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="1.1 我国第七次人口普查的100m分辨率人口栅格数据 人口相关数据 2020 100 m tif栅格数据"><div><a class="dataset-card__title" href="/401/population-grid-2020/">1.1 我国第七次人口普查的100m分辨率人口栅格数据</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>人口相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div> <script>document.addEventListener('DOMContentLoaded',function(){const overlay=document.getElementById('loginOverlay'),entry=document.getElementById('loginEntry'),loginText=document.getElementById('loginText'),accountInput=document.getElementById('account'),passwordInput=document.getElementById('password'),toggleBtn=document.getElementById('togglePassword'),errEl=document.getElementById('errorMsg'),toast=document.getElementById('toast');let loggedIn=sessionStorage.getItem('401-data-access')==='yes',pending='';
+    function syncLogin(){entry.classList.toggle('logged',loggedIn);loginText.textContent=loggedIn?'已登录 · 2026':'登录'}function openLogin(){overlay.classList.add('open');setTimeout(()=>accountInput.focus(),250)}function closeLogin(){overlay.classList.remove('open');errEl.style.display='none'}function showToast(text){toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2100)}
+    entry.addEventListener('click',()=>{if(loggedIn){loggedIn=false;sessionStorage.removeItem('401-data-access');syncLogin();showToast('已退出登录')}else openLogin()});document.getElementById('modalClose').addEventListener('click',closeLogin);overlay.addEventListener('click',e=>{if(e.target===overlay)closeLogin()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLogin()});document.querySelectorAll('.dataset-card__title').forEach(link=>link.addEventListener('click',e=>{if(!loggedIn){e.preventDefault();pending=link.getAttribute('href');openLogin()}}));
+    let showPassword=false,isLoginError=false,mouseX=0,mouseY=0,isTyping=false,isLookingAtEachOther=false,isPurpleBlinking=false,isBlackBlinking=false,isPurplePeeking=false,isPasswordFocused=false,typingTimer=null,errorRecoverTimer=null;
+    document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;if(overlay.classList.contains('open')&&!isTyping&&!isLoginError)updateCharacters()});accountInput.addEventListener('focus',()=>setTyping(true));accountInput.addEventListener('blur',()=>setTyping(false));accountInput.addEventListener('input',updateCharacters);passwordInput.addEventListener('focus',()=>{isPasswordFocused=true;updateCharacters()});passwordInput.addEventListener('blur',()=>{isPasswordFocused=false;updateCharacters()});passwordInput.addEventListener('input',updateCharacters);
+    function setTyping(v){isTyping=v;if(v){isLookingAtEachOther=true;clearTimeout(typingTimer);typingTimer=setTimeout(()=>{isLookingAtEachOther=false;updateCharacters()},800)}else isLookingAtEachOther=false;updateCharacters()}
+    function scheduleBlink(id){setTimeout(()=>{if(id==='purple')isPurpleBlinking=true;else isBlackBlinking=true;updateCharacters();setTimeout(()=>{if(id==='purple')isPurpleBlinking=false;else isBlackBlinking=false;updateCharacters();scheduleBlink(id)},150)},Math.random()*4000+3000)}scheduleBlink('purple');scheduleBlink('black');
+    function schedulePeek(){if(passwordInput.value.length&&showPassword)setTimeout(()=>{if(passwordInput.value.length&&showPassword){isPurplePeeking=true;updateCharacters();setTimeout(()=>{isPurplePeeking=false;updateCharacters();schedulePeek()},800)}},Math.random()*3000+2000)}
+    toggleBtn.addEventListener('click',()=>{showPassword=!showPassword;passwordInput.type=showPassword?'text':'password';toggleBtn.textContent=showPassword?'隐藏':'显示';updateCharacters();if(showPassword)schedulePeek();passwordInput.focus()});
+    function calcPosition(el){const r=el.getBoundingClientRect(),dx=mouseX-(r.left+r.width/2),dy=mouseY-(r.top+r.height/3);return{faceX:Math.max(-15,Math.min(15,dx/20)),faceY:Math.max(-10,Math.min(10,dy/30)),bodySkew:Math.max(-6,Math.min(6,-dx/120))}}function calcPupilOffset(el,max){const r=el.getBoundingClientRect(),dx=mouseX-(r.left+r.width/2),dy=mouseY-(r.top+r.height/2),dist=Math.min(Math.sqrt(dx*dx+dy*dy),max),a=Math.atan2(dy,dx);return{x:Math.cos(a)*dist,y:Math.sin(a)*dist}}
+    function updateCharacters(){if(!overlay.classList.contains('open'))return;const purple=document.getElementById('char-purple'),black=document.getElementById('char-black'),orange=document.getElementById('char-orange'),yellow=document.getElementById('char-yellow'),pp=calcPosition(purple),bp=calcPosition(black),op=calcPosition(orange),yp=calcPosition(yellow),showing=passwordInput.value.length>0&&showPassword,away=isPasswordFocused&&!showPassword;
+      purple.style.transform=showing?'skewX(0deg)':away?'skewX(-14deg) translateX(-20px)':isTyping?`skewX(${pp.bodySkew-12}deg) translateX(40px)`:`skewX(${pp.bodySkew}deg)`;purple.style.height=away||isTyping?'410px':'370px';black.style.transform=showing?'skewX(0deg)':away?'skewX(12deg) translateX(-10px)':isLookingAtEachOther?`skewX(${bp.bodySkew*1.5+10}deg) translateX(20px)`:`skewX(${bp.bodySkew}deg)`;orange.style.transform=showing?'skewX(0deg)':`skewX(${op.bodySkew}deg)`;yellow.style.transform=showing?'skewX(0deg)':`skewX(${yp.bodySkew}deg)`;
+      const pe=document.getElementById('purple-eyes'),pl=document.getElementById('purple-pupil-l'),pr=document.getElementById('purple-pupil-r'),ple=document.getElementById('purple-eye-l'),pre=document.getElementById('purple-eye-r');ple.style.height=isPurpleBlinking?'2px':'18px';pre.style.height=isPurpleBlinking?'2px':'18px';if(isLoginError){pe.style.left='30px';pe.style.top='55px';pl.style.transform=pr.style.transform='translate(-3px,4px)'}else if(away){pe.style.left='20px';pe.style.top='25px';pl.style.transform=pr.style.transform='translate(-5px,-5px)'}else if(showing){pe.style.left='20px';pe.style.top='35px';const x=isPurplePeeking?4:-4,y=isPurplePeeking?5:-4;pl.style.transform=pr.style.transform=`translate(${x}px,${y}px)`}else if(isLookingAtEachOther){pe.style.left='55px';pe.style.top='65px';pl.style.transform=pr.style.transform='translate(3px,4px)'}else{pe.style.left=45+pp.faceX+'px';pe.style.top=40+pp.faceY+'px';const p=calcPupilOffset(ple,5);pl.style.transform=pr.style.transform=`translate(${p.x}px,${p.y}px)`}
+      const be=document.getElementById('black-eyes'),bl=document.getElementById('black-pupil-l'),br=document.getElementById('black-pupil-r'),ble=document.getElementById('black-eye-l'),bre=document.getElementById('black-eye-r');ble.style.height=isBlackBlinking?'2px':'16px';bre.style.height=isBlackBlinking?'2px':'16px';if(isLoginError){be.style.left='15px';be.style.top='40px';bl.style.transform=br.style.transform='translate(-3px,4px)'}else if(away||showing){be.style.left='10px';be.style.top=away?'20px':'28px';bl.style.transform=br.style.transform=away?'translate(-4px,-5px)':'translate(-4px,-4px)'}else if(isLookingAtEachOther){be.style.left='32px';be.style.top='12px';bl.style.transform=br.style.transform='translate(0,-4px)'}else{be.style.left=26+bp.faceX+'px';be.style.top=32+bp.faceY+'px';const p=calcPupilOffset(ble,4);bl.style.transform=br.style.transform=`translate(${p.x}px,${p.y}px)`}
+      const oe=document.getElementById('orange-eyes'),ol=document.getElementById('orange-pupil-l'),or=document.getElementById('orange-pupil-r');if(isLoginError){oe.style.left='60px';oe.style.top='95px';ol.style.transform=or.style.transform='translate(-3px,4px)'}else if(away||showing){oe.style.left='50px';oe.style.top=away?'75px':'85px';ol.style.transform=or.style.transform=away?'translate(-5px,-5px)':'translate(-5px,-4px)'}else{oe.style.left=82+op.faceX+'px';oe.style.top=90+op.faceY+'px';const p=calcPupilOffset(ol,5);ol.style.transform=or.style.transform=`translate(${p.x}px,${p.y}px)`}
+      const ye=document.getElementById('yellow-eyes'),yl=document.getElementById('yellow-pupil-l'),yr=document.getElementById('yellow-pupil-r'),ym=document.getElementById('yellow-mouth');if(isLoginError){ye.style.left='35px';ye.style.top='45px';yl.style.transform=yr.style.transform='translate(-3px,4px)';ym.style.left='30px';ym.style.top='92px';ym.style.transform='rotate(-8deg)'}else if(away||showing){ye.style.left='20px';ye.style.top=away?'30px':'35px';yl.style.transform=yr.style.transform=away?'translate(-5px,-5px)':'translate(-5px,-4px)';ym.style.left=away?'15px':'10px';ym.style.top=away?'78px':'88px';ym.style.transform='none'}else{ye.style.left=52+yp.faceX+'px';ye.style.top=40+yp.faceY+'px';const p=calcPupilOffset(yl,5);yl.style.transform=yr.style.transform=`translate(${p.x}px,${p.y}px)`;ym.style.left=40+yp.faceX+'px';ym.style.top=88+yp.faceY+'px';ym.style.transform='none'}}
+    const shakeIds=['purple-eyes','black-eyes','orange-eyes','yellow-eyes','yellow-mouth','orange-mouth'];function triggerLoginError(){if(errorRecoverTimer)clearTimeout(errorRecoverTimer);const els=shakeIds.map(id=>document.getElementById(id));els.forEach(e=>e.classList.remove('shake-head'));void document.body.offsetHeight;isLoginError=true;isPasswordFocused=false;updateCharacters();document.getElementById('orange-mouth').classList.add('visible');setTimeout(()=>els.forEach(e=>e.classList.add('shake-head')),350);errorRecoverTimer=setTimeout(()=>{isLoginError=false;document.getElementById('orange-mouth').classList.remove('visible');els.forEach(e=>e.classList.remove('shake-head'));updateCharacters()},2500)}
+    document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();if(accountInput.value==='2026'&&passwordInput.value==='402'){loggedIn=true;sessionStorage.setItem('401-data-access','yes');syncLogin();const btn=document.getElementById('loginSubmit');btn.classList.add('success');btn.textContent='登录成功　✓';errEl.style.display='none';setTimeout(()=>{closeLogin();const target=pending;pending='';btn.classList.remove('success');btn.textContent='验证并登录';if(target&&target.startsWith('/401/'))location.href=target;else showToast('登录成功，可以打开数据介绍页面')},700)}else{errEl.textContent='账号或密码不正确，请重新输入。';errEl.style.display='block';triggerLoginError()}});syncLogin();const params=new URLSearchParams(location.search);if(params.get('login')==='required'){pending=params.get('next')||'';openLogin();}
+  });</script></article> <article class="dataset-card" data-category="人口相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="1.2 中国人口密度2000—2020 人口相关数据 2000—2020 约100 m tif栅格数据"><div><a class="dataset-card__title" href="/401/population-density-2000-2020/">1.2 中国人口密度2000—2020</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>人口相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="生态相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="3.1 全国城市树木掩膜1m分辨率（2019年）栅格数据 生态相关数据 2019 1 m tif栅格数据"><div><a class="dataset-card__title" href="/401/urban-tree-mask-2019/">3.1 全国城市树木掩膜1m分辨率（2019年）栅格数据</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>生态相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="生态相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="3.2 中国2000—2025年250米分辨率逐8天叶面积指数（LAI）栅格数据 生态相关数据 2000—2025 250 m / 8天 tif栅格数据"><div><a class="dataset-card__title" href="/401/glass-lai-2000-2025/">3.2 中国2000—2025年250米分辨率逐8天叶面积指数（LAI）栅格数据</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>生态相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="生态相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="3.3 全国2000—2020年30m超高精度逐年植被指数NDVI栅格数据 生态相关数据 2000—2020 30 m / 年 tif栅格数据"><div><a class="dataset-card__title" href="/401/china-ndvi-2000-2020/">3.3 全国2000—2020年30m超高精度逐年植被指数NDVI栅格数据</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>生态相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="行政区划数据" data-format="shp矢量数据" data-access="免费获取" data-search="4.3 粤港澳大湾区行政边界（区级） 行政区划数据 以文件为准 区级单元 shp矢量数据"><div><a class="dataset-card__title" href="/401/gba-district-boundaries/">4.3 粤港澳大湾区行政边界（区级）</a><div class="dataset-badges"><span class="dataset-badge">shp矢量数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>行政区划数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="行政区划数据" data-format="shp矢量数据" data-access="免费获取" data-search="4.2 全国2021年乡镇行政边界数据（含社区、村等最小行政单元） 行政区划数据 2021 基层单元 shp矢量数据"><div><a class="dataset-card__title" href="/401/china-township-boundaries-2021/">4.2 全国2021年乡镇行政边界数据（含社区、村等最小行政单元）</a><div class="dataset-badges"><span class="dataset-badge">shp矢量数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>行政区划数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="行政区划数据" data-format="shp矢量数据" data-access="免费获取" data-search="4.1 全国2025年省市县行政边界 行政区划数据 2025更新 省/市/县 shp矢量数据"><div><a class="dataset-card__title" href="/401/china-admin-boundaries-2025/">4.1 全国2025年省市县行政边界</a><div class="dataset-badges"><span class="dataset-badge">shp矢量数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>行政区划数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="地形相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="5.3 全国2025年DEM分省（12.5米）B 地形相关数据 2025整理 12.5 m tif栅格数据"><div><a class="dataset-card__title" href="/401/china-dem-12m5-b/">5.3 全国2025年DEM分省（12.5米）B</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>地形相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="地形相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="5.2 全国各省DEM数据（12.5米）A 地形相关数据 以文件为准 12.5 m tif栅格数据"><div><a class="dataset-card__title" href="/401/china-dem-12m5-a/">5.2 全国各省DEM数据（12.5米）A</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>地形相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="地形相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="5.1 全国各省DEM数据（30米、90米、1000米） 地形相关数据 多源产品 30/90/1000 m tif栅格数据"><div><a class="dataset-card__title" href="/401/china-dem-multires/">5.1 全国各省DEM数据（30米、90米、1000米）</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>地形相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="土地利用相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="6.2 全球2020年186个国家10米分辨率城市土地利用栅格数据 土地利用相关数据 2020 10 m tif栅格数据"><div><a class="dataset-card__title" href="/401/global-urban-landuse-2020/">6.2 全球2020年186个国家10米分辨率城市土地利用栅格数据</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>土地利用相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="土地利用相关数据" data-format="shp矢量数据" data-access="免费获取" data-search="6.1 中国2016—2022年城市土地利用shp矢量数据（9类） 土地利用相关数据 2016—2022 10 m源数据 shp矢量数据"><div><a class="dataset-card__title" href="/401/china-urban-landuse-2016-2022/">6.1 中国2016—2022年城市土地利用shp矢量数据（9类）</a><div class="dataset-badges"><span class="dataset-badge">shp矢量数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>土地利用相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="建筑相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="8.3 全球2020及2023年100米分辨率建筑密度与建筑高度栅格数据 建筑相关数据 2020 / 2023 约100 m tif栅格数据"><div><a class="dataset-card__title" href="/401/global-building-density-height-2020-2023/">8.3 全球2020及2023年100米分辨率建筑密度与建筑高度栅格数据</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>建筑相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="建筑相关数据" data-format="其他格式" data-access="免费获取" data-search="8.2 中国2018—2023年106个城市建筑轮廓与建筑高度数据 建筑相关数据 2018—2023 建筑单体/栅格 其他格式"><div><a class="dataset-card__title" href="/401/china-building-footprint-height-2018-2023/">8.2 中国2018—2023年106个城市建筑轮廓与建筑高度数据</a><div class="dataset-badges"><span class="dataset-badge">其他格式</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>建筑相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="建筑相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="8.1 全国2016—2021年CBRA建筑物屋顶数据集 建筑相关数据 2016—2021 2.5 m tif栅格数据"><div><a class="dataset-card__title" href="/401/cbra-2016-2021/">8.1 全国2016—2021年CBRA建筑物屋顶数据集</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>建筑相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="建成区相关数据" data-format="shp矢量数据" data-access="免费获取" data-search="9.3 全球2000—2025年城市建成区范围矢量数据 建成区相关数据 2000—2025 30 m源数据 shp矢量数据"><div><a class="dataset-card__title" href="/401/global-builtup-2000-2025/">9.3 全球2000—2025年城市建成区范围矢量数据</a><div class="dataset-badges"><span class="dataset-badge">shp矢量数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>建成区相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="建成区相关数据" data-format="其他格式" data-access="免费获取" data-search="9.2 全国2020年433个城市建成区数据 建成区相关数据 2020 以元数据为准 其他格式"><div><a class="dataset-card__title" href="/401/china-builtup-2020/">9.2 全国2020年433个城市建成区数据</a><div class="dataset-badges"><span class="dataset-badge">其他格式</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>建成区相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="建成区相关数据" data-format="shp矢量数据" data-access="免费获取" data-search="9.1 全国城市建成区边界矢量数据（1990—2018） 建成区相关数据 1990—2018 30 m源数据 shp矢量数据"><div><a class="dataset-card__title" href="/401/china-urban-boundaries-1990-2018/">9.1 全国城市建成区边界矢量数据（1990—2018）</a><div class="dataset-badges"><span class="dataset-badge">shp矢量数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>建成区相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="社会经济相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="10.1 全国2023年5月房价网格数据（93个城市） 社会经济相关数据 2023年5月 以文件为准 tif栅格数据"><div><a class="dataset-card__title" href="/401/china-house-price-grid-2023-05/">10.1 全国2023年5月房价网格数据（93个城市）</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>社会经济相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> <article class="dataset-card" data-category="夜间灯光数据" data-format="tif栅格数据" data-access="免费获取" data-search="13.1 全球1990—2025年100米分辨率城市与农村居民点栅格数据 夜间灯光数据 1990—2025 100 m tif栅格数据"><div><a class="dataset-card__title" href="/401/gurs-1990-2025/">13.1 全球1990—2025年100米分辨率城市与农村居民点栅格数据</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>夜间灯光数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div></article> </div> <div class="dataset-empty" id="datasetEmpty">暂未找到符合条件的数据，请调整关键词或筛选条件。</div> </section> </main>  </div> </div> <div class="login-overlay" id="loginOverlay" role="dialog" aria-modal="true" aria-labelledby="loginTitle"><div class="login-dialog"><button class="modal-close" id="modalClose" type="button" aria-label="关闭">×</button><section class="character-panel"><div class="character-copy"><small>402 DATA ACCESS</small><h2>验证身份后，<br>进入数据世界。</h2></div><div class="characters-wrapper"><div class="characters-scene" id="characters-scene">
+    <div class="character char-purple" id="char-purple"><div class="eyes" id="purple-eyes" style="left:45px;top:40px;gap:28px"><div class="eyeball" id="purple-eye-l" style="width:18px;height:18px"><div class="pupil" id="purple-pupil-l" style="width:7px;height:7px"></div></div><div class="eyeball" id="purple-eye-r" style="width:18px;height:18px"><div class="pupil" id="purple-pupil-r" style="width:7px;height:7px"></div></div></div></div>
+    <div class="character char-black" id="char-black"><div class="eyes" id="black-eyes" style="left:26px;top:32px;gap:20px"><div class="eyeball" id="black-eye-l" style="width:16px;height:16px"><div class="pupil" id="black-pupil-l" style="width:6px;height:6px"></div></div><div class="eyeball" id="black-eye-r" style="width:16px;height:16px"><div class="pupil" id="black-pupil-r" style="width:6px;height:6px"></div></div></div></div>
+    <div class="character char-orange" id="char-orange"><div class="eyes" id="orange-eyes" style="left:82px;top:90px;gap:28px"><div class="bare-pupil" id="orange-pupil-l"></div><div class="bare-pupil" id="orange-pupil-r"></div></div><div class="orange-mouth" id="orange-mouth" style="left:90px;top:120px"></div></div>
+    <div class="character char-yellow" id="char-yellow"><div class="eyes" id="yellow-eyes" style="left:52px;top:40px;gap:20px"><div class="bare-pupil" id="yellow-pupil-l"></div><div class="bare-pupil" id="yellow-pupil-r"></div></div><div class="yellow-mouth" id="yellow-mouth" style="left:40px;top:88px"></div></div>
+  </div></div></section><section class="login-panel"><form class="login-form" id="loginForm"><div class="form-kicker">MEMBER LOGIN</div><h2 id="loginTitle">登录后访问数据</h2><p>账号与密码同时正确，才可以打开数据介绍页面。</p><div class="field"><label for="account">账号</label><div class="input-shell"><input id="account" autocomplete="username" placeholder="请输入账号" required></div></div><div class="field"><label for="password">密码</label><div class="input-shell"><input id="password" type="password" autocomplete="current-password" placeholder="请输入密码" required><button class="toggle-password" id="togglePassword" type="button">显示</button></div></div><button class="login-submit" id="loginSubmit" type="submit">验证并登录</button><div class="error-msg" id="errorMsg"></div></form></section></div></div><div class="toast" id="toast"></div> <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const cards = Array.from(document.querySelectorAll(".dataset-card"));
+    const categoryButtons = Array.from(document.querySelectorAll(".dataset-category"));
+    const searchInput = document.getElementById("datasetSearchInput");
+    const searchForm = document.getElementById("datasetSearchForm");
+    const formatFilter = document.getElementById("formatFilter");
+    const resetButton = document.getElementById("datasetReset");
+    const clearButton = document.getElementById("datasetSearchClear");
+    const searchHint = document.getElementById("datasetSearchHint");
+    const count = document.getElementById("datasetCount");
+    const groupCount = document.getElementById("groupCount");
+    const emptyState = document.getElementById("datasetEmpty");
+    const activeCategoryTitle = document.getElementById("activeCategoryTitle");
+    const cityModelFrame = { contentWindow: null, addEventListener: function () {} };
+    const cityLayerLabel = { textContent: "" };
+    let activeCategory = "all";
+
+    function updateCityModel(category) {
+      cityLayerLabel.textContent = category === "all" ? "全部城市要素" : category;
+      if (cityModelFrame.contentWindow) {
+        cityModelFrame.contentWindow.postMessage(
+          { type: "set-city-layer", category: category },
+          window.location.origin
+        );
+      }
+    }
+
+    function normalizeText(value) {
+      return String(value || "").toLowerCase().replace(/[—–－]/g, "-").replace(/\s+/g, " ").trim();
+    }
+
+    function applyFilters() {
+      const query = normalizeText(searchInput.value);
+      const terms = query ? query.split(" ").filter(Boolean) : [];
+      let visibleCount = 0;
+      cards.forEach(function (card) {
+        const categoryMatches = activeCategory === "all" || card.dataset.category === activeCategory;
+        const formatMatches = formatFilter.value === "all" || card.dataset.format === formatFilter.value;
+        const haystack = normalizeText((card.dataset.search || "") + " " + card.textContent);
+        const keywordMatches = terms.length === 0 || terms.every(function (term) { return haystack.includes(term); });
+        const isVisible = categoryMatches && formatMatches && keywordMatches;
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      });
+      count.textContent = visibleCount;
+      groupCount.textContent = visibleCount + " 条";
+      emptyState.style.display = visibleCount === 0 ? "block" : "none";
+      clearButton.hidden = terms.length === 0;
+      searchHint.textContent = terms.length ? "匹配 " + visibleCount + " 条" : "";
+    }
+
+    categoryButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        categoryButtons.forEach(function (item) { item.classList.remove("is-active"); });
+        button.classList.add("is-active");
+        activeCategory = button.dataset.category;
+        searchInput.value = "";
+        clearButton.hidden = true;
+        activeCategoryTitle.textContent = activeCategory === "all" ? "全部数据" : activeCategory;
+        applyFilters();
+        updateCityModel(activeCategory);
+      });
+    });
+    searchForm.addEventListener("submit", function (event) { event.preventDefault(); applyFilters(); });
+    searchInput.addEventListener("input", function () {
+      if (searchInput.value.trim()) {
+        activeCategory = "all";
+        activeCategoryTitle.textContent = "搜索结果";
+        categoryButtons.forEach(function (item) { item.classList.toggle("is-active", item.dataset.category === "all"); });
+      } else {
+        activeCategoryTitle.textContent = "全部数据";
+      }
+      applyFilters();
+    });
+    clearButton.addEventListener("click", function () {
+      searchInput.value = "";
+      activeCategory = "all";
+      activeCategoryTitle.textContent = "全部数据";
+      categoryButtons.forEach(function (item) { item.classList.toggle("is-active", item.dataset.category === "all"); });
+      applyFilters();
+      searchInput.focus();
+    });
+    formatFilter.addEventListener("change", applyFilters);
+    resetButton.addEventListener("click", function () {
+      activeCategory = "all";
+      searchInput.value = "";
+      formatFilter.value = "all";
+      activeCategoryTitle.textContent = "全部数据";
+      categoryButtons.forEach(function (item) { item.classList.toggle("is-active", item.dataset.category === "all"); });
+      applyFilters();
+      updateCityModel("all");
+    });
+    cityModelFrame.addEventListener("load", function () {
+      updateCityModel(activeCategory);
+    });
+    applyFilters();
+    updateCityModel("all");
+  });
+</script> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Guangzhou City Lab. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/401/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/401/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/401/assets/al_math/js/mathjax-setup.js"></script> <script src="/401/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/401/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/401/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/401/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/401/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/401/assets/al_img_tools/js/zoom.js"></script> <script defer src="/401/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/401/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/401/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "about",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/401/";
+    },
+  },{id: "nav-blog",
+          title: "blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/401/blog/";
+          },
+        },{id: "nav-数据资源",
+          title: "数据资源",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/401/states/";
+          },
+        },{id: "nav-publications",
+          title: "publications",
+          description: "publications by categories in reversed chronological order. generated by jekyll-scholar.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/401/publications/";
+          },
+        },{id: "nav-cv",
+          title: "CV",
+          description: "This is a description of the page. You can modify it in '_pages/cv.md'. You can also change or remove the top pdf download button.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/401/cv/";
+          },
+        },{id: "nav-teaching",
+          title: "teaching",
+          description: "Course materials, schedules, and resources for classes taught.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/401/teaching/";
+          },
+        },{id: "nav-people",
+          title: "people",
+          description: "members of the lab or group",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/401/team/";
+          },
+        },{id: "dropdown-bookshelf",
+              title: "bookshelf",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/401/books/";
+              },
+            },{id: "dropdown-blog",
+              title: "blog",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/401/blog/";
+              },
+            },{id: "post-a-post-with-marimo-snippets",
+        
+          title: "a post with marimo snippets",
+        
+        description: "running Python in the browser with marimo",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2025/marimo/";
+          
+        },
+      },{id: "post-a-post-with-plotly-js",
+        
+          title: "a post with plotly.js",
+        
+        description: "this is what included plotly.js code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2025/plotly/";
+          
+        },
+      },{id: "post-a-post-with-image-galleries",
+        
+          title: "a post with image galleries",
+        
+        description: "this is what included image galleries could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2024/photo-gallery/";
+          
+        },
+      },{id: "post-google-gemini-updates-flash-1-5-gemma-2-and-project-astra",
+        
+          title: 'Google Gemini updates: Flash 1.5, Gemma 2 and Project Astra <svg width="1.2rem" height="1.2rem" top=".5rem" viewbox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+        
+        description: "We’re sharing updates across our Gemini family of models and a glimpse of Project Astra, our vision for the future of AI assistants.",
+        section: "Posts",
+        handler: () => {
+          
+            window.open("https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/", "_blank");
+          
+        },
+      },{id: "post-a-post-with-tabs",
+        
+          title: "a post with tabs",
+        
+        description: "this is what included tabs in a post could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2024/tabs/";
+          
+        },
+      },{id: "post-a-post-with-typograms",
+        
+          title: "a post with typograms",
+        
+        description: "this is what included typograms code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2024/typograms/";
+          
+        },
+      },{id: "post-a-post-that-can-be-cited",
+        
+          title: "a post that can be cited",
+        
+        description: "this is what a post that can be cited looks like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2024/post-citation/";
+          
+        },
+      },{id: "post-a-post-with-pseudo-code",
+        
+          title: "a post with pseudo code",
+        
+        description: "this is what included pseudo code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2024/pseudocode/";
+          
+        },
+      },{id: "post-a-post-with-code-diff",
+        
+          title: "a post with code diff",
+        
+        description: "this is how you can display code diffs",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2024/code-diff/";
+          
+        },
+      },{id: "post-a-post-with-advanced-image-components",
+        
+          title: "a post with advanced image components",
+        
+        description: "this is what advanced image components could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2024/advanced-images/";
+          
+        },
+      },{id: "post-a-post-with-vega-lite",
+        
+          title: "a post with vega lite",
+        
+        description: "this is what included vega lite code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2024/vega-lite/";
+          
+        },
+      },{id: "post-a-post-with-geojson",
+        
+          title: "a post with geojson",
+        
+        description: "this is what included geojson code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2024/geojson-map/";
+          
+        },
+      },{id: "post-a-post-with-echarts",
+        
+          title: "a post with echarts",
+        
+        description: "this is what included echarts code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2024/echarts/";
+          
+        },
+      },{id: "post-a-post-with-chart-js",
+        
+          title: "a post with chart.js",
+        
+        description: "this is what included chart.js code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2024/chartjs/";
+          
+        },
+      },{id: "post-a-post-with-tikzjax",
+        
+          title: "a post with TikZJax",
+        
+        description: "this is what included TikZ code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2023/tikzjax/";
+          
+        },
+      },{id: "post-a-post-with-bibliography",
+        
+          title: "a post with bibliography",
+        
+        description: "an example of a blog post with bibliography",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2023/post-bibliography/";
+          
+        },
+      },{id: "post-a-post-with-jupyter-notebook",
+        
+          title: "a post with jupyter notebook",
+        
+        description: "an example of a blog post with jupyter notebook",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2023/jupyter-notebook/";
+          
+        },
+      },{id: "post-a-post-with-custom-blockquotes",
+        
+          title: "a post with custom blockquotes",
+        
+        description: "an example of a blog post with custom blockquotes",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2023/custom-blockquotes/";
+          
+        },
+      },{id: "post-a-post-with-table-of-contents-on-a-sidebar",
+        
+          title: "a post with table of contents on a sidebar",
+        
+        description: "an example of a blog post with table of contents on a sidebar",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2023/sidebar-table-of-contents/";
+          
+        },
+      },{id: "post-a-post-with-audios",
+        
+          title: "a post with audios",
+        
+        description: "this is what included audios could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2023/audios/";
+          
+        },
+      },{id: "post-a-post-with-videos",
+        
+          title: "a post with videos",
+        
+        description: "this is what included videos could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2023/videos/";
+          
+        },
+      },{id: "post-displaying-beautiful-interactive-tables",
+        
+          title: "displaying beautiful interactive tables",
+        
+        description: "an example of how to use interactive tables in al-folio",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2023/tables/";
+          
+        },
+      },{id: "post-a-post-with-table-of-contents",
+        
+          title: "a post with table of contents",
+        
+        description: "an example of a blog post with table of contents",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2023/table-of-contents/";
+          
+        },
+      },{id: "post-a-post-with-giscus-comments",
+        
+          title: "a post with giscus comments",
+        
+        description: "an example of a blog post with giscus comments",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2022/giscus-comments/";
+          
+        },
+      },{id: "post-یک-نوشتهٔ-راست-چین",
+        
+          title: "یک نوشتهٔ راست‌چین",
+        
+        description: "نمونه‌ای از پشتیبانی زبان‌های راست‌چین",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2022/rtl/";
+          
+        },
+      },{id: "post-displaying-external-posts-on-your-al-folio-blog",
+        
+          title: 'Displaying External Posts on Your al-folio Blog <svg width="1.2rem" height="1.2rem" top=".5rem" viewbox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.open("https://medium.com/@al-folio/displaying-external-posts-on-your-al-folio-blog-b60a1d241a0a?source=rss-17feae71c3c4------2", "_blank");
+          
+        },
+      },{id: "post-a-post-with-redirect",
+        
+          title: "a post with redirect",
+        
+        description: "you can also redirect to assets like pdf",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/assets/pdf/example_pdf.pdf";
+          
+        },
+      },{id: "post-a-post-with-diagrams",
+        
+          title: "a post with diagrams",
+        
+        description: "an example of a blog post with diagrams",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2021/diagrams/";
+          
+        },
+      },{id: "post-a-distill-style-blog-post",
+        
+          title: "a distill-style blog post",
+        
+        description: "an example of a distill-style blog post and main elements",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2021/distill/";
+          
+        },
+      },{id: "post-a-post-with-twitter",
+        
+          title: "a post with twitter",
+        
+        description: "an example of a blog post with twitter",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2020/twitter/";
+          
+        },
+      },{id: "post-a-post-with-disqus-comments",
+        
+          title: "a post with disqus comments",
+        
+        description: "an example of a blog post with disqus comments",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2015/disqus-comments/";
+          
+        },
+      },{id: "post-a-post-with-math",
+        
+          title: "a post with math",
+        
+        description: "an example of a blog post with some math",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2015/math/";
+          
+        },
+      },{id: "post-a-post-with-code",
+        
+          title: "a post with code",
+        
+        description: "an example of a blog post with some code",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2015/code/";
+          
+        },
+      },{id: "post-a-post-with-images",
+        
+          title: "a post with images",
+        
+        description: "this is what included images could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2015/images/";
+          
+        },
+      },{id: "post-a-post-with-formatting-and-links",
+        
+          title: "a post with formatting and links",
+        
+        description: "march & april, looking forward to summer",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/401/blog/2015/formatting-and-links/";
+          
+        },
+      },{id: "books-the-godfather",
+          title: 'The Godfather',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/401/books/the_godfather/";
+            },},{id: "news-a-simple-inline-announcement",
+          title: 'A simple inline announcement.',
+          description: "",
+          section: "News",},{id: "news-a-long-announcement-with-details",
+          title: 'A long announcement with details',
+          description: "",
+          section: "News",handler: () => {
+              window.location.href = "/401/news/announcement_2/";
+            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
+          title: 'A simple inline announcement with Markdown emoji! <img class="emoji" title=":sparkles:" alt=":sparkles:" src="https://github.githubassets.com/images/icons/emoji/unicode/2728.png" height="20" width="20"> <img class="emoji" title=":smile:" alt=":smile:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png" height="20" width="20">',
+          description: "",
+          section: "News",},{id: "projects-我国第七次人口普查的100m分辨率人口栅格数据",
+          title: '我国第七次人口普查的100m分辨率人口栅格数据',
+          description: "2020年中国第七次人口普查100米人口栅格数据，含数据来源、制作流程、技术信息、科研应用、使用须知、局限性、引用与下载。",
+          section: "Projects",handler: () => {
+              window.location.href = "/401/population-grid-2020/";
+            },},{id: "teachings-data-science-fundamentals",
+          title: 'Data Science Fundamentals',
+          description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
+          section: "Teachings",handler: () => {
+              window.location.href = "/401/teachings/data-science-fundamentals/";
+            },},{id: "teachings-introduction-to-machine-learning",
+          title: 'Introduction to Machine Learning',
+          description: "This course provides an introduction to machine learning concepts, algorithms, and applications. Students will learn about supervised and unsupervised learning, model evaluation, and practical implementations.",
+          section: "Teachings",handler: () => {
+              window.location.href = "/401/teachings/introduction-to-machine-learning/";
+            },},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%6C%61%62_%65%6D%61%69%6C@%67%64%75%74.%65%64%75.%63%6E", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/huangdongnb", "_blank");
+        },
+      },{
+        id: 'social-work',
+        title: 'Work',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://arc.gdut.edu.cn/info/1026/2018.htm", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/401/assets/al_search/js/shortcut-key.js"></script> </body> </html>
