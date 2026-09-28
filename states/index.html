@@ -507,6 +507,14 @@
   @media(max-width:620px){.login-panel{padding:40px 25px}.login-dialog{height:min(540px,calc(100vh - 30px))}}
 
   /* Black, white and gray palette shared with the Team page. */
+  body.fixed-top-nav {
+    --global-theme-color: #242424;
+    --global-hover-color: #111111;
+  }
+
+  #navbar .nav-item.active > .nav-link,
+  #navbar .nav-link:hover { color: #242424 !important; }
+
   .dataset-page {
     --dataset-blue: #242424;
     --dataset-blue-dark: #111111;
