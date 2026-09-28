@@ -632,36 +632,52 @@
   .dataset-badge { color: #555555; background: #e9e9e9; }
   .dataset-empty { border-color: #d6d6d6; color: #737373; }
 
-  .login-overlay {
-    --blue: #242424;
-    --blue-dark: #111111;
-    --line: #e5e5e5;
-    --muted: #737373;
-    --danger: #444444;
-    background: rgba(17, 17, 17, 0.28);
+  .dataset-group { scroll-margin-top: 88px; }
+  .dataset-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin: 24px 0 4px;
   }
 
-  .login-dialog { border-color: rgba(255, 255, 255, 0.86); box-shadow: 0 26px 90px rgba(0, 0, 0, 0.2); }
-  .modal-close { background: #eeeeee; color: #555555; }
-  .character-panel { border-color: #d6d6d6; background: #e5e5e5; }
-  .character-copy small,
-  .form-kicker,
-  .toggle-password { color: #242424; }
-  .char-purple { background: #777777; }
-  .char-black { background: #242424; }
-  .char-orange { background: #aaaaaa; }
-  .char-yellow { background: #d0d0d0; }
-  .field label { color: #555555; }
-  .input-shell { border-color: #d6d6d6; background: #fafafa; }
-  .input-shell:focus-within { border-color: #929292; background: #ffffff; box-shadow: 0 0 0 4px rgba(17, 17, 17, 0.08); }
-  .login-submit,
-  .login-submit.success { background: #242424; color: #ffffff; }
-  .error-msg { border-color: #cfcfcf; background: #f2f2f2; color: #444444; }
-  .toast { background: #242424; color: #ffffff; }
-  #loginEntry { border-color: #d6d6d6; }
-  #loginEntry:hover { background: rgba(17, 17, 17, 0.07); }
-  #loginEntry.logged { border-color: #242424; background: #242424; color: #ffffff; }
-  .data-login-avatar { background: rgba(17, 17, 17, 0.1); }
+  .dataset-pagination[hidden] { display: none !important; }
+  .dataset-page-button {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 11px;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #555555;
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+
+  .dataset-page-button:hover:not(:disabled) {
+    border-color: #929292;
+    background: #f3f3f3;
+    color: #111111;
+  }
+
+  .dataset-page-button.is-active {
+    border-color: #242424;
+    background: #242424;
+    color: #ffffff;
+  }
+
+  .dataset-page-button:disabled {
+    opacity: 0.36;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 600px) {
+    .dataset-pagination { gap: 5px; }
+    .dataset-page-button { min-width: 34px; padding: 0 8px; }
+  }
+
   footer.fixed-bottom { background: #1c1c1c; }
 </style> <div class="dataset-page" id="datasetPage"> <section class="dataset-hero" aria-labelledby="datasetTitle"> <div class="dataset-hero__inner"> <h1 id="datasetTitle">402 数据学社</h1> <p>上百种城市数据等你来获取！</p> </div> </section> <div class="dataset-shell"> <aside class="dataset-sidebar" aria-label="数据分类"> <div class="dataset-sidebar__title"> <span>▥</span> 数据分类</div> <div class="dataset-category-list"> <button class="dataset-category is-active" type="button" data-category="all"><span class="category-index">ALL</span>全部数据</button> <button class="dataset-category" type="button" data-category="人口相关数据"><span class="category-index">1</span>人口相关数据</button> <button class="dataset-category" type="button" data-category="交通相关数据"><span class="category-index">2</span>交通相关数据</button> <button class="dataset-category" type="button" data-category="生态相关数据"><span class="category-index">3</span>生态相关数据</button> <button class="dataset-category" type="button" data-category="行政区划数据"><span class="category-index">4</span>行政区划数据</button> <button class="dataset-category" type="button" data-category="地形相关数据"><span class="category-index">5</span>地形相关数据</button> <button class="dataset-category" type="button" data-category="土地利用相关数据"><span class="category-index">6</span>土地利用相关数据</button> <button class="dataset-category" type="button" data-category="河流水系数据"><span class="category-index">7</span>河流水系数据</button> <button class="dataset-category" type="button" data-category="建筑相关数据"><span class="category-index">8</span>建筑相关数据</button> <button class="dataset-category" type="button" data-category="建成区相关数据"><span class="category-index">9</span>建成区相关数据</button> <button class="dataset-category" type="button" data-category="社会经济相关数据"><span class="category-index">10</span>社会经济相关数据</button> <button class="dataset-category" type="button" data-category="气象相关数据"><span class="category-index">11</span>气象相关数据</button> <button class="dataset-category" type="button" data-category="环境污染数据"><span class="category-index">12</span>环境污染数据</button> <button class="dataset-category" type="button" data-category="夜间灯光数据"><span class="category-index">13</span>夜间灯光数据</button> <button class="dataset-category" type="button" data-category="土壤相关数据"><span class="category-index">14</span>土壤相关数据</button> <button class="dataset-category" type="button" data-category="poi相关数据"><span class="category-index">15</span>poi相关数据</button> <button class="dataset-category" type="button" data-category="其他数据"><span class="category-index">16</span>其他数据</button> </div> </aside> <main class="dataset-main"> <div class="dataset-toolbar"> <div class="dataset-toolbar__top"> <h2> <span id="activeCategoryTitle">全部数据</span><span class="dataset-result-count">共找到 <strong id="datasetCount">21</strong> 条数据</span> </h2> <div class="dataset-toolbar__actions"> <form class="dataset-search dataset-search--compact" id="datasetSearchForm" role="search"> <div class="dataset-search__box"><span class="dataset-search__icon" aria-hidden="true">⌕</span><input id="datasetSearchInput" type="search" placeholder="搜索名称、年份、分辨率或格式" aria-label="搜索数据关键词" autocomplete="off"><button class="dataset-search__clear" id="datasetSearchClear" type="button" aria-label="清空搜索" hidden>×</button></div><button class="dataset-search__submit" type="submit">搜索数据</button> </form><span class="dataset-search__hint" id="datasetSearchHint" aria-live="polite"></span> <button class="dataset-reset" id="datasetReset" type="button">↻  重置筛选</button> </div> </div> <div class="dataset-filters"> <label>数据格式： <select id="formatFilter" aria-label="按数据格式筛选"> <option value="all">全部</option> <option value="tif栅格数据">tif栅格数据</option> <option value="shp矢量数据">shp矢量数据</option> <option value="表格数据">表格数据</option> <option value="其他格式">其他格式</option> </select> </label> </div> </div> <section class="dataset-group" aria-label="数据列表"> <h3 class="dataset-group__heading">数据资源 <span id="groupCount">21 条</span> </h3> <div id="datasetList"> <article class="dataset-card" data-category="人口相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="1.1 我国第七次人口普查的100m分辨率人口栅格数据 人口相关数据 2020 100 m tif栅格数据"><div><a class="dataset-card__title" href="/401/population-grid-2020/">1.1 我国第七次人口普查的100m分辨率人口栅格数据</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>人口相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div> <script>document.addEventListener('DOMContentLoaded',function(){const overlay=document.getElementById('loginOverlay'),entry=document.getElementById('loginEntry'),loginText=document.getElementById('loginText'),accountInput=document.getElementById('account'),passwordInput=document.getElementById('password'),toggleBtn=document.getElementById('togglePassword'),errEl=document.getElementById('errorMsg'),toast=document.getElementById('toast');let loggedIn=sessionStorage.getItem('401-data-access')==='yes',pending='';
     function syncLogin(){entry.classList.toggle('logged',loggedIn);loginText.textContent=loggedIn?'已登录 · 2026':'登录'}function openLogin(){overlay.classList.add('open');setTimeout(()=>accountInput.focus(),250)}function closeLogin(){overlay.classList.remove('open');errEl.style.display='none'}function showToast(text){toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2100)}
@@ -700,9 +716,17 @@
     const groupCount = document.getElementById("groupCount");
     const emptyState = document.getElementById("datasetEmpty");
     const activeCategoryTitle = document.getElementById("activeCategoryTitle");
+    const pagination = document.createElement("nav");
+    pagination.className = "dataset-pagination";
+    pagination.id = "datasetPagination";
+    pagination.setAttribute("aria-label", "数据列表分页");
+    pagination.hidden = true;
+    emptyState.before(pagination);
     const cityModelFrame = { contentWindow: null, addEventListener: function () {} };
     const cityLayerLabel = { textContent: "" };
+    const pageSize = 7;
     let activeCategory = "all";
+    let currentPage = 1;
 
     function updateCityModel(category) {
       cityLayerLabel.textContent = category === "all" ? "全部城市要素" : category;
@@ -718,24 +742,71 @@
       return String(value || "").toLowerCase().replace(/[—–－]/g, "-").replace(/\s+/g, " ").trim();
     }
 
-    function applyFilters() {
+    function goToPage(page) {
+      currentPage = page;
+      applyFilters(false);
+      document.querySelector(".dataset-group").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function renderPagination(totalPages) {
+      pagination.replaceChildren();
+      pagination.hidden = totalPages <= 1;
+      if (totalPages <= 1) return;
+
+      function addButton(label, page, options) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "dataset-page-button" + (options.active ? " is-active" : "");
+        button.textContent = label;
+        button.disabled = options.disabled;
+        button.setAttribute("aria-label", options.ariaLabel);
+        if (options.active) button.setAttribute("aria-current", "page");
+        button.addEventListener("click", function () { goToPage(page); });
+        pagination.appendChild(button);
+      }
+
+      addButton("上一页", currentPage - 1, {
+        active: false,
+        disabled: currentPage === 1,
+        ariaLabel: "上一页"
+      });
+      for (let page = 1; page <= totalPages; page += 1) {
+        addButton(String(page), page, {
+          active: page === currentPage,
+          disabled: false,
+          ariaLabel: "第 " + page + " 页"
+        });
+      }
+      addButton("下一页", currentPage + 1, {
+        active: false,
+        disabled: currentPage === totalPages,
+        ariaLabel: "下一页"
+      });
+    }
+
+    function applyFilters(resetPage) {
+      if (resetPage) currentPage = 1;
       const query = normalizeText(searchInput.value);
       const terms = query ? query.split(" ").filter(Boolean) : [];
-      let visibleCount = 0;
-      cards.forEach(function (card) {
+      const matchingCards = cards.filter(function (card) {
         const categoryMatches = activeCategory === "all" || card.dataset.category === activeCategory;
         const formatMatches = formatFilter.value === "all" || card.dataset.format === formatFilter.value;
         const haystack = normalizeText((card.dataset.search || "") + " " + card.textContent);
         const keywordMatches = terms.length === 0 || terms.every(function (term) { return haystack.includes(term); });
-        const isVisible = categoryMatches && formatMatches && keywordMatches;
-        card.hidden = !isVisible;
-        if (isVisible) visibleCount += 1;
+        return categoryMatches && formatMatches && keywordMatches;
       });
+      const visibleCount = matchingCards.length;
+      const totalPages = Math.ceil(visibleCount / pageSize);
+      currentPage = totalPages ? Math.min(currentPage, totalPages) : 1;
+      const startIndex = (currentPage - 1) * pageSize;
+      const pageCards = new Set(matchingCards.slice(startIndex, startIndex + pageSize));
+      cards.forEach(function (card) { card.hidden = !pageCards.has(card); });
       count.textContent = visibleCount;
       groupCount.textContent = visibleCount + " 条";
       emptyState.style.display = visibleCount === 0 ? "block" : "none";
       clearButton.hidden = terms.length === 0;
       searchHint.textContent = terms.length ? "匹配 " + visibleCount + " 条" : "";
+      renderPagination(totalPages);
     }
 
     categoryButtons.forEach(function (button) {
@@ -746,11 +817,11 @@
         searchInput.value = "";
         clearButton.hidden = true;
         activeCategoryTitle.textContent = activeCategory === "all" ? "全部数据" : activeCategory;
-        applyFilters();
+        applyFilters(true);
         updateCityModel(activeCategory);
       });
     });
-    searchForm.addEventListener("submit", function (event) { event.preventDefault(); applyFilters(); });
+    searchForm.addEventListener("submit", function (event) { event.preventDefault(); applyFilters(true); });
     searchInput.addEventListener("input", function () {
       if (searchInput.value.trim()) {
         activeCategory = "all";
@@ -759,30 +830,30 @@
       } else {
         activeCategoryTitle.textContent = "全部数据";
       }
-      applyFilters();
+      applyFilters(true);
     });
     clearButton.addEventListener("click", function () {
       searchInput.value = "";
       activeCategory = "all";
       activeCategoryTitle.textContent = "全部数据";
       categoryButtons.forEach(function (item) { item.classList.toggle("is-active", item.dataset.category === "all"); });
-      applyFilters();
+      applyFilters(true);
       searchInput.focus();
     });
-    formatFilter.addEventListener("change", applyFilters);
+    formatFilter.addEventListener("change", function () { applyFilters(true); });
     resetButton.addEventListener("click", function () {
       activeCategory = "all";
       searchInput.value = "";
       formatFilter.value = "all";
       activeCategoryTitle.textContent = "全部数据";
       categoryButtons.forEach(function (item) { item.classList.toggle("is-active", item.dataset.category === "all"); });
-      applyFilters();
+      applyFilters(true);
       updateCityModel("all");
     });
     cityModelFrame.addEventListener("load", function () {
       updateCityModel(activeCategory);
     });
-    applyFilters();
+    applyFilters(true);
     updateCityModel("all");
   });
 </script> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Guangzhou City Lab. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script>
