@@ -91,6 +91,18 @@ nav_order: 6
     min-width: 0;
   }
 
+  #academic-exchange a.activity-title {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  #academic-exchange a.activity-title:hover,
+  #academic-exchange a.activity-title:focus-visible {
+    color: var(--activity-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
   #academic-exchange .activity-date {
     color: var(--activity-muted);
     white-space: nowrap;
@@ -235,7 +247,12 @@ nav_order: 6
     <article class="activity-item" data-date="2025-10-23">
       <div class="activity-heading">
         <span class="activity-year">2025</span>
-        <span class="activity-title">Academic Lecture: The Impact of Urban Green Spaces on Public Health and Well-Being</span>
+        <a
+          class="activity-title"
+          href="https://mp.weixin.qq.com/s/cjafBsnDPHMMVbAf1waGpA"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Academic Lecture: The Impact of Urban Green Spaces on Public Health and Well-Being</a>
         <time class="activity-date" datetime="2025-10-23">10-23</time>
       </div>
 
@@ -254,7 +271,12 @@ nav_order: 6
     <article class="activity-item" data-date="2025-10-08">
       <div class="activity-heading">
         <span class="activity-year">2025</span>
-        <span class="activity-title">Guangdong Graduate Academic Forum on Landscape Architecture</span>
+        <a
+          class="activity-title"
+          href="https://mp.weixin.qq.com/s/c4R9dlT_-ZDw5s3IxCvN9Q"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Guangdong Graduate Academic Forum on Landscape Architecture</a>
         <time class="activity-date" datetime="2025-10-08">10-8</time>
       </div>
 
