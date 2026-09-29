@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: School of Architecture and Urban Planning, Guangdong University of Technology
 

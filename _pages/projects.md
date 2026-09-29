@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 数据资源
+title: States
 permalink: /states/
 nav: true
 nav_order: 2
@@ -506,7 +506,7 @@ dataset_categories:
 <div class="dataset-page" id="datasetPage">
   <section class="dataset-hero" aria-labelledby="datasetTitle">
     <div class="dataset-hero__inner">
-      <h1 id="datasetTitle">401 数据学社</h1>
+      <h1 id="datasetTitle">402 数据学社</h1>
       <p>几千种城市数据等你来获取！</p>
     </div>
   </section>
@@ -577,7 +577,7 @@ dataset_categories:
           id="cityModelFrame"
           class="city-model-frame"
           src="{{ '/assets/html/city-model-embed.html' | relative_url }}"
-          title="401城市要素交互模型"
+          title="402城市要素交互模型"
           loading="eager"
           allow="fullscreen"
           referrerpolicy="strict-origin-when-cross-origin"
