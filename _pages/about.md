@@ -51,4 +51,17 @@ We look forward to forging partnerships toward our shared vision: **a dynamic Gr
   .clearfix {
     display: flow-root;
   }
+  /* Match the typography used on the Teaching page within About only. */
+  .post {
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .post .more-info {
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .post .post-title,
+  .post h2 {
+    font-weight: 400;
+  }
 </style>
