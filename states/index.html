@@ -446,6 +446,14 @@
   .dataset-search--compact input { padding: 9px 12px; }
   .dataset-search--compact button { min-width: 72px; padding: 0 14px; }
 
+  .dataset-filters { align-items: center; gap: 12px 20px; }
+  .dataset-filters .dataset-search--compact { flex: 0 1 390px; min-width: 260px; width: 390px; margin-right: 4px; }
+  .dataset-filters .dataset-search__hint:empty { display: none; }
+  .dataset-filters .dataset-reset { white-space: nowrap; }
+  @media (max-width: 760px) {
+    .dataset-filters .dataset-search--compact { flex: 1 1 100%; width: 100%; min-width: 0; }
+  }
+
   .city-panel--three { min-height: 680px; background: #e5e9e4; }
   .city-frame-wrap { height: 580px; background: #cfd8d1; }
   .city-model-frame {
@@ -679,7 +687,7 @@
   }
 
   footer.fixed-bottom { background: #1c1c1c; }
-</style> <div class="dataset-page" id="datasetPage"> <section class="dataset-hero" aria-labelledby="datasetTitle"> <div class="dataset-hero__inner"> <h1 id="datasetTitle">402 数据学社</h1> <p>上百种城市数据等你来获取！</p> </div> </section> <div class="dataset-shell"> <aside class="dataset-sidebar" aria-label="数据分类"> <div class="dataset-sidebar__title"> <span>▥</span> 数据分类</div> <div class="dataset-category-list"> <button class="dataset-category is-active" type="button" data-category="all"><span class="category-index">ALL</span>全部数据</button> <button class="dataset-category" type="button" data-category="人口相关数据"><span class="category-index">1</span>人口相关数据</button> <button class="dataset-category" type="button" data-category="交通相关数据"><span class="category-index">2</span>交通相关数据</button> <button class="dataset-category" type="button" data-category="生态相关数据"><span class="category-index">3</span>生态相关数据</button> <button class="dataset-category" type="button" data-category="行政区划数据"><span class="category-index">4</span>行政区划数据</button> <button class="dataset-category" type="button" data-category="地形相关数据"><span class="category-index">5</span>地形相关数据</button> <button class="dataset-category" type="button" data-category="土地利用相关数据"><span class="category-index">6</span>土地利用相关数据</button> <button class="dataset-category" type="button" data-category="河流水系数据"><span class="category-index">7</span>河流水系数据</button> <button class="dataset-category" type="button" data-category="建筑相关数据"><span class="category-index">8</span>建筑相关数据</button> <button class="dataset-category" type="button" data-category="建成区相关数据"><span class="category-index">9</span>建成区相关数据</button> <button class="dataset-category" type="button" data-category="社会经济相关数据"><span class="category-index">10</span>社会经济相关数据</button> <button class="dataset-category" type="button" data-category="气象相关数据"><span class="category-index">11</span>气象相关数据</button> <button class="dataset-category" type="button" data-category="环境污染数据"><span class="category-index">12</span>环境污染数据</button> <button class="dataset-category" type="button" data-category="夜间灯光数据"><span class="category-index">13</span>夜间灯光数据</button> <button class="dataset-category" type="button" data-category="土壤相关数据"><span class="category-index">14</span>土壤相关数据</button> <button class="dataset-category" type="button" data-category="poi相关数据"><span class="category-index">15</span>poi相关数据</button> <button class="dataset-category" type="button" data-category="其他数据"><span class="category-index">16</span>其他数据</button> </div> </aside> <main class="dataset-main"> <div class="dataset-toolbar"> <div class="dataset-toolbar__top"> <h2> <span id="activeCategoryTitle">全部数据</span><span class="dataset-result-count">共找到 <strong id="datasetCount">21</strong> 条数据</span> </h2> <div class="dataset-toolbar__actions"> <form class="dataset-search dataset-search--compact" id="datasetSearchForm" role="search"> <div class="dataset-search__box"><span class="dataset-search__icon" aria-hidden="true">⌕</span><input id="datasetSearchInput" type="search" placeholder="搜索名称、年份、分辨率或格式" aria-label="搜索数据关键词" autocomplete="off"><button class="dataset-search__clear" id="datasetSearchClear" type="button" aria-label="清空搜索" hidden>×</button></div><button class="dataset-search__submit" type="submit">搜索数据</button> </form><span class="dataset-search__hint" id="datasetSearchHint" aria-live="polite"></span> <button class="dataset-reset" id="datasetReset" type="button">↻  重置筛选</button> </div> </div> <div class="dataset-filters"> <label>数据格式： <select id="formatFilter" aria-label="按数据格式筛选"> <option value="all">全部</option> <option value="tif栅格数据">tif栅格数据</option> <option value="shp矢量数据">shp矢量数据</option> <option value="表格数据">表格数据</option> <option value="其他格式">其他格式</option> </select> </label> </div> </div> <section class="dataset-group" aria-label="数据列表"> <h3 class="dataset-group__heading">数据资源 <span id="groupCount">21 条</span> </h3> <div id="datasetList"> <article class="dataset-card" data-category="人口相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="1.1 我国第七次人口普查的100m分辨率人口栅格数据 人口相关数据 2020 100 m tif栅格数据"><div><a class="dataset-card__title" href="/401/population-grid-2020/">1.1 我国第七次人口普查的100m分辨率人口栅格数据</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>人口相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div> <script>document.addEventListener('DOMContentLoaded',function(){const overlay=document.getElementById('loginOverlay'),entry=document.getElementById('loginEntry'),loginText=document.getElementById('loginText'),accountInput=document.getElementById('account'),passwordInput=document.getElementById('password'),toggleBtn=document.getElementById('togglePassword'),errEl=document.getElementById('errorMsg'),toast=document.getElementById('toast');let loggedIn=sessionStorage.getItem('401-data-access')==='yes',pending='';
+</style> <div class="dataset-page" id="datasetPage"> <section class="dataset-hero" aria-labelledby="datasetTitle"> <div class="dataset-hero__inner"> <h1 id="datasetTitle">402 数据学社</h1> <p>上百种城市数据等你来获取！</p> </div> </section> <div class="dataset-shell"> <aside class="dataset-sidebar" aria-label="数据分类"> <div class="dataset-sidebar__title"> <span>▥</span> 数据分类</div> <div class="dataset-category-list"> <button class="dataset-category is-active" type="button" data-category="all"><span class="category-index">ALL</span>全部数据</button> <button class="dataset-category" type="button" data-category="人口相关数据"><span class="category-index">1</span>人口相关数据</button> <button class="dataset-category" type="button" data-category="交通相关数据"><span class="category-index">2</span>交通相关数据</button> <button class="dataset-category" type="button" data-category="生态相关数据"><span class="category-index">3</span>生态相关数据</button> <button class="dataset-category" type="button" data-category="行政区划数据"><span class="category-index">4</span>行政区划数据</button> <button class="dataset-category" type="button" data-category="地形相关数据"><span class="category-index">5</span>地形相关数据</button> <button class="dataset-category" type="button" data-category="土地利用相关数据"><span class="category-index">6</span>土地利用相关数据</button> <button class="dataset-category" type="button" data-category="河流水系数据"><span class="category-index">7</span>河流水系数据</button> <button class="dataset-category" type="button" data-category="建筑相关数据"><span class="category-index">8</span>建筑相关数据</button> <button class="dataset-category" type="button" data-category="建成区相关数据"><span class="category-index">9</span>建成区相关数据</button> <button class="dataset-category" type="button" data-category="社会经济相关数据"><span class="category-index">10</span>社会经济相关数据</button> <button class="dataset-category" type="button" data-category="气象相关数据"><span class="category-index">11</span>气象相关数据</button> <button class="dataset-category" type="button" data-category="环境污染数据"><span class="category-index">12</span>环境污染数据</button> <button class="dataset-category" type="button" data-category="夜间灯光数据"><span class="category-index">13</span>夜间灯光数据</button> <button class="dataset-category" type="button" data-category="土壤相关数据"><span class="category-index">14</span>土壤相关数据</button> <button class="dataset-category" type="button" data-category="poi相关数据"><span class="category-index">15</span>poi相关数据</button> <button class="dataset-category" type="button" data-category="其他数据"><span class="category-index">16</span>其他数据</button> </div> </aside> <main class="dataset-main"> <div class="dataset-toolbar"> <div class="dataset-toolbar__top"> <h2> <span id="activeCategoryTitle">全部数据</span><span class="dataset-result-count">共找到 <strong id="datasetCount">21</strong> 条数据</span> </h2> </div> <div class="dataset-filters"> <form class="dataset-search dataset-search--compact" id="datasetSearchForm" role="search"> <div class="dataset-search__box"><span class="dataset-search__icon" aria-hidden="true">⌕</span><input id="datasetSearchInput" type="search" placeholder="搜索名称、年份、分辨率或格式" aria-label="搜索数据关键词" autocomplete="off"><button class="dataset-search__clear" id="datasetSearchClear" type="button" aria-label="清空搜索" hidden>×</button></div><button class="dataset-search__submit" type="submit">搜索数据</button> </form><span class="dataset-search__hint" id="datasetSearchHint" aria-live="polite"></span> <label>数据格式： <select id="formatFilter" aria-label="按数据格式筛选"> <option value="all">全部</option> <option value="tif栅格数据">tif栅格数据</option> <option value="shp矢量数据">shp矢量数据</option> <option value="表格数据">表格数据</option> <option value="其他格式">其他格式</option> </select> </label> <label>时间： <select id="timeFilter" aria-label="按数据年份筛选"><option value="all">全部</option></select> </label> <button class="dataset-reset" id="datasetReset" type="button">↻  重置筛选</button> </div> </div> <section class="dataset-group" aria-label="数据列表"> <h3 class="dataset-group__heading">数据资源 <span id="groupCount">21 条</span> </h3> <div id="datasetList"> <article class="dataset-card" data-category="人口相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="1.1 我国第七次人口普查的100m分辨率人口栅格数据 人口相关数据 2020 100 m tif栅格数据"><div><a class="dataset-card__title" href="/401/population-grid-2020/">1.1 我国第七次人口普查的100m分辨率人口栅格数据</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>人口相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div> <script>document.addEventListener('DOMContentLoaded',function(){const overlay=document.getElementById('loginOverlay'),entry=document.getElementById('loginEntry'),loginText=document.getElementById('loginText'),accountInput=document.getElementById('account'),passwordInput=document.getElementById('password'),toggleBtn=document.getElementById('togglePassword'),errEl=document.getElementById('errorMsg'),toast=document.getElementById('toast');let loggedIn=sessionStorage.getItem('401-data-access')==='yes',pending='';
     function syncLogin(){entry.classList.toggle('logged',loggedIn);loginText.textContent=loggedIn?'已登录 · 2026':'登录'}function openLogin(){overlay.classList.add('open');setTimeout(()=>accountInput.focus(),250)}function closeLogin(){overlay.classList.remove('open');errEl.style.display='none'}function showToast(text){toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2100)}
     entry.addEventListener('click',()=>{if(loggedIn){loggedIn=false;sessionStorage.removeItem('401-data-access');syncLogin();showToast('已退出登录')}else openLogin()});document.getElementById('modalClose').addEventListener('click',closeLogin);overlay.addEventListener('click',e=>{if(e.target===overlay)closeLogin()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLogin()});document.querySelectorAll('.dataset-card__title').forEach(link=>link.addEventListener('click',e=>{if(!loggedIn){e.preventDefault();pending=link.getAttribute('href');openLogin()}}));
     let showPassword=false,isLoginError=false,mouseX=0,mouseY=0,isTyping=false,isLookingAtEachOther=false,isPurpleBlinking=false,isBlackBlinking=false,isPurplePeeking=false,isPasswordFocused=false,typingTimer=null,errorRecoverTimer=null;
@@ -712,6 +720,7 @@
     const searchInput = document.getElementById("datasetSearchInput");
     const searchForm = document.getElementById("datasetSearchForm");
     const formatFilter = document.getElementById("formatFilter");
+    const timeFilter = document.getElementById("timeFilter");
     const resetButton = document.getElementById("datasetReset");
     const clearButton = document.getElementById("datasetSearchClear");
     const searchHint = document.getElementById("datasetSearchHint");
@@ -728,6 +737,30 @@
     const cityModelFrame = { contentWindow: null, addEventListener: function () {} };
     const cityLayerLabel = { textContent: "" };
     const pageSize = 7;
+    const cardYears = new Map();
+    const availableYears = new Set();
+    let hasUndatedCards = false;
+    cards.forEach(function (card) {
+      const years = new Set();
+      const source = card.dataset.search || "";
+      const periods = source.matchAll(/(?:19|20)\d{2}(?:\s*[—–-]\s*(?:19|20)\d{2})?/g);
+      for (const period of periods) {
+        const bounds = period[0].match(/(?:19|20)\d{2}/g).map(Number);
+        const from = bounds[0];
+        const to = bounds.length > 1 ? bounds[1] : from;
+        if (to < from || to - from > 100) continue;
+        for (let year = from; year <= to; year += 1) {
+          years.add(year);
+          availableYears.add(year);
+        }
+      }
+      cardYears.set(card, years);
+      if (years.size === 0) hasUndatedCards = true;
+    });
+    Array.from(availableYears).sort(function (a, b) { return b - a; }).forEach(function (year) {
+      timeFilter.add(new Option(year + "年", String(year)));
+    });
+    if (hasUndatedCards) timeFilter.add(new Option("未注明时间", "undated"));
     let activeCategory = "all";
     let currentPage = 1;
 
@@ -794,9 +827,11 @@
       const matchingCards = cards.filter(function (card) {
         const categoryMatches = activeCategory === "all" || card.dataset.category === activeCategory;
         const formatMatches = formatFilter.value === "all" || card.dataset.format === formatFilter.value;
+        const years = cardYears.get(card);
+        const timeMatches = timeFilter.value === "all" || (timeFilter.value === "undated" ? years.size === 0 : years.has(Number(timeFilter.value)));
         const haystack = normalizeText((card.dataset.search || "") + " " + card.textContent);
         const keywordMatches = terms.length === 0 || terms.every(function (term) { return haystack.includes(term); });
-        return categoryMatches && formatMatches && keywordMatches;
+        return categoryMatches && formatMatches && timeMatches && keywordMatches;
       });
       const visibleCount = matchingCards.length;
       const totalPages = Math.ceil(visibleCount / pageSize);
@@ -844,10 +879,12 @@
       searchInput.focus();
     });
     formatFilter.addEventListener("change", function () { applyFilters(true); });
+    timeFilter.addEventListener("change", function () { applyFilters(true); });
     resetButton.addEventListener("click", function () {
       activeCategory = "all";
       searchInput.value = "";
       formatFilter.value = "all";
+      timeFilter.value = "all";
       activeCategoryTitle.textContent = "全部数据";
       categoryButtons.forEach(function (item) { item.classList.toggle("is-active", item.dataset.category === "all"); });
       applyFilters(true);
