@@ -3,7 +3,7 @@
 Jekyll::Hooks.register :site, :post_write do |site|
   footer_pattern = /<footer\b[^>]*\brole=["']contentinfo["'][^>]*>[\s\S]*?<\/footer>/i
   footer_text = "© 2026 Guangzhou 402 City Lab."
-  footer_style = "background: #1c1c1c !important; color: #e8e8e8 !important; border-top-color: #1c1c1c !important;"
+  footer_style = "position: static !important; bottom: auto !important; background: #1c1c1c !important; color: #e8e8e8 !important; border-top-color: #1c1c1c !important;"
   text_style = "text-align: center; color: #e8e8e8 !important;"
 
   Dir.glob(File.join(site.dest, "**", "*.html")).each do |file|
