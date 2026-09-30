@@ -8,6 +8,12 @@ nav_order: 6
 ---
 
 <style>
+  .post-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
   .post-description {
     color: var(--global-text-color-light, #656a70);
     font-family: Georgia, "Times New Roman", serif;
