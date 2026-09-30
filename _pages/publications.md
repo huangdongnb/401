@@ -9,6 +9,24 @@ nav_order: 2
 
 <!-- _pages/publications.md -->
 
+<style>
+  /* Match Teaching's serif typography on Publications only. */
+  .post,
+  .post #bibsearch {
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  .post .post-title,
+  .post h2 {
+    font-weight: 400;
+  }
+
+  .post .post-description {
+    font-size: clamp(1rem, 1.35vw, 1.15rem);
+    line-height: 1.78;
+  }
+</style>
+
 <!-- Bibsearch Feature -->
 
 {% include bib_search.liquid %}
