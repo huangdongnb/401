@@ -19,7 +19,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
       else
         opening = opening.sub(/>\z/, %( style="#{footer_style}">))
       end
-      %(#{opening}<div class="container mt-0" style="#{text_style}">#{footer_text}</div></footer>)
+      %(<style>body { padding-bottom: 0 !important; }</style>#{opening}<div class="container mt-0" style="#{text_style}">#{footer_text}</div></footer>)
     end
     File.write(file, updated, mode: "w:UTF-8")
   end
