@@ -8,6 +8,14 @@ nav_order: 6
 ---
 
 <style>
+  .post-description {
+    color: var(--global-text-color-light, #656a70);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1rem, 1.35vw, 1.15rem);
+    font-weight: 300;
+    line-height: 1.78;
+  }
+
   #academic-exchange {
     --activity-ink: var(--global-text-color, #17191c);
     --activity-muted: var(--global-text-color-light, #656a70);
