@@ -686,7 +686,108 @@
     .dataset-page-button { min-width: 34px; padding: 0 8px; }
   }
 
-  footer.fixed-bottom { background: #1c1c1c; }
+  /* 浅色预览：只改变色彩与表面层次，不调整现有布局及交互。 */
+  body.fixed-top-nav {
+    --global-theme-color: #536f80;
+    --global-hover-color: #3e5b6d;
+    background: #ffffff;
+    color: #202a31;
+  }
+
+  #navbar {
+    background: rgba(255, 255, 255, 0.97) !important;
+    border-bottom: 1px solid #edf0f1;
+    box-shadow: 0 2px 14px rgba(33, 48, 56, 0.035);
+  }
+
+  #navbar .nav-item.active > .nav-link,
+  #navbar .nav-link:hover { color: #536f80 !important; }
+
+  .dataset-page {
+    --dataset-blue: #536f80;
+    --dataset-blue-dark: #3e5b6d;
+    --dataset-ink: #202a31;
+    --dataset-muted: #78858d;
+    --dataset-line: #e9edef;
+    background: #ffffff;
+    color: var(--dataset-ink);
+  }
+
+  .dataset-sidebar {
+    border-color: #e9edef;
+    background: #ffffff;
+    box-shadow: 0 5px 20px rgba(40, 56, 64, 0.035);
+  }
+
+  .dataset-sidebar__title { color: #26333b; }
+  .dataset-sidebar__title span,
+  .dataset-search__icon,
+  .dataset-result-count strong,
+  .dataset-reset,
+  .dataset-filters select { color: #536f80; }
+
+  .category-index { background: #f2f5f6; color: #77868f; }
+  .dataset-category { color: #596770; }
+  .dataset-category:hover,
+  .dataset-category.is-active {
+    color: #37586b;
+    background: #f1f6f8;
+  }
+  .dataset-category.is-active { box-shadow: inset 2px 0 #8ba7b5; }
+  .dataset-category.is-active .category-index {
+    background: #dfeaf0;
+    color: #3f6579;
+  }
+
+  .dataset-search,
+  .dataset-search--compact {
+    border-color: #e1e8eb;
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(40, 56, 64, 0.045);
+  }
+  .dataset-search:focus-within { border-color: #9cb5c1; box-shadow: 0 0 0 3px rgba(120, 151, 166, 0.11); }
+  .dataset-search button,
+  .dataset-search__submit { background: #5d7889; color: #ffffff; }
+  .dataset-search button:hover,
+  .dataset-search__submit:hover { background: #496777; }
+  .dataset-search__clear { background: #f1f4f5 !important; color: #60727c !important; }
+  .dataset-search__hint,
+  .dataset-result-count,
+  .dataset-group__heading span,
+  .dataset-card__more,
+  .dataset-card__arrow { color: #7a8991; }
+
+  .dataset-filters { border-color: #e9edef; color: #687780; }
+  .dataset-group__heading { border-color: #86a3b2; color: #27343c; }
+  .dataset-card { border-color: #e9edef; background: #ffffff; }
+  .dataset-card:hover {
+    border-color: #cbdce3;
+    background: #fafcfd;
+    box-shadow: 0 7px 20px rgba(54, 77, 90, 0.055);
+  }
+  .dataset-card__title { color: #293741; }
+  .dataset-card__title:hover { color: #456b80; }
+  .dataset-badge { color: #65737c; background: #f3f5f6; }
+  .dataset-empty { border-color: #dbe4e8; color: #78858d; }
+
+  .dataset-page-button { border-color: #e1e8eb; color: #66757e; }
+  .dataset-page-button:hover:not(:disabled) {
+    border-color: #b8cbd4;
+    background: #f5f9fa;
+    color: #3f6477;
+  }
+  .dataset-page-button.is-active {
+    border-color: #c7d8e0;
+    background: #eaf1f4;
+    color: #3d6377;
+  }
+
+  footer.fixed-bottom {
+    background: #ffffff;
+    border-top: 1px solid #edf0f1;
+    color: #687780;
+  }
+  footer.fixed-bottom .container { text-align: center; }
 </style> <div class="dataset-page" id="datasetPage"> <section class="dataset-hero" aria-labelledby="datasetTitle"> <div class="dataset-hero__inner"> <h1 id="datasetTitle">402 数据学社</h1> <p>上百种城市数据等你来获取！</p> </div> </section> <div class="dataset-shell"> <aside class="dataset-sidebar" aria-label="数据分类"> <div class="dataset-sidebar__title"> <span>▥</span> 数据分类</div> <div class="dataset-category-list"> <button class="dataset-category is-active" type="button" data-category="all"><span class="category-index">ALL</span>全部数据</button> <button class="dataset-category" type="button" data-category="人口相关数据"><span class="category-index">1</span>人口相关数据</button> <button class="dataset-category" type="button" data-category="交通相关数据"><span class="category-index">2</span>交通相关数据</button> <button class="dataset-category" type="button" data-category="生态相关数据"><span class="category-index">3</span>生态相关数据</button> <button class="dataset-category" type="button" data-category="行政区划数据"><span class="category-index">4</span>行政区划数据</button> <button class="dataset-category" type="button" data-category="地形相关数据"><span class="category-index">5</span>地形相关数据</button> <button class="dataset-category" type="button" data-category="土地利用相关数据"><span class="category-index">6</span>土地利用相关数据</button> <button class="dataset-category" type="button" data-category="河流水系数据"><span class="category-index">7</span>河流水系数据</button> <button class="dataset-category" type="button" data-category="建筑相关数据"><span class="category-index">8</span>建筑相关数据</button> <button class="dataset-category" type="button" data-category="建成区相关数据"><span class="category-index">9</span>建成区相关数据</button> <button class="dataset-category" type="button" data-category="社会经济相关数据"><span class="category-index">10</span>社会经济相关数据</button> <button class="dataset-category" type="button" data-category="气象相关数据"><span class="category-index">11</span>气象相关数据</button> <button class="dataset-category" type="button" data-category="环境污染数据"><span class="category-index">12</span>环境污染数据</button> <button class="dataset-category" type="button" data-category="夜间灯光数据"><span class="category-index">13</span>夜间灯光数据</button> <button class="dataset-category" type="button" data-category="土壤相关数据"><span class="category-index">14</span>土壤相关数据</button> <button class="dataset-category" type="button" data-category="poi相关数据"><span class="category-index">15</span>poi相关数据</button> <button class="dataset-category" type="button" data-category="其他数据"><span class="category-index">16</span>其他数据</button> </div> </aside> <main class="dataset-main"> <div class="dataset-toolbar"> <div class="dataset-toolbar__top"> <h2> <span id="activeCategoryTitle">全部数据</span><span class="dataset-result-count">共找到 <strong id="datasetCount">21</strong> 条数据</span> </h2> </div> <div class="dataset-filters"> <form class="dataset-search dataset-search--compact" id="datasetSearchForm" role="search"> <div class="dataset-search__box"><span class="dataset-search__icon" aria-hidden="true">⌕</span><input id="datasetSearchInput" type="search" placeholder="搜索名称、年份、分辨率或格式" aria-label="搜索数据关键词" autocomplete="off"><button class="dataset-search__clear" id="datasetSearchClear" type="button" aria-label="清空搜索" hidden>×</button></div><button class="dataset-search__submit" type="submit">搜索数据</button> </form><span class="dataset-search__hint" id="datasetSearchHint" aria-live="polite"></span> <label>数据格式： <select id="formatFilter" aria-label="按数据格式筛选"> <option value="all">全部</option> <option value="tif栅格数据">tif栅格数据</option> <option value="shp矢量数据">shp矢量数据</option> <option value="表格数据">表格数据</option> <option value="其他格式">其他格式</option> </select> </label> <label>时间： <select id="timeFilter" aria-label="按数据年份筛选"><option value="all">全部</option></select> </label> <button class="dataset-reset" id="datasetReset" type="button">↻  重置筛选</button> </div> </div> <section class="dataset-group" aria-label="数据列表"> <h3 class="dataset-group__heading">数据资源 <span id="groupCount">21 条</span> </h3> <div id="datasetList"> <article class="dataset-card" data-category="人口相关数据" data-format="tif栅格数据" data-access="免费获取" data-search="1.1 我国第七次人口普查的100m分辨率人口栅格数据 人口相关数据 2020 100 m tif栅格数据"><div><a class="dataset-card__title" href="/401/population-grid-2020/">1.1 我国第七次人口普查的100m分辨率人口栅格数据</a><div class="dataset-badges"><span class="dataset-badge">tif栅格数据</span><span class="dataset-badge">免费获取</span></div></div><div class="dataset-card__more"><span>人口相关数据</span><span class="dataset-card__arrow" aria-hidden="true">›</span></div> <script>document.addEventListener('DOMContentLoaded',function(){const overlay=document.getElementById('loginOverlay'),entry=document.getElementById('loginEntry'),loginText=document.getElementById('loginText'),accountInput=document.getElementById('account'),passwordInput=document.getElementById('password'),toggleBtn=document.getElementById('togglePassword'),errEl=document.getElementById('errorMsg'),toast=document.getElementById('toast');let loggedIn=sessionStorage.getItem('401-data-access')==='yes',pending='';
     function syncLogin(){entry.classList.toggle('logged',loggedIn);loginText.textContent=loggedIn?'已登录 · 2026':'登录'}function openLogin(){overlay.classList.add('open');setTimeout(()=>accountInput.focus(),250)}function closeLogin(){overlay.classList.remove('open');errEl.style.display='none'}function showToast(text){toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2100)}
     entry.addEventListener('click',()=>{if(loggedIn){loggedIn=false;sessionStorage.removeItem('401-data-access');syncLogin();showToast('已退出登录')}else openLogin()});document.getElementById('modalClose').addEventListener('click',closeLogin);overlay.addEventListener('click',e=>{if(e.target===overlay)closeLogin()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLogin()});document.querySelectorAll('.dataset-card__title').forEach(link=>link.addEventListener('click',e=>{if(!loggedIn){e.preventDefault();pending=link.getAttribute('href');openLogin()}}));
@@ -896,7 +997,7 @@
     applyFilters(true);
     updateCityModel("all");
   });
-</script> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Guangzhou City Lab. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script>
+</script> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"><div class="container mt-0">© 2026 Guangzhou 402 City Lab.</div></footer> <script>
   window.alFolio = {
     compatBootstrap: false
   };
@@ -937,3 +1038,4 @@ if (ninja) ninja.data = [
 }
 ];
 </script> <script src="/401/assets/al_search/js/shortcut-key.js"></script> </body> </html>
+
