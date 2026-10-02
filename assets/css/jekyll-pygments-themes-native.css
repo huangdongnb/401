@@ -61,7 +61,14 @@
 } /* Generic.Inserted */
 .highlight .go {
   color: #cccccc;
-} /* Generic.Output */ /* Generic.Prompt */ /* Generic.Strong */ /* Generic.Subheading */
+} /* Generic.Output */
+.highlight .gp {
+  color: #aaaaaa;
+} /* Generic.Prompt */ /* Generic.Strong */
+.highlight .gu {
+  color: #ffffff;
+  text-decoration: underline;
+} /* Generic.Subheading */
 .highlight .gt {
   color: #d22323;
 } /* Generic.Traceback */
@@ -141,7 +148,10 @@
 } /* Text.Whitespace */
 .highlight .mf {
   color: #3677a9;
-} /* Literal.Number.Float */ /* Literal.Number.Hex */
+} /* Literal.Number.Float */
+.highlight .mh {
+  color: #3677a9;
+} /* Literal.Number.Hex */
 .highlight .mi {
   color: #3677a9;
 } /* Literal.Number.Integer */
