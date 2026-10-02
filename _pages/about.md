@@ -12,7 +12,7 @@ profile:
     <p>📍 No. 729 Dongfeng Road, Yuexiu , Guangzhou, Guangdong Province</p>
     <p>✉️ Contact Email: lab_email@gdut.edu.cn</p>
 
-selected_papers: true
+selected_papers: false
 social: true
 
 announcements:
@@ -65,3 +65,6 @@ We look forward to forging partnerships toward our shared vision: **a dynamic Gr
     font-weight: 400;
   }
 </style>
+
+<link rel="stylesheet" href="{{ '/assets/css/featured-publications.css' | relative_url }}">
+<script src="{{ '/assets/js/featured-publications.js' | relative_url }}" defer></script>
