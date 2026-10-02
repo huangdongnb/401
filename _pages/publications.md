@@ -8,8 +8,8 @@ nav_order: 2
 ---
 
 <style>
-
-#selected-papers{--ink:#242930;--sub:#68717b;--rule:#e2e6e9;--blue:#326c8d;color:var(--ink);font-family:Georgia,"Times New Roman",serif;font-size:15px;line-height:1.65;width:100%;padding:10px 0 80px}
+.post:has(#selected-papers) > .post-header{display:none}
+#selected-papers{--ink:#242930;--sub:#68717b;--rule:#e2e6e9;--blue:#326c8d;color:var(--ink);font-family:Georgia,"Times New Roman",serif;font-size:15px;line-height:1.65;width:100%;padding:0 0 80px}
 #selected-papers *{box-sizing:border-box}
 #selected-papers button{font:inherit}
 #selected-papers button:focus-visible,#selected-papers a:focus-visible{outline:2px solid #256c9b;outline-offset:3px}
