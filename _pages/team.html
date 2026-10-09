@@ -549,12 +549,28 @@ nav_order: 7
       line-height: 1.3;
     }
 
+    /* Keep the hidden advisor profile out of the layout and move members up. */
+    .advisor-section[hidden] {
+      display: none !important;
+    }
+
+    .section-transition {
+      margin-top: 5.6rem;
+    }
+
+    @media (max-width: 62rem) {
+      .section-transition {
+        margin-top: 4.5rem;
+      }
+    }
+
   </style>
 </head>
 <body>
   <main>
 
-    <section class="advisor-section" aria-labelledby="advisor-name">
+    <!-- Temporarily hidden; retain the advisor profile for later restoration. -->
+    <section class="advisor-section" aria-labelledby="advisor-name" hidden>
       <p class="advisor-heading">Team leader</p>
       <div class="advisor-layout">
         <figure class="advisor-portrait" aria-label="Portrait of Professor Xu Chao">
