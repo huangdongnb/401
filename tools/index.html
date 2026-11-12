@@ -1,0 +1,438 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Tools | 402 Urban Lab, Guangzhou </title> <meta name="author" content="Guangzhou City Lab"> <meta name="description" content="科研工具目录与使用说明"> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 1200px;
+  }
+</style> <link rel="stylesheet" href="/401/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/401/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/401/assets/css/main.css?v=3116ba77db9ee1581d05bb3e86fbf7f1"> <link rel="canonical" href="https://huangdongnb.github.io/401/tools/"> <script src="/401/assets/js/theme.js?v=5286c3e4c334d0ecb8fc0c40ff4fa7ec"></script> <link defer rel="stylesheet" href="/401/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> <style id="site-dark-mode-fix">
+  html[data-theme="dark"],
+  html[data-theme="dark"] body {
+    background: var(--global-bg-color, #181a1b) !important;
+    color: var(--global-text-color, #f2f2f2) !important;
+  }
+
+  html[data-theme="dark"] #navbar {
+    background: rgba(24, 26, 27, 0.97) !important;
+    border-bottom-color: #34383b !important;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.18) !important;
+  }
+
+  html[data-theme="dark"] #navbar .navbar-brand,
+  html[data-theme="dark"] #navbar .nav-link,
+  html[data-theme="dark"] #navbar .dropdown-item,
+  html[data-theme="dark"] #navbar #light-toggle {
+    color: #f2f2f2 !important;
+  }
+
+  html[data-theme="dark"] #navbar .nav-item.active > .nav-link,
+  html[data-theme="dark"] #navbar .nav-link:hover {
+    color: #ffffff !important;
+  }
+
+  /* Regular content pages and About. */
+  html[data-theme="dark"] .post-title,
+  html[data-theme="dark"] .post-header .desc,
+  html[data-theme="dark"] .post-header .post-description,
+  html[data-theme="dark"] .post article > p,
+  html[data-theme="dark"] .post article > ul,
+  html[data-theme="dark"] .post article > ol,
+  html[data-theme="dark"] .post article > blockquote,
+  html[data-theme="dark"] .post article > .clearfix,
+  html[data-theme="dark"] .post article > .clearfix p,
+  html[data-theme="dark"] .post article > .clearfix li,
+  html[data-theme="dark"] .post article > .clearfix strong,
+  html[data-theme="dark"] .profile .more-info,
+  html[data-theme="dark"] .profile .more-info p {
+    color: var(--global-text-color, #f2f2f2) !important;
+  }
+
+  /* Publications: convert fixed light-theme ink and surfaces. */
+  html[data-theme="dark"] #selected-papers {
+    --ink: #f2f4f5 !important;
+    --sub: #b8c0c5 !important;
+    --rule: #3b4145 !important;
+    --blue: #8bb8cf !important;
+    color: #f2f4f5 !important;
+  }
+
+  html[data-theme="dark"] #selected-papers h2,
+  html[data-theme="dark"] #selected-papers h3 {
+    color: #f2f4f5 !important;
+  }
+
+  html[data-theme="dark"] #selected-papers .intro,
+  html[data-theme="dark"] #selected-papers .count,
+  html[data-theme="dark"] #selected-papers .authors,
+  html[data-theme="dark"] #selected-papers .journal,
+  html[data-theme="dark"] #selected-papers .doi,
+  html[data-theme="dark"] #selected-papers .gallery-foot,
+  html[data-theme="dark"] #selected-papers .year {
+    color: #b8c0c5 !important;
+  }
+
+  html[data-theme="dark"] #selected-papers .action:not(.primary) {
+    background: #24292c !important;
+    border-color: #56666f !important;
+    color: #c7dce7 !important;
+  }
+
+  html[data-theme="dark"] #selected-papers .action:not(.primary):hover {
+    background: #2d3539 !important;
+    border-color: #80a7bb !important;
+  }
+
+  html[data-theme="dark"] #selected-papers .abstract {
+    background: #22272a !important;
+    border-left-color: #668b9e !important;
+    color: #c5ccd0 !important;
+  }
+
+  html[data-theme="dark"] #selected-papers .abstract strong {
+    color: #9fc2d3 !important;
+  }
+
+  html[data-theme="dark"] #paper-lightbox {
+    background: #1f2326 !important;
+    color: #f2f2f2 !important;
+  }
+
+  html[data-theme="dark"] #paper-lightbox .modal-bar {
+    border-bottom-color: #3b4145 !important;
+  }
+
+  html[data-theme="dark"] #paper-lightbox .close,
+  html[data-theme="dark"] #paper-lightbox .caption {
+    color: #e5e8ea !important;
+  }
+
+  /* States: make the page respond to the global dark-mode switch. */
+  html[data-theme="dark"] body.fixed-top-nav:has(.dataset-page) {
+    --global-theme-color: #b8ced9 !important;
+    --global-hover-color: #e3edf1 !important;
+    background: #181a1b !important;
+    color: #f2f2f2 !important;
+  }
+
+  html[data-theme="dark"] .dataset-page {
+    --dataset-blue: #9cb8c6 !important;
+    --dataset-blue-dark: #c2d3db !important;
+    --dataset-ink: #f1f3f4 !important;
+    --dataset-muted: #b2bbc0 !important;
+    --dataset-line: #3a4044 !important;
+    background: #181a1b !important;
+    color: #f1f3f4 !important;
+  }
+
+  html[data-theme="dark"] .dataset-hero {
+    background: linear-gradient(135deg, #202326 0%, #191b1d 58%, #111315 100%) !important;
+  }
+
+  html[data-theme="dark"] .dataset-hero::before {
+    display: block !important;
+    filter: grayscale(1) contrast(0.9) brightness(0.48) !important;
+    opacity: 0.34 !important;
+  }
+
+  html[data-theme="dark"] .dataset-hero::after {
+    display: block !important;
+    background:
+      linear-gradient(90deg, rgba(18, 20, 22, 0.82), rgba(18, 20, 22, 0.42) 55%, rgba(10, 12, 13, 0.72)),
+      linear-gradient(rgba(220, 225, 228, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(220, 225, 228, 0.045) 1px, transparent 1px) !important;
+    background-size: auto, 36px 36px, 36px 36px !important;
+    box-shadow: none !important;
+  }
+
+  html[data-theme="dark"] .dataset-hero h1 {
+    color: #ffffff !important;
+    text-shadow: 0 1px 16px rgba(0, 0, 0, 0.72) !important;
+  }
+
+  html[data-theme="dark"] .dataset-hero p {
+    color: #d2d7da !important;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.72) !important;
+  }
+
+  html[data-theme="dark"] .dataset-sidebar,
+  html[data-theme="dark"] .city-panel,
+  html[data-theme="dark"] .city-panel--three {
+    background: #202326 !important;
+    border-color: #3a4044 !important;
+    box-shadow: none !important;
+  }
+
+  html[data-theme="dark"] .dataset-sidebar__title,
+  html[data-theme="dark"] .dataset-toolbar__top h2,
+  html[data-theme="dark"] .dataset-group__heading,
+  html[data-theme="dark"] .city-panel__header h3 {
+    color: #f3f4f5 !important;
+  }
+
+  html[data-theme="dark"] .dataset-sidebar__title span,
+  html[data-theme="dark"] .dataset-search__icon,
+  html[data-theme="dark"] .dataset-result-count strong,
+  html[data-theme="dark"] .dataset-reset,
+  html[data-theme="dark"] .dataset-filters select,
+  html[data-theme="dark"] .city-layer-label {
+    color: #a9c2cf !important;
+  }
+
+  html[data-theme="dark"] .category-index {
+    background: #303539 !important;
+    color: #c5cbd0 !important;
+  }
+
+  html[data-theme="dark"] .dataset-category {
+    color: #d0d5d8 !important;
+  }
+
+  html[data-theme="dark"] .dataset-category:hover,
+  html[data-theme="dark"] .dataset-category.is-active {
+    background: #2b3439 !important;
+    color: #ffffff !important;
+    box-shadow: inset 2px 0 #7f9dac !important;
+  }
+
+  html[data-theme="dark"] .dataset-category.is-active .category-index {
+    background: #516a77 !important;
+    color: #ffffff !important;
+  }
+
+  html[data-theme="dark"] .dataset-search,
+  html[data-theme="dark"] .dataset-search--compact {
+    background: #222629 !important;
+    border-color: #41484c !important;
+    box-shadow: none !important;
+  }
+
+  html[data-theme="dark"] .dataset-search input {
+    background: transparent !important;
+    color: #f2f3f4 !important;
+  }
+
+  html[data-theme="dark"] .dataset-search input::placeholder {
+    color: #929da3 !important;
+  }
+
+  html[data-theme="dark"] .dataset-search__clear {
+    background: #343a3e !important;
+    color: #d4d9dc !important;
+  }
+
+  html[data-theme="dark"] .dataset-search__hint,
+  html[data-theme="dark"] .dataset-result-count,
+  html[data-theme="dark"] .dataset-group__heading span,
+  html[data-theme="dark"] .dataset-card__more,
+  html[data-theme="dark"] .dataset-card__arrow,
+  html[data-theme="dark"] .city-panel__header p,
+  html[data-theme="dark"] .city-panel__footer {
+    color: #aeb7bc !important;
+  }
+
+  html[data-theme="dark"] .dataset-filters {
+    border-color: #3a4044 !important;
+    color: #c0c7ca !important;
+  }
+
+  html[data-theme="dark"] .dataset-filters select,
+  html[data-theme="dark"] .dataset-filters option {
+    background: #222629 !important;
+  }
+
+  html[data-theme="dark"] .dataset-card {
+    background: #222629 !important;
+    border-color: #343a3e !important;
+    box-shadow: none !important;
+  }
+
+  html[data-theme="dark"] .dataset-card:hover {
+    background: #282d30 !important;
+    border-color: #56646b !important;
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.22) !important;
+  }
+
+  html[data-theme="dark"] .dataset-card__title {
+    color: #f2f4f5 !important;
+  }
+
+  html[data-theme="dark"] .dataset-card__title:hover {
+    color: #b8d0dc !important;
+  }
+
+  html[data-theme="dark"] .dataset-badge {
+    background: #343a3e !important;
+    color: #c7cdd0 !important;
+  }
+
+  html[data-theme="dark"] .dataset-empty {
+    border-color: #485055 !important;
+    color: #b2bbc0 !important;
+  }
+
+  html[data-theme="dark"] .dataset-page-button {
+    background: #222629 !important;
+    border-color: #41484c !important;
+    color: #c4cbcf !important;
+  }
+
+  html[data-theme="dark"] .dataset-page-button:hover:not(:disabled) {
+    background: #2b3135 !important;
+    border-color: #64747d !important;
+    color: #ffffff !important;
+  }
+
+  html[data-theme="dark"] .dataset-page-button.is-active {
+    background: #526d7b !important;
+    border-color: #6e8b99 !important;
+    color: #ffffff !important;
+  }
+
+  html[data-theme="dark"] .city-live,
+  html[data-theme="dark"] .weather-button {
+    background: #2b3033 !important;
+    border-color: #454c50 !important;
+    color: #d3d8da !important;
+  }
+
+  html[data-theme="dark"] .city-frame-wrap,
+  html[data-theme="dark"] .city-model-frame {
+    background: #1c1f21 !important;
+  }
+
+  html[data-theme="dark"] .city-model-frame {
+    filter: brightness(0.76) contrast(1.04);
+  }
+
+  /* Keep the existing States login artwork and light dialog unchanged. */
+  html[data-theme="dark"] .login-dialog {
+    background: #ffffff !important;
+    color: #263238 !important;
+  }
+
+  html[data-theme="dark"] .login-dialog .login-form h2,
+  html[data-theme="dark"] .login-dialog .login-form > p,
+  html[data-theme="dark"] .login-dialog .field label,
+  html[data-theme="dark"] .login-dialog .input-shell input {
+    color: #263238 !important;
+  }
+
+  /* Team: replace fixed white surfaces and dark ink only in dark mode. */
+  html[data-theme="dark"] body:has(.team-section) {
+    --ink: #f3f3f3 !important;
+    --muted: #b2b6b9 !important;
+    --body: #d1d4d6 !important;
+    --line: #3b3f42 !important;
+  }
+
+  html[data-theme="dark"] .advisor-section,
+  html[data-theme="dark"] .team-section,
+  html[data-theme="dark"] .section-transition {
+    background: var(--global-bg-color, #181a1b) !important;
+  }
+
+  html[data-theme="dark"] .advisor-heading,
+  html[data-theme="dark"] .section-transition,
+  html[data-theme="dark"] .intro h1 span {
+    color: #b8bdc0 !important;
+  }
+
+  html[data-theme="dark"] .advisor-heading::before,
+  html[data-theme="dark"] .section-transition::before,
+  html[data-theme="dark"] .advisor-name,
+  html[data-theme="dark"] .advisor-detail h2,
+  html[data-theme="dark"] .intro h1 .title-main,
+  html[data-theme="dark"] .member-name,
+  html[data-theme="dark"] .figure-fallback {
+    color: #f4f4f4 !important;
+  }
+
+  html[data-theme="dark"] .advisor-role,
+  html[data-theme="dark"] .advisor-credentials li,
+  html[data-theme="dark"] .advisor-lead,
+  html[data-theme="dark"] .advisor-detail p,
+  html[data-theme="dark"] .intro p {
+    color: #d0d4d6 !important;
+  }
+
+  html[data-theme="dark"] .advisor-eyebrow,
+  html[data-theme="dark"] .advisor-detail h2 b,
+  html[data-theme="dark"] .member-grade {
+    color: #aeb5b9 !important;
+  }
+
+  html[data-theme="dark"] .advisor-heading::after,
+  html[data-theme="dark"] .section-transition::after {
+    background: #3b3f42 !important;
+  }
+
+  html[data-theme="dark"] .advisor-credentials,
+  html[data-theme="dark"] .advisor-details,
+  html[data-theme="dark"] .member-card {
+    border-color: #3b3f42 !important;
+  }
+
+  html[data-theme="dark"] .member-card {
+    background: #202326 !important;
+  }
+
+  html[data-theme="dark"] .figure-stage {
+    color: #f1f1f1 !important;
+  }
+</style>
+<style id="site-navigation-type">
+  nav.navbar .navbar-brand,
+  nav.navbar .navbar-nav .nav-link,
+  nav.navbar .navbar-nav .dropdown-item {
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-weight: 700 !important;
+  }
+</style>
+</head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/401/"> 402 Urban Lab, Guangzhou </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/401/">About </a> </li> <li class="nav-item "> <a class="nav-link" href="/401/states/">States </a> </li> <li class="nav-item "> <a class="nav-link" href="/401/publications/">Publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/401/teaching/">Teaching </a> </li> <li class="nav-item "> <a class="nav-link" href="/401/team/">Team </a> </li> <li class="nav-item active"> <a class="nav-link" href="/401/tools/">Tools <span class="sr-only">(current)</span> </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">Submenus </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/401/books/">Bookshelf</a> </div> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Tools</h1> <p class="post-description">科研工具目录与使用说明</p> </header> <article> <link rel="stylesheet" href="/401/assets/css/tools-page.css"> <div id="tools-app"> <div class="listing" id="listing"> <div class="hero"><div class="wrap hero-inner"> <div> <div class="eyebrow">Research resources / 科研资源</div> <h1>科研工具</h1> <p>为研究过程编写的小工具，覆盖数据获取、处理与复核。</p> </div> <div class="hero-art" aria-label="科研工具的三个线条插图"> <div class="slide"> <div class="hero-illustration"><img src="/401/assets/tools/satellite.svg" alt="卫星线条插图"></div> <div class="hero-caption"> <span>01 / CAPTURE</span><strong>影像获取</strong> </div> </div> <div class="slide"> <div class="hero-illustration"><img src="/401/assets/tools/map-pinned.svg" alt="地图定位线条插图"></div> <div class="hero-caption"> <span>02 / LOCATE</span><strong>空间定位</strong> </div> </div> <div class="slide"> <div class="hero-illustration"><img src="/401/assets/tools/layers.svg" alt="图层线条插图"></div> <div class="hero-caption"> <span>03 / PROCESS</span><strong>数据处理</strong> </div> </div> </div> </div></div> <div class="wrap"> <div class="section-head"> <div> <div class="eyebrow">Available tools</div> <h2>工具目录</h2> </div> <small>01 AVAILABLE · MORE TO COME</small> </div> <div class="grid"> <button class="tool-card" id="sentinel-card" type="button" aria-label="查看 Sentinel-2 城市影像下载工具详情"><div class="card-top"> <span class="icon" aria-hidden="true"><img src="/401/assets/tools/satellite.svg" alt=""></span><span class="tag">Remote sensing</span> </div> <h3>Sentinel‑2 城市影像<br>批量下载与拼接</h3> <p>按城市与时间段检索、筛选并下载 10 米自然色卫星影像，可生成完整拼接图和来源记录。</p> <div class="card-foot"> <span>桌面工具 · 数据获取</span><span class="arrow" aria-hidden="true">↗</span> </div></button><div class="tool-card empty" aria-label="预留工具位置"> <div class="card-top"> <span class="icon" aria-hidden="true"><img src="/401/assets/tools/square-dashed.svg" alt=""></span><span class="tag">Coming soon</span> </div> <h3>下一件科研工具</h3> <p>位置已预留，等待添加工具名称、图标与介绍。</p> <div class="card-foot">TOOL 02</div> </div> <div class="tool-card empty" aria-label="预留工具位置"> <div class="card-top"> <span class="icon" aria-hidden="true"><img src="/401/assets/tools/square-dashed.svg" alt=""></span><span class="tag">Coming soon</span> </div> <h3>更多工具</h3> <p>位置已预留，后续可继续扩展整个工具目录。</p> <div class="card-foot">TOOL 03</div> </div> </div> </div> </div> <div class="detail" id="detail"> <div class="detail-hero"> <div class="wrap"> <button class="back" type="button" id="back">← 返回工具目录</button> <div class="detail-top"> <div> <div class="eyebrow">Tool 01 / Remote sensing</div> <h1>Sentinel‑2 城市影像<br>批量下载与拼接</h1> <p class="lead">一次设置多个城市和时间段，自动寻找合适的 Sentinel‑2 自然色影像，下载、拼接并保留来源记录。</p> <div class="meta"> <span>城市尺度</span><span>10 米 RGB</span><span>Windows 桌面工具</span> </div> </div> <div class="detail-visual" aria-label="卫星影像工具线条插图"> <div class="visual-ring"><img src="/401/assets/tools/satellite.svg" alt=""></div> <div class="visual-caption">SENTINEL‑2 <b>L2A</b><small>城市影像 · 自然色</small> </div> </div> </div> </div> </div> <div class="wrap detail-sections"> <section class="overview-row" aria-label="工具概览"> <div class="overview-item"> <img src="/401/assets/tools/map-pin.svg" alt=""><div> <strong>按城市检索</strong><span>支持多个中国城市与时间段</span> </div> </div> <div class="overview-item"> <img src="/401/assets/tools/cloud-sun.svg" alt=""><div> <strong>优先晴朗单日</strong><span>默认主景云量上限 1%</span> </div> </div> <div class="overview-item"> <img src="/401/assets/tools/files.svg" alt=""><div> <strong>结果可追溯</strong><span>影像、预览与来源记录一起保存</span> </div> </div> </section> <section class="info-section"> <div class="section-intro"> <div class="eyebrow">How to use</div> <h2>四步开始使用</h2> <p>下载并解压完整包，在 Windows 上运行批量下载界面。</p> </div> <div class="step-grid"> <div class="step-card"> <span>01</span><img src="/401/assets/tools/map-pin.svg" alt=""><h3>选地区</h3> <p>选择省份、城市，加入地区列表。</p> </div> <div class="step-card"> <span>02</span><img src="/401/assets/tools/calendar-days.svg" alt=""><h3>选时间</h3> <p>加入一个或多个起止日期范围。</p> </div> <div class="step-card"> <span>03</span><img src="/401/assets/tools/grid-2x2.svg" alt=""><h3>生成任务</h3> <p>组合城市与时间，检查任务表和保存位置。</p> </div> <div class="step-card"> <span>04</span><img src="/401/assets/tools/download.svg" alt=""><h3>开始下载</h3> <p>运行后查看拼接图、预览图和来源文件。</p> </div> </div> <div class="quiet-note">推荐先使用默认“晴朗单日”、1% 云量上限，并勾选“下载后拼接完整影像”。找不到合适场景时，可扩大日期或略微提高云量上限。</div> </section> <section class="info-section"> <div class="section-intro"> <div class="eyebrow">Under the hood</div> <h2>工具如何运行</h2> <p>从检索到输出，保留可复核的选片依据。</p> </div> <div class="logic-grid"> <div class="logic-card"> <img src="/401/assets/tools/scan-search.svg" alt=""><span>检索</span><p>按城市行政边界和日期，在 Earth Search 查找 Sentinel‑2 L2A 场景。</p> </div> <div class="logic-card"> <img src="/401/assets/tools/cloud-sun.svg" alt=""><span>选片</span><p>优先同日低云量影像；主景尽量覆盖市域，必要时用同日边缘场景补齐。</p> </div> <div class="logic-card"> <img src="/401/assets/tools/layers.svg" alt=""><span>拼接</span><p>下载自然色瓦片，生成 10 米 GeoTIFF 和 JPG 预览，并保存来源 CSV。</p> </div> </div> <div class="rule-strip"> <strong>默认选片规则</strong><span>同日覆盖目标 ≥ 99.5%</span><span>低云主景覆盖 ≥ 95%</span><span>边缘补景最多高 1 个百分点</span> </div> </section> <section class="info-section"> <div class="section-intro"> <div class="eyebrow">Fit &amp; limits</div> <h2>适合做什么，留意什么</h2> </div> <div class="fit-grid"> <div class="fit-card"> <div class="fit-title"> <img src="/401/assets/tools/check.svg" alt=""><h3>适合</h3> </div> <ul> <li>城市尺度底图与地表状况目视核查</li> <li>多城市、多时段影像的批量收集</li> <li>在 GIS 中查看、复核和追溯影像来源</li> </ul> </div> <div class="fit-card caution"> <div class="fit-title"> <img src="/401/assets/tools/triangle-alert.svg" alt=""><h3>使用边界</h3> </div> <ul> <li>整景低云量不保证市内每处无云</li> <li>10 米像元难以识别单棵树、窄人行道等细节</li> <li>仅含 8 位 RGB，不能直接计算 NDVI 或定量反射率</li> </ul> </div> </div> </section> <section class="download-section" aria-label="下载工具包"> <div class="download-icon"><img src="/401/assets/tools/folder-open.svg" alt=""></div> <div class="download-copy"> <div class="eyebrow">Get the tool</div> <h2>下载完整工具包</h2> <p>包含启动脚本、Python 程序、城市列表和中文说明。解压后运行；自然色影像下载无需账号或 API 密钥。</p> <small>需要 Python 与 tkinter、requests、numpy、Pillow、shapely、pyproj、rasterio、scipy。</small> </div> <a class="download-button" href="/401/assets/tools/Sentinel2%E5%9F%8E%E5%B8%82%E5%BD%B1%E5%83%8F%E4%B8%8B%E8%BD%BD%E6%8F%92%E4%BB%B6_%E5%AE%8C%E6%95%B4%E5%8C%85.zip" download><img src="/401/assets/tools/download.svg" alt="">下载 ZIP 完整包</a> </section> </div> </div> </div> <script>
+  (function(){
+    const listing=document.getElementById('listing'),detail=document.getElementById('detail');
+    function route(){const open=location.hash==='#sentinel2';listing.classList.toggle('hide',open);detail.classList.toggle('show',open);document.title=open?'Sentinel‑2 城市影像下载 · Tools':'Tools · Research Toolkit';window.scrollTo(0,0)}
+    document.getElementById('sentinel-card').addEventListener('click',()=>{location.hash='sentinel2'});
+    document.getElementById('back').addEventListener('click',()=>{location.hash='tools'});
+    window.addEventListener('hashchange',route);route();
+  })();
+  </script> </article> </div> </div> <style>body { padding-bottom: 0 !important; }</style><footer class="fixed-bottom" role="contentinfo" style="position: static !important; bottom: auto !important; background: #1c1c1c !important; color: #e8e8e8 !important; border-top-color: #1c1c1c !important;"><div class="container mt-0" style="text-align: center; color: #e8e8e8 !important;">© 2026 Guangzhou 402 City Lab.</div></footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/401/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/401/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/401/assets/al_math/js/mathjax-setup.js"></script> <script src="/401/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/401/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/401/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/401/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/401/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/401/assets/al_img_tools/js/zoom.js"></script> <script defer src="/401/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/401/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/401/assets/al_search/js/search-setup.js"></script> <script>
+const ninja = document.querySelector('ninja-keys');
+if (ninja) ninja.data = [
+{
+  id: "nav-about",
+  title: "About",
+  section: "Navigation",
+  handler: () => { window.location.href = "/401/"; }
+},
+{
+  id: "nav-states",
+  title: "States",
+  section: "Navigation",
+  handler: () => { window.location.href = "/401/states/"; }
+},
+{
+  id: "nav-publications",
+  title: "Publications",
+  section: "Navigation",
+  handler: () => { window.location.href = "/401/publications/"; }
+},
+{
+  id: "nav-teaching",
+  title: "Teaching",
+  section: "Navigation",
+  handler: () => { window.location.href = "/401/teaching/"; }
+},
+{
+  id: "nav-team",
+  title: "Team",
+  section: "Navigation",
+  handler: () => { window.location.href = "/401/team/"; }
+}
+];
+</script> <script src="/401/assets/al_search/js/shortcut-key.js"></script> </body> </html>
