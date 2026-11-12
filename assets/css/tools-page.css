@@ -18,7 +18,7 @@
 #tools-app .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin:55px 0 22px}
 #tools-app .section-head h2{font-size:27px;margin:5px 0 0;letter-spacing:-.03em}
 #tools-app .section-head small{color:#8d9d97;font:12px Arial,sans-serif}
-#tools-app .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-bottom:90px}
+#tools-app .tools-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-bottom:90px}
 #tools-app .tool-card{border:1px solid var(--line);background:#fff;min-height:300px;padding:25px;display:flex;flex-direction:column;text-align:left;transition:transform .2s,box-shadow .2s,border-color .2s;width:100%;color:inherit}
 #tools-app .tool-card:not(.empty):hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#b6cec0}
 #tools-app .tool-card:focus-visible,#tools-app .back:focus-visible,#tools-app .download:focus-visible{outline:3px solid #88b1c8;outline-offset:3px}
@@ -72,10 +72,10 @@
 #tools-app .download:hover{background:#496778}
 @media (max-width:800px){#tools-app .hero-inner{padding:48px 0}
 #tools-app .hero-art{height:150px}
-#tools-app .grid{grid-template-columns:repeat(2,1fr)}
+#tools-app .tools-card-grid{grid-template-columns:repeat(2,1fr)}
 #tools-app .aside{position:static;order:-1}}
 @media (max-width:550px){#tools-app .wrap{padding:0 20px}
-#tools-app .grid{grid-template-columns:1fr}
+#tools-app .tools-card-grid{grid-template-columns:1fr}
 #tools-app .tool-card{min-height:245px}
 #tools-app .detail h1{font-size:31px}}
 #tools-app .hero-art{height:180px;background:#e9eff1;box-shadow:none}
