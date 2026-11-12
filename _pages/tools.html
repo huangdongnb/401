@@ -1,0 +1,86 @@
+---
+layout: page
+title: Tools
+description: 科研工具目录与使用说明
+permalink: /tools/
+nav: true
+nav_order: 8
+---
+<link rel="stylesheet" href="{{ '/assets/css/tools-page.css' | relative_url }}">
+<div id="tools-app">
+    <div class="listing" id="listing">
+      <div class="hero"><div class="wrap hero-inner"><div><div class="eyebrow">Research resources / 科研资源</div><h1>科研工具</h1><p>为研究过程编写的小工具，覆盖数据获取、处理与复核。</p></div><div class="hero-art" aria-label="科研工具的三个线条插图"><div class="slide"><div class="hero-illustration"><img src="{{ '/assets/tools/satellite.svg' | relative_url }}" alt="卫星线条插图"></div><div class="hero-caption"><span>01 / CAPTURE</span><strong>影像获取</strong></div></div><div class="slide"><div class="hero-illustration"><img src="{{ '/assets/tools/map-pinned.svg' | relative_url }}" alt="地图定位线条插图"></div><div class="hero-caption"><span>02 / LOCATE</span><strong>空间定位</strong></div></div><div class="slide"><div class="hero-illustration"><img src="{{ '/assets/tools/layers.svg' | relative_url }}" alt="图层线条插图"></div><div class="hero-caption"><span>03 / PROCESS</span><strong>数据处理</strong></div></div></div></div></div>
+      <div class="wrap"><div class="section-head"><div><div class="eyebrow">Available tools</div><h2>工具目录</h2></div><small>01 AVAILABLE · MORE TO COME</small></div><div class="grid"><button class="tool-card" id="sentinel-card" type="button" aria-label="查看 Sentinel-2 城市影像下载工具详情"><div class="card-top"><span class="icon" aria-hidden="true"><img src="{{ '/assets/tools/satellite.svg' | relative_url }}" alt=""></span><span class="tag">Remote sensing</span></div><h3>Sentinel‑2 城市影像<br>批量下载与拼接</h3><p>按城市与时间段检索、筛选并下载 10 米自然色卫星影像，可生成完整拼接图和来源记录。</p><div class="card-foot"><span>桌面工具 · 数据获取</span><span class="arrow" aria-hidden="true">↗</span></div></button><div class="tool-card empty" aria-label="预留工具位置"><div class="card-top"><span class="icon" aria-hidden="true"><img src="{{ '/assets/tools/square-dashed.svg' | relative_url }}" alt=""></span><span class="tag">Coming soon</span></div><h3>下一件科研工具</h3><p>位置已预留，等待添加工具名称、图标与介绍。</p><div class="card-foot">TOOL 02</div></div><div class="tool-card empty" aria-label="预留工具位置"><div class="card-top"><span class="icon" aria-hidden="true"><img src="{{ '/assets/tools/square-dashed.svg' | relative_url }}" alt=""></span><span class="tag">Coming soon</span></div><h3>更多工具</h3><p>位置已预留，后续可继续扩展整个工具目录。</p><div class="card-foot">TOOL 03</div></div></div></div>
+    </div>
+    <div class="detail" id="detail">
+      <div class="detail-hero">
+        <div class="wrap">
+          <button class="back" type="button" id="back">← 返回工具目录</button>
+          <div class="detail-top">
+            <div>
+              <div class="eyebrow">Tool 01 / Remote sensing</div>
+              <h1>Sentinel‑2 城市影像<br>批量下载与拼接</h1>
+              <p class="lead">一次设置多个城市和时间段，自动寻找合适的 Sentinel‑2 自然色影像，下载、拼接并保留来源记录。</p>
+              <div class="meta"><span>城市尺度</span><span>10 米 RGB</span><span>Windows 桌面工具</span></div>
+            </div>
+            <div class="detail-visual" aria-label="卫星影像工具线条插图">
+              <div class="visual-ring"><img src="{{ '/assets/tools/satellite.svg' | relative_url }}" alt=""></div>
+              <div class="visual-caption">SENTINEL‑2 <b>L2A</b><small>城市影像 · 自然色</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap detail-sections">
+        <section class="overview-row" aria-label="工具概览">
+          <div class="overview-item"><img src="{{ '/assets/tools/map-pin.svg' | relative_url }}" alt=""><div><strong>按城市检索</strong><span>支持多个中国城市与时间段</span></div></div>
+          <div class="overview-item"><img src="{{ '/assets/tools/cloud-sun.svg' | relative_url }}" alt=""><div><strong>优先晴朗单日</strong><span>默认主景云量上限 1%</span></div></div>
+          <div class="overview-item"><img src="{{ '/assets/tools/files.svg' | relative_url }}" alt=""><div><strong>结果可追溯</strong><span>影像、预览与来源记录一起保存</span></div></div>
+        </section>
+
+        <section class="info-section">
+          <div class="section-intro"><div class="eyebrow">How to use</div><h2>四步开始使用</h2><p>下载并解压完整包，在 Windows 上运行批量下载界面。</p></div>
+          <div class="step-grid">
+            <div class="step-card"><span>01</span><img src="{{ '/assets/tools/map-pin.svg' | relative_url }}" alt=""><h3>选地区</h3><p>选择省份、城市，加入地区列表。</p></div>
+            <div class="step-card"><span>02</span><img src="{{ '/assets/tools/calendar-days.svg' | relative_url }}" alt=""><h3>选时间</h3><p>加入一个或多个起止日期范围。</p></div>
+            <div class="step-card"><span>03</span><img src="{{ '/assets/tools/grid-2x2.svg' | relative_url }}" alt=""><h3>生成任务</h3><p>组合城市与时间，检查任务表和保存位置。</p></div>
+            <div class="step-card"><span>04</span><img src="{{ '/assets/tools/download.svg' | relative_url }}" alt=""><h3>开始下载</h3><p>运行后查看拼接图、预览图和来源文件。</p></div>
+          </div>
+          <div class="quiet-note">推荐先使用默认“晴朗单日”、1% 云量上限，并勾选“下载后拼接完整影像”。找不到合适场景时，可扩大日期或略微提高云量上限。</div>
+        </section>
+
+        <section class="info-section">
+          <div class="section-intro"><div class="eyebrow">Under the hood</div><h2>工具如何运行</h2><p>从检索到输出，保留可复核的选片依据。</p></div>
+          <div class="logic-grid">
+            <div class="logic-card"><img src="{{ '/assets/tools/scan-search.svg' | relative_url }}" alt=""><span>检索</span><p>按城市行政边界和日期，在 Earth Search 查找 Sentinel‑2 L2A 场景。</p></div>
+            <div class="logic-card"><img src="{{ '/assets/tools/cloud-sun.svg' | relative_url }}" alt=""><span>选片</span><p>优先同日低云量影像；主景尽量覆盖市域，必要时用同日边缘场景补齐。</p></div>
+            <div class="logic-card"><img src="{{ '/assets/tools/layers.svg' | relative_url }}" alt=""><span>拼接</span><p>下载自然色瓦片，生成 10 米 GeoTIFF 和 JPG 预览，并保存来源 CSV。</p></div>
+          </div>
+          <div class="rule-strip"><strong>默认选片规则</strong><span>同日覆盖目标 ≥ 99.5%</span><span>低云主景覆盖 ≥ 95%</span><span>边缘补景最多高 1 个百分点</span></div>
+        </section>
+
+        <section class="info-section">
+          <div class="section-intro"><div class="eyebrow">Fit & limits</div><h2>适合做什么，留意什么</h2></div>
+          <div class="fit-grid">
+            <div class="fit-card"><div class="fit-title"><img src="{{ '/assets/tools/check.svg' | relative_url }}" alt=""><h3>适合</h3></div><ul><li>城市尺度底图与地表状况目视核查</li><li>多城市、多时段影像的批量收集</li><li>在 GIS 中查看、复核和追溯影像来源</li></ul></div>
+            <div class="fit-card caution"><div class="fit-title"><img src="{{ '/assets/tools/triangle-alert.svg' | relative_url }}" alt=""><h3>使用边界</h3></div><ul><li>整景低云量不保证市内每处无云</li><li>10 米像元难以识别单棵树、窄人行道等细节</li><li>仅含 8 位 RGB，不能直接计算 NDVI 或定量反射率</li></ul></div>
+          </div>
+        </section>
+
+        <section class="download-section" aria-label="下载工具包">
+          <div class="download-icon"><img src="{{ '/assets/tools/folder-open.svg' | relative_url }}" alt=""></div>
+          <div class="download-copy"><div class="eyebrow">Get the tool</div><h2>下载完整工具包</h2><p>包含启动脚本、Python 程序、城市列表和中文说明。解压后运行；自然色影像下载无需账号或 API 密钥。</p><small>需要 Python 与 tkinter、requests、numpy、Pillow、shapely、pyproj、rasterio、scipy。</small></div>
+          <a class="download-button" href="{{ '/assets/tools/Sentinel2城市影像下载插件_完整包.zip' | relative_url }}" download><img src="{{ '/assets/tools/download.svg' | relative_url }}" alt="">下载 ZIP 完整包</a>
+        </section>
+      </div>
+    </div>
+  </div>
+<script>
+  (function(){
+    const listing=document.getElementById('listing'),detail=document.getElementById('detail');
+    function route(){const open=location.hash==='#sentinel2';listing.classList.toggle('hide',open);detail.classList.toggle('show',open);document.title=open?'Sentinel‑2 城市影像下载 · Tools':'Tools · Research Toolkit';window.scrollTo(0,0)}
+    document.getElementById('sentinel-card').addEventListener('click',()=>{location.hash='sentinel2'});
+    document.getElementById('back').addEventListener('click',()=>{location.hash='tools'});
+    window.addEventListener('hashchange',route);route();
+  })();
+  </script>
