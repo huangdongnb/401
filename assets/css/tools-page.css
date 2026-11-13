@@ -1,4 +1,5 @@
-body:has(#tools-app){overflow-x:hidden}
+body:has(#tools-app){display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;overflow-x:hidden}
+body:has(#tools-app) > .container[role=main]{flex:1 0 auto}
 .post:has(#tools-app) > .post-header{display:none}
 .post:has(#tools-app) > article{padding:0}
 #tools-app{--ink:#202725;--muted:#63716d;--blue:#567487;--line:#dbe2df;--paper:#fff;--wash:#f6f8f6;--green:#507f69;--shadow:0 18px 52px rgba(31,52,45,.07)}
