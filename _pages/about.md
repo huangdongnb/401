@@ -10,7 +10,7 @@ profile:
   image_circular: true
   more_info: >
     <p>📍 No. 729 Dongfeng Road, Yuexiu , Guangzhou, Guangdong Province</p>
-    <p>✉️ Contact Email: huangdong20031105@gmail.com</p>
+    <p class="contact-email">✉️ Contact Email:<br><a href="mailto:huangdong20031105@gmail.com">huangdong20031105@gmail.com</a></p>
 
 selected_papers: false
 social: true
@@ -43,9 +43,34 @@ We warmly welcome researchers passionate about urban human settlements, who appl
 We look forward to forging partnerships toward our shared vision: **a dynamic Greater Bay Area and an appealing new Guangzhou**.
 
 <style>
-  .profile {
-    max-width: 200px; 
-    margin-right: 6rem; 
+  .post .profile {
+    width: 260px;
+    max-width: 260px;
+    margin-right: 1.75rem !important;
+  }
+  .post .profile figure {
+    max-width: 200px;
+  }
+  .post .profile .more-info p {
+    display: block;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    margin-bottom: .5rem;
+  }
+  .post .profile .contact-email a {
+    color: inherit;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 700px) {
+    .post .profile {
+      float: none !important;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 0 1.75rem !important;
+    }
+    .post .clearfix {
+      clear: both;
+    }
   }
   /* 让正文部分建立独立的格式化上下文，文字将形成整齐的左边缘，绝对不会绕排到头像和邮箱的下方 */
   .clearfix {
