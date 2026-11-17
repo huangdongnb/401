@@ -10,7 +10,7 @@ profile:
   image_circular: true
   more_info: >
     <p>📍 No. 729 Dongfeng Road, Yuexiu , Guangzhou, Guangdong Province</p>
-    <p>✉️ Contact Email: lab_email@gdut.edu.cn</p>
+    <p>✉️ Contact Email: huangdong20031105@gmail.com</p>
 
 selected_papers: false
 social: true
@@ -26,7 +26,7 @@ latest_posts:
   limit: 3
 ---
 
-We are the **scientific research team led by Professor Chao Xu at the School of Architecture and Urban Planning, Guangdong University of Technology**. Based in the **Guangdong-Hong Kong-Macao Greater Bay Area**, we deeply engage in the cutting-edge interdisciplinary fields of **built environment, climate resilience, and urban spatial justice**.
+Our research team is based at the **School of Architecture and Urban Planning, Guangdong University of Technology**. Grounded in the **Guangdong-Hong Kong-Macao Greater Bay Area**, we study the **built environment, climate resilience, and urban spatial justice** through interdisciplinary research.
 
 Relying on cutting-edge computational methods, our team integrates advanced technologies to advance knowledge in key areas:
 
